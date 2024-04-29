@@ -3,11 +3,21 @@ const User = require('../models/userModel')
 
 // fetch user's data
 const getUser = async (req, res) => {
-  const user = await User.find({...req.body})
+  const { username, email, password, role } = req.body
+  const user = await User.findOne({ username, email, role })
   if (!user) {
     return res.status(400).json({error: "user can not be found"})
   }
-  res.status(200).json(user)
+  try {
+    const isMatch = await user.checkPassword(password)
+    if (!isMatch) {
+      return res.status(400).json({error: "password did not match"})
+    }
+    res.status(200).json(user)
+
+  } catch(error) {
+      res.status(404).json({error: error.message})
+    }
 }
 
 //add user
@@ -27,7 +37,7 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
   const { id } = req.params
 
-  if (!mongoose.Types.ObjectId.isValid()) {
+  if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({error: "invalid id"})
   }
 
@@ -36,14 +46,21 @@ const updateUser = async (req, res) => {
   if (!user) {
     return res.status(404).json({error: 'error creating user'})
   }
-  res.status(200).json(user)
+  try {
+    user.password = req.body.password
+    await user.save()
+    res.status(200).json(user)
+  } catch (error) {
+    res.status(404).json({error: error.message})
+  }
+
 }
 
 //delete user
 const deleteUser = async (req, res) => {
   const { id } = req.params
 
-  if (!mongoose.Types.ObjectId.isValid()) {
+  if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({error: "invalid id"})
   }
 

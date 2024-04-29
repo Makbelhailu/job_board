@@ -16,7 +16,7 @@ const getAllApplications = async (req, res) => {
 const getApplication = async (req, res) => {
   const { id } = req.params
 
-  if (!mongoose.Types.ObjectId.isValid()) {
+  if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({error: "invalid id"})
   }
   const app = await App.findById({_id: id})
@@ -43,7 +43,7 @@ const createApplication = async (req, res) => {
 const updateApplication = async (req, res) => {
   const { id } = req.params
 
-  if (!mongoose.Types.ObjectId.isValid()) {
+  if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({error: "invalid id"})
   }
   const app = await App.findOneAndUpdate({_id: id},
@@ -59,7 +59,7 @@ const updateApplication = async (req, res) => {
 const deleteApplication = async (req, res) => {
   const { id } = req.params
 
-  if (!mongoose.Types.ObjectId.isValid()) {
+  if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({error: "invalid id"})
   }
   const app = await App.findOneAndDelete({_id: id})

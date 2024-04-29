@@ -1,25 +1,22 @@
 const express = require('express')
 const router = express.Router()
+const {
+  getAllJobs,
+  getJob,
+  deleteJob,
+  updateJob,
+  createJob
+} = require('../controllers/jobController')
 
-router.get('/', (req, res) => {
-  res.json({msg: "hi mak"})
-})
+router.get('/', getAllJobs)
 
-router.post('/', (req, res) => {
-  res.send("this is post request")
-})
+router.post('/', createJob)
 
-router.get('/:id', (req, res) => {
-  res.send(`this is get request for id=${req.params.id}`)
-})
+router.get('/:id', getJob)
 
-router.delete('/:id', (req, res) => {
-  res.send(`this is delete request for id=${req.params.id}`)
-})
+router.delete('/:id', deleteJob)
 
-router.patch('/:id', (req, res) => {
-  res.send(`this is patch or update request for id=${req.params.id}`)
-})
+router.patch('/:id', updateJob)
 
 
 module.exports = router

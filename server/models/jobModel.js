@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const jobSchema = New Schema({
+const jobSchema = new Schema({
   title: {
     type: String,
     required: true
@@ -19,7 +19,7 @@ const jobSchema = New Schema({
     required: true
   },
   salary: {
-    type: Stirng,
+    type: String,
     required: true
   },
   description: {

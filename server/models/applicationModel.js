@@ -5,11 +5,11 @@ const Schema = mongoose.Schema
 const appilcationSchema = new Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Users"
+    ref: "User"
   },
   jobId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Joblists"
+    ref: "JobList"
   },
   letter: String,
   resumeUrl: String

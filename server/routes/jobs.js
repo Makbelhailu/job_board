@@ -10,9 +10,9 @@ const {
 
 router.get('/', getAllJobs)
 
-router.post('/', createJob)
-
 router.get('/:id', getJob)
+
+router.post('/', createJob)
 
 router.delete('/:id', deleteJob)
 

@@ -63,7 +63,7 @@ const updateJob = async (req, res) => {
   const { id } = req.params
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    res.status(404).json({error: "invalid id"})
+    return res.status(404).json({error: "invalid id"})
   }
 
   const joblist = await JobList.findOneAndUpdate({_id: id}, {...req.body})
@@ -80,7 +80,7 @@ const deleteJob = async (req, res) => {
   const { id } = req.params
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    res.status(404).json({error: "invalid id"})
+    return res.status(404).json({error: "invalid id"})
   }
 
   const joblist = await JobList.findOneAndDelete({_id: id})

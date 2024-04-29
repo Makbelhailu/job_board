@@ -33,6 +33,10 @@ const jobSchema = new Schema({
   vacancy: {
     type: Number,
     required: true
+  },
+  publisher: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"
   }
 }, { timestamps: true})
 

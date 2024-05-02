@@ -3,11 +3,16 @@ const App = require("../models/applicationModel");
 
 //get all the applications
 const getAllApplications = async (req, res) => {
-  const app = await App.find({}).sort({ createdAt: -1 });
+  const app = await App.find({})
+    .sort({ createdAt: -1 })
+    .populate(["userId", "jobId"])
+    .then((posts) => posts)
+    .catch((err) => console.error(err));
 
   if (!app) {
     return res.status(400).json({ error: "error fetching applications" });
   }
+
   res.status(200).json(app);
 };
 
@@ -18,7 +23,7 @@ const getApplication = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "invalid id" });
   }
-  const app = await App.findById({ _id: id });
+  const app = await App.findOne({ id: id });
 
   if (!app) {
     res.status(400).json({ error: "error getting the application" });
@@ -28,10 +33,10 @@ const getApplication = async (req, res) => {
 
 //create application
 const createApplication = async (req, res) => {
-  const { userId, jobId, letter, resume } = req.body;
-  const resumeUrl = resume.fileName;
+  const { userId, jobId, letter, email } = req.body;
+  //const resumeUrl = resume?.fileName;
   try {
-    const app = await App.create({ userId, jobId, letter, resumeUrl });
+    const app = await App.create({ userId, jobId, letter, email });
     res.status(200).json(app);
   } catch (error) {
     res.status(404).json({ error: error.message });

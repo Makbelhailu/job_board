@@ -19,6 +19,16 @@ const getUser = async (req, res) => {
   }
 };
 
+// get user by id
+const getUserById = async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  if (!user) {
+    return res.status(400).json({ error: "user can not be found" });
+  }
+  res.status(200).json(user);
+};
+
 //add user
 const createUser = async (req, res) => {
   const { username, email, password, role } = req.body;
@@ -72,6 +82,7 @@ const deleteUser = async (req, res) => {
 
 module.exports = {
   getUser,
+  getUserById,
   createUser,
   updateUser,
   deleteUser,

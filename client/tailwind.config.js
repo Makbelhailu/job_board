@@ -12,6 +12,12 @@ export default {
         blueish: "#0b62faff",
         redish: "#ff0000ff",
       },
+      fontFamily: {
+        custom: "Poppins",
+      },
+      borderRadius :{
+        "normal": "8px",
+      }
     },
   },
   plugins: [],

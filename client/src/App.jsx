@@ -5,8 +5,6 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import NavBar from "./components/navBar";
 
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 
 function App() {
   const [count, setCount] = useState(0);

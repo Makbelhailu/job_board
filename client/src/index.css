@@ -1,8 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
   margin: 0;
@@ -16,9 +17,9 @@ html {
 }
 
 :root {
-  font-family: Poppins, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Poppins", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 500;
+  font-weight: 400;
   color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -50,9 +51,70 @@ body {
   background-color: var(--seasalt);
 }
 
+.play {
+  width: 1rem;
+  height: 1rem;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+  -webkit-clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+  border-right: 4px solid white;
+  z-index: 2;
+}
+
+.play-button::before {
+  content: '';
+@apply w-12;
+@apply h-12;
+@apply bg-secondary;
+position: absolute;
+top: -4px;
+left: -4.5px;
+border-radius: 50%;
+opacity: .5;
+animation: beforeAnim 3s ease infinite;
+}
+
+.play-button::after {
+  content: '';
+@apply w-14;
+@apply h-14;
+@apply bg-secondary;
+position: absolute;
+top: -8px;
+left: -7.8px;
+border-radius: 50%;
+opacity: .3;
+animation: afterAnim 3s ease infinite;
+}
+@keyframes beforeAnim {
+  0% {
+    opacity: .5;
+  }
+  50% {
+    opacity: .7;
+  }
+  100% {
+    opacity: .5;
+  }
+}
+
+@keyframes afterAnim {
+  0% {
+    opacity: .3;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: .3;
+  }
+}
+
 @layer components {
   .btn-secondary {
-  @apply rounded-md;
+  @apply rounded-normal;
   @apply border-[1px];
   @apply border-black;
   @apply bg-primary;
@@ -64,7 +126,7 @@ body {
   }
 
   .btn-primary {
-    @apply rounded-md;
+    @apply rounded-normal;
     @apply border-[1px];
     @apply border-white;
     @apply text-white;
@@ -75,5 +137,14 @@ body {
     @apply hover:border-black;
     @apply hover:bg-primary;
     @apply hover:text-black;
+  }
+  .icon {
+    @apply w-10;
+    @apply h-10;
+    @apply rounded-full;
+    @apply p-0;
+    @apply flex;
+    @apply justify-center;
+    @apply items-center;
   }
 }

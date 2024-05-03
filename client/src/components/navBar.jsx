@@ -10,9 +10,9 @@ const NavBar = () => {
 				</h1>
 			</div>
 			<nav className="flex justify-between gap-10  items-center">
-				<ul className="text-md inline-flex gap-x-10 font-medium text-center">
+				<ul className="text-md inline-flex gap-x-10 text-center">
 					<li>
-						<Link to="/" className="font-bold opacity-70">
+						<Link to="/" className="font-bold opacity-100">
 							Home
 						</Link>
 					</li>

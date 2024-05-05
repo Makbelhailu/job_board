@@ -6,7 +6,7 @@ export default {
     extend: {
       colors: {
         primary: "#fafafaff",
-        secondary: "#6a38c2ff",
+        secondary: "#7236dbff",
         orangeish: "#fe5d26ff",
         greenish: "#2cbb54ff",
         blueish: "#0b62faff",
@@ -15,9 +15,9 @@ export default {
       fontFamily: {
         custom: "Poppins",
       },
-      borderRadius :{
-        "normal": "8px",
-      }
+      borderRadius: {
+        normal: "10px",
+      },
     },
   },
   plugins: [],

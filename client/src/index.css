@@ -4,7 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
   margin: 0;
   padding: 0;
@@ -40,7 +39,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: var(--seasalt);
-  
 }
 
 #root {
@@ -64,71 +62,102 @@ body {
 }
 
 .play-button::before {
-  content: '';
-@apply w-12;
-@apply h-12;
-@apply bg-secondary;
-position: absolute;
-top: -4px;
-left: -4.5px;
-border-radius: 50%;
-opacity: .5;
-animation: beforeAnim 3s ease infinite;
+  content: "";
+  @apply w-12;
+  @apply h-12;
+  @apply bg-secondary;
+  position: absolute;
+  top: -4px;
+  left: -4.5px;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: beforeAnim 3s ease infinite;
 }
 
 .play-button::after {
-  content: '';
-@apply w-14;
-@apply h-14;
-@apply bg-secondary;
-position: absolute;
-top: -8px;
-left: -7.8px;
-border-radius: 50%;
-opacity: .3;
-animation: afterAnim 3s ease infinite;
+  content: "";
+  @apply w-14;
+  @apply h-14;
+  @apply bg-secondary;
+  position: absolute;
+  top: -8.1px;
+  left: -8.95px;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: afterAnim 3s ease infinite;
 }
 @keyframes beforeAnim {
   0% {
-    opacity: .5;
+    opacity: 0.5;
   }
   50% {
-    opacity: .7;
+    opacity: 0.7;
   }
   100% {
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
 @keyframes afterAnim {
   0% {
-    opacity: .3;
+    opacity: 0.3;
   }
   50% {
-    opacity: .5;
+    opacity: 0.5;
   }
   100% {
-    opacity: .3;
+    opacity: 0.3;
   }
+}
+
+.marquees::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5rem;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    white,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  z-index: 99;
+}
+.marquees::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5rem;
+  height: 100%;
+  background: linear-gradient(
+    to left,
+    white,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  z-index: 99;
 }
 
 @layer components {
   .btn-secondary {
-  @apply rounded-normal;
-  @apply border-[1px];
-  @apply border-black;
-  @apply bg-primary;
-  @apply px-5;
-  @apply py-2;
-  @apply hover:border-secondary;
-  @apply hover:bg-secondary;
-  @apply hover:text-white;
+    @apply rounded-normal;
+    @apply border-2;
+    @apply border-black;
+    @apply bg-primary;
+    @apply px-5;
+    @apply py-2;
+    @apply hover:border-secondary;
+    @apply hover:bg-secondary;
+    @apply hover:text-white;
   }
 
   .btn-primary {
     @apply rounded-normal;
-    @apply border-[1px];
-    @apply border-white;
+    @apply border-2;
+    @apply border-secondary;
     @apply text-white;
     @apply bg-secondary;
     @apply px-5;

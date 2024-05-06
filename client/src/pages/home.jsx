@@ -4,6 +4,7 @@ import figma from "../assets/figma.svg";
 import google from "../assets/google.svg";
 import linkedin from "../assets/linkedin.svg";
 import microsoft from "../assets/microsoft.svg";
+
 import Marquee from "react-fast-marquee";
 import Button from "./../components/button";
 import Avatar from "@mui/material/Avatar";
@@ -116,7 +117,60 @@ const Home = () => {
             your career interest areas.
           </p>
         </div>
-        <div className="cards"></div>
+        <div className="cards mt-24 flex flex-wrap justify-around gap-y-5 px-5">
+          <Card sx={{ maxWidth: 300, borderRadius: 3 }} className="xl:mt-10">
+            <CardContent className="m-5">
+              <Avatar />
+              <h2 className="mb-1 mt-3 text-left text-lg font-semibold">
+                Create An Account
+              </h2>
+              <p className="text-left text-xs opacity-70">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+                illum natus qui cumque tempora modi consequatur enim sapiente,
+                vel at facere!
+              </p>
+            </CardContent>
+          </Card>
+          <Card sx={{ maxWidth: 300, borderRadius: 3 }} className="xl:mb-10">
+            <CardContent className="m-5">
+              <Avatar src="" alt="" />
+              <h2 className="mb-1 mt-3 text-left text-lg font-semibold">
+                Create An Account
+              </h2>
+              <p className="text-left text-xs opacity-70">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+                illum natus qui cumque tempora modi consequatur enim sapiente,
+                vel at facere!
+              </p>
+            </CardContent>
+          </Card>
+          <Card sx={{ maxWidth: 300, borderRadius: 3 }} className="xl:mt-10 ">
+            <CardContent className="m-5">
+              <Avatar src="" alt="" />
+              <h2 className="mb-1 mt-3 text-left text-lg font-semibold">
+                Create An Account
+              </h2>
+              <p className="text-left text-xs opacity-70">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+                illum natus qui cumque tempora modi consequatur enim sapiente,
+                vel at facere!
+              </p>
+            </CardContent>
+          </Card>
+          <Card sx={{ maxWidth: 300, borderRadius: 3 }} className="xl:mb-10">
+            <CardContent className="m-5">
+              <Avatar src="" alt="" />
+              <h2 className="mb-1 mt-3 text-left text-lg font-semibold">
+                Create An Account
+              </h2>
+              <p className="text-left text-xs opacity-70">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+                illum natus qui cumque tempora modi consequatur enim sapiente,
+                vel at facere!
+              </p>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   );

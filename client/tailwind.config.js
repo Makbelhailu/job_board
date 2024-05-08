@@ -1,16 +1,16 @@
 /** @type {import('tailwindcss').Config} */
-import daisyui from "daisyui";
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        primary: "#fafafaff",
-        secondary: "#7236dbff",
-        orangeish: "#fe5d26ff",
-        greenish: "#2cbb54ff",
-        blueish: "#0b62faff",
-        redish: "#ff0000ff",
+        primary: "#fafafa",
+        secondary: { DEFAULT: "#7236db", dark: "#571cbd" },
+        orangeish: { DEFAULT: "#fe5d26", dark: "#d14a1d" },
+        greenish: { DEFAULT: "#2cbb54", dark: "#22ab49" },
+        blueish: { DEFAULT: "#0b62fa", dark: "#0648ba" },
+        redish: { DEFAULT: "#ff0000", dark: "#bd0808" },
       },
       fontFamily: {
         custom: "Poppins",

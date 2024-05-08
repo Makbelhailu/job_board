@@ -27,6 +27,7 @@ html {
   --seasalt: #fafafaff;
   --giants-orange: #fe5d26ff;
   --grape: #6a38c2ff;
+  --dark-grape: rgb(84, 39, 161);
   --black: #000000ff;
   --dark-pastel-green: #2cbb54ff;
   --royal-blue-web-color: #0b62faff;
@@ -66,6 +67,7 @@ body {
   @apply w-12;
   @apply h-12;
   @apply bg-secondary;
+  @apply hover:bg-secondary-dark;
   position: absolute;
   top: -4px;
   left: -4.5px;
@@ -79,6 +81,7 @@ body {
   @apply w-14;
   @apply h-14;
   @apply bg-secondary;
+  @apply hover:bg-secondary-dark;
   position: absolute;
   top: -8.1px;
   left: -8.95px;
@@ -140,18 +143,38 @@ body {
   );
   z-index: 99;
 }
+.link {
+  @apply text-slate-500;
+  @apply hover:text-black;
+  @apply transition-colors;
+  @apply relative;
+  &.active {
+    @apply text-black;
+  }
+  &.active::before {
+    content: "";
+    position: absolute;
+    bottom: -0.3rem;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    border-radius: 50px;
+    z-index: 99;
+    @apply bg-secondary;
+    @apply hover:bg-secondary-dark;
+  }
+}
 
 @layer components {
   .btn-secondary {
     @apply rounded-normal;
     @apply border-2;
-    @apply border-black;
+    @apply border-gray-600;
     @apply bg-primary;
     @apply px-5;
     @apply py-2;
-    @apply hover:border-secondary;
-    @apply hover:bg-secondary;
-    @apply hover:text-white;
+    @apply hover:border-gray-500;
+    @apply hover:bg-gray-100;
   }
 
   .btn-primary {
@@ -162,10 +185,8 @@ body {
     @apply bg-secondary;
     @apply px-5;
     @apply py-2;
-    @apply hover:text-black;
-    @apply hover:border-black;
-    @apply hover:bg-primary;
-    @apply hover:text-black;
+    @apply hover:border-secondary-dark;
+    @apply hover:bg-secondary-dark;
   }
   .icon {
     @apply w-10;

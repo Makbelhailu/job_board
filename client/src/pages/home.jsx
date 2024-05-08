@@ -4,6 +4,10 @@ import figma from "../assets/figma.svg";
 import google from "../assets/google.svg";
 import linkedin from "../assets/linkedin.svg";
 import microsoft from "../assets/microsoft.svg";
+import user from "../assets/user.png";
+import search from "../assets/search.png";
+import file from "../assets/document.png";
+import briefcase from "../assets/case.png";
 
 import Marquee from "react-fast-marquee";
 import Button from "./../components/button";
@@ -36,7 +40,7 @@ const Home = () => {
         <div className="icon absolute left-32 top-40 bg-white shadow-md">
           <img src={amazon} alt="amazon icon" className="h-5 w-5" />
         </div>
-        <div className="icon absolute left-96 top-64 shadow-md">
+        <div className="icon absolute left-96 top-64 bg-white shadow-md">
           <img src={figma} alt="figma icon" className="h-5 w-5" />
         </div>
         <div className="icon absolute right-72 top-12 bg-white shadow-md">
@@ -119,54 +123,62 @@ const Home = () => {
         </div>
         <div className="cards mt-24 flex flex-wrap justify-around gap-y-5 px-5">
           <Card sx={{ maxWidth: 300, borderRadius: 3 }} className="xl:mt-10">
-            <CardContent className="m-5">
-              <Avatar />
+            <CardContent className="m-5  mb-3  mr-3">
+              <Avatar src={user} alt="user icon" />
               <h2 className="mb-1 mt-3 text-left text-lg font-semibold">
                 Create An Account
               </h2>
-              <p className="text-left text-xs opacity-70">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-                illum natus qui cumque tempora modi consequatur enim sapiente,
-                vel at facere!
+              <p className="text-left text-[11px] opacity-70">
+                Signup for the job applicant profle, mention your
+                qualifications, post experience, and expertise, and scope your
+                interests, Vola! You're all set to find your dream jobs
               </p>
             </CardContent>
           </Card>
           <Card sx={{ maxWidth: 300, borderRadius: 3 }} className="xl:mb-10">
-            <CardContent className="m-5">
-              <Avatar src="" alt="" />
+            <CardContent className="m-5  mb-3  mr-3">
+              <Avatar src={search} alt="search icon" />
               <h2 className="mb-1 mt-3 text-left text-lg font-semibold">
-                Create An Account
+                Search Job
               </h2>
-              <p className="text-left text-xs opacity-70">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-                illum natus qui cumque tempora modi consequatur enim sapiente,
-                vel at facere!
+              <p className="text-left text-[11px] opacity-70">
+                Once you set your job hunting parameters, you'll find many
+                openings related to your career interest on the home page and
+                even filter out some of the best job openings.
               </p>
             </CardContent>
           </Card>
           <Card sx={{ maxWidth: 300, borderRadius: 3 }} className="xl:mt-10 ">
-            <CardContent className="m-5">
-              <Avatar src="" alt="" />
+            <CardContent className="m-5  mb-3  mr-3">
+              <Avatar
+                src={file}
+                alt="document icon"
+                className="bg-[#2cbb543d]"
+              />
               <h2 className="mb-1 mt-3 text-left text-lg font-semibold">
-                Create An Account
+                Upload CV/ Resume
               </h2>
-              <p className="text-left text-xs opacity-70">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-                illum natus qui cumque tempora modi consequatur enim sapiente,
-                vel at facere!
+              <p className="text-left text-[11px] opacity-70">
+                From numerous job openings, shortlist hte right-match vacancy to
+                your profile and apply right after by uploading your CV/ Resume
+                and answering a couple of questions.
               </p>
             </CardContent>
           </Card>
           <Card sx={{ maxWidth: 300, borderRadius: 3 }} className="xl:mb-10">
-            <CardContent className="m-5">
-              <Avatar src="" alt="" />
+            <CardContent className="m-5  mb-3  mr-3">
+              <Avatar
+                src={briefcase}
+                alt="briefcase icon"
+                className="bg-[#F6EE063d]"
+              />
               <h2 className="mb-1 mt-3 text-left text-lg font-semibold">
-                Create An Account
+                Get Job
               </h2>
-              <p className="text-left text-xs opacity-70">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-                illum natus qui cumque tempora modi consequatur enim sapiente,
-                vel at facere!
+              <p className="text-left text-[11px] opacity-70">
+                After applying, wait for some time, schedule an interview and if
+                everything goes right, then get hired more quickly than
+                traditional hiring methods.
               </p>
             </CardContent>
           </Card>

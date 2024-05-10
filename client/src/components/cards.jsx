@@ -8,7 +8,7 @@ export const JobCard = ({ content }) => {
   return (
     <Card sx={{ maxWidth: 400, borderRadius: 2 }}>
       <CardActionArea>
-        <CardContent className="px-3 hover:bg-secondary hover:text-white">
+        <CardContent className="px-3 hover:bg-secondary hover:text-red-100">
           <div className="my-5 flex h-full w-full gap-x-4 ">
             <Avatar src={content.image} alt="user icon" />
             <div className="leading-none">

@@ -27,7 +27,7 @@ html {
   --seasalt: #fafafaff;
   --giants-orange: #fe5d26ff;
   --grape: #6a38c2ff;
-  --dark-grape: rgb(84, 39, 161);
+  --dark-grape: #4727a12d;
   --black: #000000ff;
   --dark-pastel-green: #2cbb54ff;
   --royal-blue-web-color: #0b62faff;
@@ -170,11 +170,11 @@ body {
     @apply rounded-normal;
     @apply border-2;
     @apply border-gray-600;
-    @apply bg-primary;
+    @apply bg-[#ecedfa];
     @apply px-5;
     @apply py-2;
     @apply hover:border-gray-500;
-    @apply hover:bg-gray-100;
+    @apply hover:bg-[#e4e7fa];
   }
 
   .btn-primary {

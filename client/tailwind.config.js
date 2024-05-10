@@ -6,10 +6,10 @@ export default {
     extend: {
       colors: {
         primary: "#fafafa",
-        secondary: { DEFAULT: "#7236db", dark: "#571cbd" },
+        secondary: { DEFAULT: "#7236db", dark: "#571cbd", 100: "#7236db22" },
         orangeish: { DEFAULT: "#fe5d26", dark: "#d14a1d" },
         greenish: { DEFAULT: "#2cbb54", dark: "#22ab49" },
-        blueish: { DEFAULT: "#0b62fa", dark: "#0648ba" },
+        blueish: { DEFAULT: "#0b62fa", dark: "#0648ba", 100: "#0b62fa22" },
         redish: { DEFAULT: "#ff0000", dark: "#bd0808" },
       },
       fontFamily: {

@@ -7,10 +7,10 @@ export default {
       colors: {
         primary: "#fafafa",
         secondary: { DEFAULT: "#7236db", dark: "#571cbd", 100: "#7236db22" },
-        orangeish: { DEFAULT: "#fe5d26", dark: "#d14a1d" },
-        greenish: { DEFAULT: "#2cbb54", dark: "#22ab49" },
+        orangeish: { DEFAULT: "#fe5d26", dark: "#d14a1d", 100: "#fe5d2622" },
+        greenish: { DEFAULT: "#2cbb54", dark: "#22ab49", 100: "#2cbb5422" },
         blueish: { DEFAULT: "#0b62fa", dark: "#0648ba", 100: "#0b62fa22" },
-        redish: { DEFAULT: "#ff0000", dark: "#bd0808" },
+        redish: { DEFAULT: "#ff0000", dark: "#bd0808", 100: "#ff000022" },
       },
       fontFamily: {
         custom: "Poppins",

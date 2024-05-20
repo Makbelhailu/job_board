@@ -165,16 +165,26 @@ body {
   }
 }
 
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /* white-space: nowrap; */
+  text-overflow: ellipsis;
+}
+
 @layer components {
   .btn-secondary {
     @apply rounded-normal;
     @apply border-2;
     @apply border-gray-600;
-    @apply bg-[#ecedfa];
+    @apply bg-primary;
     @apply px-5;
     @apply py-2;
-    @apply hover:border-gray-500;
-    @apply hover:bg-[#e4e7fa];
+    /* @apply hover:border-gray-400; */
+    @apply hover:bg-[#0a041a0c];
+    /* @apply hover:text-white; */
   }
 
   .btn-primary {

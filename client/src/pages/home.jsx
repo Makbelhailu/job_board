@@ -16,7 +16,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
 
-import { JobCard } from "../components/cards";
+import { JobCard } from "../components/job-card";
 
 const Home = () => {
   const marqueeContent = [
@@ -35,7 +35,7 @@ const Home = () => {
     location: "New York, USA",
     title: "software engineer",
     description:
-      "lorem hi im the lost guy that you asked to find so take a rest it seems you already found me ",
+      "lorem hi im the lost guy that you asked to find so take a rest it seems you already found me lorem hi im the lost guy that you asked to find so take a rest it seems you already found me it seems you already found me ",
   };
 
   return (
@@ -73,7 +73,7 @@ const Home = () => {
           </p>
         </div>
         <div className="description px-10 ">
-          <p className="text-sm leading-loose text-slate-600">
+          <p className="text-sm font-semibold leading-loose text-slate-600">
             start your hunt for the best, life-changing career opportunity from
             here in your <br />
             selected areas conveniently and get hired quickly
@@ -144,7 +144,7 @@ const Home = () => {
               <h2 className="my-5 mb-2 text-left text-lg font-semibold">
                 Create An Account
               </h2>
-              <p className="text-left text-xs leading-normal text-slate-500">
+              <p className="text-left text-xs font-semibold leading-normal text-slate-500">
                 Signup for the job applicant profle, mention your
                 qualifications, post experience, and expertise, and scope your
                 interests, Vola! You're all set to find your dream jobs
@@ -157,7 +157,7 @@ const Home = () => {
               <h2 className="mb-2 mt-5 text-left text-lg font-semibold">
                 Search Job
               </h2>
-              <p className="text-left text-xs leading-normal text-slate-500">
+              <p className="text-left text-xs font-semibold leading-normal text-slate-500">
                 Once you set your job hunting parameters, you'll find many
                 openings related to your career interest on the home page and
                 even filter out some of the best job openings.
@@ -174,7 +174,7 @@ const Home = () => {
               <h2 className="mb-2 mt-5 text-left text-lg font-semibold">
                 Upload CV/ Resume
               </h2>
-              <p className="text-left text-xs leading-normal text-slate-500">
+              <p className="text-left text-xs font-semibold leading-normal text-slate-500">
                 From numerous job openings, shortlist hte right-match vacancy to
                 your profile and apply right after by uploading your CV/ Resume
                 and answering a couple of questions.
@@ -182,7 +182,7 @@ const Home = () => {
             </CardContent>
           </Card>
           <Card sx={{ maxWidth: 300, borderRadius: 3 }} className="xl:mb-10">
-            <CardContent className="m-5  mb-3  mr-3">
+            <CardContent className="m-5 mb-3 mr-3">
               <Avatar
                 src={briefcase}
                 alt="briefcase icon"
@@ -191,7 +191,7 @@ const Home = () => {
               <h2 className="mb-2 mt-5 text-left text-lg font-semibold">
                 Get Job
               </h2>
-              <p className="text-left text-xs leading-normal text-slate-500">
+              <p className="text-left text-xs font-semibold leading-normal text-slate-500">
                 After applying, wait for some time, schedule an interview and if
                 everything goes right, then get hired more quickly than
                 traditional hiring methods.
@@ -200,30 +200,53 @@ const Home = () => {
           </Card>
         </div>
       </div>
-      <div className="job_container">
-        <div className="job_header flex items-center justify-between">
+      <div className="job_container px-12">
+        <div className="job_header my-12 flex items-center justify-between">
           <div className="job_content">
             <h1 className="mb-2 text-left text-4xl font-bold">
               <span className="text-secondary">Latest and Top</span> Job
               Openings
             </h1>
-            <p className="text-left text-xs leading-loose opacity-70">
+            <p className="text-left text-xs font-semibold leading-loose opacity-70">
               Discover the fresh job openings from the giant firms in which you
               might want to apply <br />
               and take a chance to get hired by top fortune companies.
             </p>
           </div>
-          <div className="job_button self-end">
+          <div className="job_button  self-end">
             <MyButton
-              className="rounded-md p-0 text-xs font-semibold"
+              className="mb-2 rounded-md p-0 text-xs font-bold"
               colored={true}
             >
               View All Jobs
             </MyButton>
           </div>
         </div>
-        <div className="job_cards flex w-full flex-wrap items-center justify-around gap-4">
+        <div className="job_cards grid grid-cols-3 items-center justify-around gap-4">
           <JobCard content={content} />
+          <JobCard content={content} />
+          <JobCard content={content} />
+          <JobCard content={content} />
+          <JobCard content={content} />
+          <JobCard content={content} />
+        </div>
+      </div>
+
+      <div className="offers">
+        <div className="offer_title"></div>
+        <div className="offers_container px-12">
+          <div className="offer">
+            <img src="" alt="job finding" />
+            <div className="text"></div>
+          </div>
+          <div className="offer">
+            <img src="" alt="people doing project" />
+            <div className="text"></div>
+          </div>
+          <div className="offer">
+            <img src="" alt="applying for a job" />
+            <div className="text"></div>
+          </div>
         </div>
       </div>
     </div>

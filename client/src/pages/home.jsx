@@ -76,7 +76,7 @@ const Home = () => {
           </p>
         </div>
         <div className="description px-10 ">
-          <p className="text-sm font-semibold leading-loose text-slate-500">
+          <p className="text-sm font-semibold leading-loose text-slate-700">
             start your hunt for the best, life-changing career opportunity from
             here in your <br />
             selected areas conveniently and get hired quickly
@@ -134,7 +134,7 @@ const Home = () => {
             Get Hired in 4{" "}
             <span className="text-secondary">Quick Easy Steps</span>
           </h1>
-          <p className="mt-4 text-xs font-semibold leading-loose text-slate-500">
+          <p className="mt-4 text-xs font-semibold leading-loose text-slate-700">
             The quicker and most effective way to get hired by the top firm
             working in <br />
             your career interest areas.
@@ -148,9 +148,9 @@ const Home = () => {
                 Create An Account
               </h2>
               <p className="text-left text-xs font-medium leading-normal text-slate-600">
-                Signup for the job applicant profle, mention your
+                Signup for the job applicant profile, mention your
                 qualifications, post experience, and expertise, and scope your
-                interests, Vola! You're all set to find your dream jobs
+                interests, Vola! You&lsquo;re all set to find your dream jobs
               </p>
             </CardContent>
           </Card>
@@ -161,7 +161,7 @@ const Home = () => {
                 Search Job
               </h2>
               <p className="text-left text-xs font-medium leading-normal text-slate-600">
-                Once you set your job hunting parameters, you'll find many
+                Once you set your job hunting parameters, you&lsquo;ll find many
                 openings related to your career interest on the home page and
                 even filter out some of the best job openings.
               </p>
@@ -210,7 +210,7 @@ const Home = () => {
               <span className="text-secondary">Latest and Top</span> Job
               Openings
             </h1>
-            <p className="text-left text-xs font-semibold leading-loose text-slate-500">
+            <p className="text-left text-xs font-semibold leading-loose text-slate-700">
               Discover the fresh job openings from the giant firms in which you
               might want to apply <br />
               and take a chance to get hired by top fortune companies.
@@ -234,11 +234,10 @@ const Home = () => {
           <JobCard content={content} />
         </div>
       </div>
-
       <div className="offers_container my-28 px-12">
         <div className="offer_title mb-12 w-[45%] text-left">
           <h2 className="mb-3  text-4xl font-bold capitalize">what we offer</h2>
-          <p className="text-xs font-semibold leading-loose text-slate-500">
+          <p className="text-xs font-semibold leading-loose text-slate-700">
             Job Portal is the right platform for you to get various job
             recommendations, get career counseling, and find your ideal job
             profile.
@@ -294,6 +293,10 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="testimonials_container">
+        <div className="testimonials_header text-center"></div>
+        <div className="testimonials"></div>
       </div>
     </div>
   );

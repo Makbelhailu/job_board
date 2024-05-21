@@ -27,7 +27,7 @@ export const JobCard = ({ content }) => {
             <div className="flex flex-col gap-6 text-left">
               <div className="texts">
                 <h2 className="text-md font-bold">{content.title}</h2>
-                <p className="line-clamp-2 text-xs font-medium">
+                <p className="line-clamp-2 text-xs font-medium text-slate-600 group-hover:text-slate-200">
                   {content.description}
                 </p>
               </div>
@@ -35,10 +35,10 @@ export const JobCard = ({ content }) => {
                 <div className="rounded-md bg-blueish-100 px-2 py-1 text-xs font-medium text-blueish group-hover:bg-secondary-dark group-hover:text-white">
                   2 Positions
                 </div>
-                <div className="bg-orangeish-100  rounded-md px-2 py-1 text-xs font-medium text-orangeish group-hover:bg-secondary-dark  group-hover:text-white">
+                <div className="rounded-md  bg-orangeish-100 px-2 py-1 text-xs font-medium text-orangeish group-hover:bg-secondary-dark  group-hover:text-white">
                   Fulltime
                 </div>
-                <div className="bg-greenish-100 rounded-md px-2 py-1 text-xs font-medium text-greenish group-hover:bg-secondary-dark  group-hover:text-white">
+                <div className="rounded-md bg-greenish-100 px-2 py-1 text-xs font-medium text-greenish group-hover:bg-secondary-dark  group-hover:text-white">
                   $2000/month
                 </div>
               </div>

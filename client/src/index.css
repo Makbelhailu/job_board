@@ -32,6 +32,8 @@ html {
   --dark-pastel-green: #2cbb54ff;
   --royal-blue-web-color: #0b62faff;
   --red: #ff0000ff;
+  --h: 0;
+  --w: 0;
 }
 
 body {
@@ -172,6 +174,10 @@ body {
   overflow: hidden;
   /* white-space: nowrap; */
   text-overflow: ellipsis;
+}
+
+.aspect-5-3 {
+  aspect-ratio: 5 / 3;
 }
 
 @layer components {

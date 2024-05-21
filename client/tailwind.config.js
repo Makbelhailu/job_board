@@ -12,6 +12,9 @@ export default {
         blueish: { DEFAULT: "#0b62fa", dark: "#0648ba", 100: "#0b62fa22" },
         redish: { DEFAULT: "#ff0000", dark: "#bd0808", 100: "#ff000022" },
       },
+      aspectRation: {
+        "4/3": "4 / 3",
+      },
       fontFamily: {
         custom: "Poppins",
       },
@@ -33,5 +36,8 @@ export default {
       },
     },
   },
-  plugins: [],
+  corePlugins: {
+    aspectRatio: false,
+  },
+  plugins: [require("@tailwindcss/aspect-ratio")],
 };

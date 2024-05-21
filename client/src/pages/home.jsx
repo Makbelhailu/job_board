@@ -14,7 +14,10 @@ import MyButton from "./../components/button";
 import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import { CardActionArea } from "@mui/material";
+
+import jobImg from "../assets/job-recommendation.jpg";
+import projectProfileImg from "../assets/project-profile.jpg";
+import careerImg from "../assets/career-dev.jpg";
 
 import { JobCard } from "../components/job-card";
 
@@ -73,7 +76,7 @@ const Home = () => {
           </p>
         </div>
         <div className="description px-10 ">
-          <p className="text-sm font-semibold leading-loose text-slate-600">
+          <p className="text-sm font-semibold leading-loose text-slate-500">
             start your hunt for the best, life-changing career opportunity from
             here in your <br />
             selected areas conveniently and get hired quickly
@@ -131,7 +134,7 @@ const Home = () => {
             Get Hired in 4{" "}
             <span className="text-secondary">Quick Easy Steps</span>
           </h1>
-          <p className="mt-4 text-xs leading-loose text-slate-600">
+          <p className="mt-4 text-xs font-semibold leading-loose text-slate-500">
             The quicker and most effective way to get hired by the top firm
             working in <br />
             your career interest areas.
@@ -144,7 +147,7 @@ const Home = () => {
               <h2 className="my-5 mb-2 text-left text-lg font-semibold">
                 Create An Account
               </h2>
-              <p className="text-left text-xs font-semibold leading-normal text-slate-500">
+              <p className="text-left text-xs font-medium leading-normal text-slate-600">
                 Signup for the job applicant profle, mention your
                 qualifications, post experience, and expertise, and scope your
                 interests, Vola! You're all set to find your dream jobs
@@ -157,7 +160,7 @@ const Home = () => {
               <h2 className="mb-2 mt-5 text-left text-lg font-semibold">
                 Search Job
               </h2>
-              <p className="text-left text-xs font-semibold leading-normal text-slate-500">
+              <p className="text-left text-xs font-medium leading-normal text-slate-600">
                 Once you set your job hunting parameters, you'll find many
                 openings related to your career interest on the home page and
                 even filter out some of the best job openings.
@@ -174,7 +177,7 @@ const Home = () => {
               <h2 className="mb-2 mt-5 text-left text-lg font-semibold">
                 Upload CV/ Resume
               </h2>
-              <p className="text-left text-xs font-semibold leading-normal text-slate-500">
+              <p className="text-left text-xs font-medium leading-normal text-slate-600">
                 From numerous job openings, shortlist hte right-match vacancy to
                 your profile and apply right after by uploading your CV/ Resume
                 and answering a couple of questions.
@@ -191,7 +194,7 @@ const Home = () => {
               <h2 className="mb-2 mt-5 text-left text-lg font-semibold">
                 Get Job
               </h2>
-              <p className="text-left text-xs font-semibold leading-normal text-slate-500">
+              <p className="text-left text-xs font-medium leading-normal text-slate-600">
                 After applying, wait for some time, schedule an interview and if
                 everything goes right, then get hired more quickly than
                 traditional hiring methods.
@@ -207,13 +210,13 @@ const Home = () => {
               <span className="text-secondary">Latest and Top</span> Job
               Openings
             </h1>
-            <p className="text-left text-xs font-semibold leading-loose opacity-70">
+            <p className="text-left text-xs font-semibold leading-loose text-slate-500">
               Discover the fresh job openings from the giant firms in which you
               might want to apply <br />
               and take a chance to get hired by top fortune companies.
             </p>
           </div>
-          <div className="job_button  self-end">
+          <div className="job_button self-end">
             <MyButton
               className="mb-2 rounded-md p-0 text-xs font-bold"
               colored={true}
@@ -232,20 +235,63 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="offers">
-        <div className="offer_title"></div>
-        <div className="offers_container px-12">
-          <div className="offer">
-            <img src="" alt="job finding" />
-            <div className="text"></div>
+      <div className="offers_container my-28 px-12">
+        <div className="offer_title mb-12 w-[45%] text-left">
+          <h2 className="mb-3  text-4xl font-bold capitalize">what we offer</h2>
+          <p className="text-xs font-semibold leading-loose text-slate-500">
+            Job Portal is the right platform for you to get various job
+            recommendations, get career counseling, and find your ideal job
+            profile.
+          </p>
+        </div>
+        <div className="offers grid grid-cols-3 gap-5 ">
+          <div className="offer rounded-md text-left">
+            <img
+              src={jobImg}
+              alt="job recommendation image"
+              className="aspect-5-3 w-full rounded-md"
+            />
+            <div className="text relative pb-1 pl-3 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-[3px] before:rounded-full before:bg-secondary">
+              <h3 className="my-3 text-lg font-bold capitalize">
+                job recommendation
+              </h3>
+              <p className="text-xs font-medium text-slate-600">
+                Set your job preferences and get countless of your best-fit job
+                recommendations.
+              </p>
+            </div>
           </div>
-          <div className="offer">
-            <img src="" alt="people doing project" />
-            <div className="text"></div>
+          <div className="offer rounded-md">
+            <img
+              src={projectProfileImg}
+              alt="people doing project"
+              className="aspect-5-3 w-full rounded-md"
+            />
+            <div className="text relative pb-1 pl-3 text-left before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-[3px] before:rounded-full before:bg-secondary">
+              <h3 className="my-3 text-lg font-bold capitalize">
+                create & build profile
+              </h3>
+              <p className="text-xs font-medium text-slate-600">
+                Set your job preferences and get countless of your best-fit job
+                recommendations.
+              </p>
+            </div>
           </div>
-          <div className="offer">
-            <img src="" alt="applying for a job" />
-            <div className="text"></div>
+          <div className="offer rounded-md">
+            <img
+              src={careerImg}
+              alt="applying for a job"
+              className="aspect-5-3 w-full rounded-md"
+            />
+            <div className="text relative pb-1 pl-3 text-left before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-[3px] before:rounded-full before:bg-secondary">
+              <h3 className="my-3 text-lg font-bold capitalize">
+                career development
+              </h3>
+              <p className="text-xs font-medium text-slate-600">
+                Set your job preferences and get countless of your best-fit job
+                recommendations.
+              </p>
+            </div>
           </div>
         </div>
       </div>

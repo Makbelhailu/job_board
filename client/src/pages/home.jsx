@@ -19,7 +19,7 @@ import jobImg from "../assets/job-recommendation.jpg";
 import projectProfileImg from "../assets/project-profile.jpg";
 import careerImg from "../assets/career-dev.jpg";
 
-import { JobCard } from "../components/job-card";
+import JobCard from "../components/job-card";
 
 const Home = () => {
   const marqueeContent = [

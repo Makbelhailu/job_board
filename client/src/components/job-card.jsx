@@ -4,7 +4,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
 
-export const JobCard = ({ content }) => {
+const JobCard = ({ content }) => {
   return (
     <Card
       sx={{ maxWidth: 450, borderRadius: 2, boxShadow: 5 }}
@@ -49,3 +49,5 @@ export const JobCard = ({ content }) => {
     </Card>
   );
 };
+
+export default JobCard;

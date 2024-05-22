@@ -14,6 +14,7 @@ import MyButton from "./../components/button";
 import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import { Link } from "react-router-dom"
 
 import jobImg from "../assets/job-recommendation.jpg";
 import projectProfileImg from "../assets/project-profile.jpg";
@@ -83,7 +84,9 @@ const Home = () => {
           </p>
         </div>
         <div className="buttons mt-8 flex items-center justify-center gap-10">
+          <Link to="jobs">
           <button className="btn-primary px-4 py-3">Browse Jobs</button>
+          </Link>
           <div className=" flex cursor-pointer items-center justify-between gap-5">
             <div className="play-button relative flex h-10 w-10 items-center justify-center rounded-full bg-secondary">
               <div className="play"></div>

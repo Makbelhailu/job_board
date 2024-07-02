@@ -22,7 +22,7 @@ export default {
         normal: "10px",
       },
       screens: {
-        xs: "576px",
+        xs: {min:"0px", max:"576px"},
 
         sm: { min: "576px", max: "768px" },
 

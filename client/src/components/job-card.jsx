@@ -27,7 +27,7 @@ const JobCard = ({ content }) => {
             <div className="flex flex-col gap-6 text-left">
               <div className="texts">
                 <h2 className="text-md font-bold">{content.title}</h2>
-                <p className="line-clamp-2 text-xs font-medium text-slate-600 group-hover:text-slate-200">
+                <p className="line-clamp-2 text-xs font-semibold text-slate-600 group-hover:text-slate-200">
                   {content.description}
                 </p>
               </div>

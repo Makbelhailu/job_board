@@ -14,13 +14,14 @@ import MyButton from "./../components/button";
 import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 import jobImg from "../assets/job-recommendation.jpg";
 import projectProfileImg from "../assets/project-profile.jpg";
 import careerImg from "../assets/career-dev.jpg";
 
 import JobCard from "../components/job-card";
+import Footer from "../components/footer";
 
 const Home = () => {
   const marqueeContent = [
@@ -43,7 +44,7 @@ const Home = () => {
   };
 
   return (
-    <div className="home relative my-24 w-full text-center">
+    <div className="home relative mt-24 w-full text-center">
       <div className="icons">
         <div className="icon absolute left-96 top-0 bg-white shadow-md">
           <img src={fb} alt="facebook icon" className="h-5 w-5" />
@@ -85,7 +86,7 @@ const Home = () => {
         </div>
         <div className="buttons mt-8 flex items-center justify-center gap-10">
           <Link to="jobs">
-          <button className="btn-primary px-4 py-3">Browse Jobs</button>
+            <button className="btn-primary px-4 py-3">Browse Jobs</button>
           </Link>
           <div className=" flex cursor-pointer items-center justify-between gap-5">
             <div className="play-button relative flex h-10 w-10 items-center justify-center rounded-full bg-secondary">
@@ -251,7 +252,7 @@ const Home = () => {
             <img
               src={jobImg}
               alt="job recommendation image"
-              className="aspect-5-3 w-full rounded-md"
+              className="aspect-5-3 w-full rounded-md shadow-xl"
             />
             <div className="text relative pb-1 pl-3 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-[3px] before:rounded-full before:bg-secondary">
               <h3 className="my-3 text-lg font-bold capitalize">
@@ -267,7 +268,7 @@ const Home = () => {
             <img
               src={projectProfileImg}
               alt="people doing project"
-              className="aspect-5-3 w-full rounded-md"
+              className="aspect-5-3 w-full rounded-md shadow-xl"
             />
             <div className="text relative pb-1 pl-3 text-left before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-[3px] before:rounded-full before:bg-secondary">
               <h3 className="my-3 text-lg font-bold capitalize">
@@ -283,7 +284,7 @@ const Home = () => {
             <img
               src={careerImg}
               alt="applying for a job"
-              className="aspect-5-3 w-full rounded-md"
+              className="aspect-5-3 w-full rounded-md shadow-xl"
             />
             <div className="text relative pb-1 pl-3 text-left before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-[3px] before:rounded-full before:bg-secondary">
               <h3 className="my-3 text-lg font-bold capitalize">
@@ -301,6 +302,7 @@ const Home = () => {
         <div className="testimonials_header text-center"></div>
         <div className="testimonials"></div>
       </div>
+      <Footer />
     </div>
   );
 };

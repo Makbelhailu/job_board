@@ -8,7 +8,7 @@ const NavBar = () => {
     setPath(window.location.pathname.split("/")[1]);
   }, []);
   return (
-    <div className="mb-5 flex w-full items-center justify-between">
+    <div className="my-4 flex w-full items-center justify-between">
       <div className="logo">
         <h1 className="ml-5 text-2xl font-bold uppercase text-secondary">
           job<span className="text-orangeish">hunt</span>

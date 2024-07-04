@@ -21,7 +21,6 @@ import projectProfileImg from "../assets/project-profile.jpg";
 import careerImg from "../assets/career-dev.jpg";
 
 import JobCard from "../components/job-card";
-import Footer from "../components/footer";
 
 const Home = () => {
   const marqueeContent = [
@@ -302,7 +301,7 @@ const Home = () => {
         <div className="testimonials_header text-center"></div>
         <div className="testimonials"></div>
       </div>
-      <Footer />
+      
     </div>
   );
 };

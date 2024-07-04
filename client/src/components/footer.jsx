@@ -6,7 +6,7 @@ const Footer = () => {
 
     return (
         <div
-            className="footer_container m-0 mt-8 grid w-full grid-cols-5
+            className="footer_container m-0 grid w-full grid-cols-5
     items-start justify-between gap-14 md:gap-2 lg:gap-8 rounded-t-3xl bg-secondary px-6 pb-2 pt-6
     text-left text-white xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-5"
         >

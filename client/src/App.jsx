@@ -5,7 +5,7 @@ import Jobs from "./pages/jobs";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import NavBar from "./components/navBar";
-
+import Footer from "./components/footer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,7 +16,7 @@ function App() {
         <header>
           <NavBar />
         </header>
-        <main>
+        <main className="h-[90%] m-0">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/jobs" element={<Jobs />} />
@@ -24,7 +24,9 @@ function App() {
             <Route path="/reg" element={<Register />} />
           </Routes>
         </main>
-        <footer></footer>
+        <footer>
+        <Footer />
+        </footer>
       </BrowserRouter>
     </>
   );

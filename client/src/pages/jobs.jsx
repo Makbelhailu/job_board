@@ -57,7 +57,7 @@ const Jobs = () => {
   };
   return (
     <>
-      <div className="flex justify-between gap-6 mt-12">
+      <div className="flex justify-between gap-4 mt-12">
         <div className="sticky left-0 w-96 ">
           <div className="fillter flex items-center justify-around">
             <div className="text text-md font-bold">Filter Jobs</div>
@@ -231,6 +231,88 @@ const Jobs = () => {
                   className="font-md cursor-pointer text-sm text-slate-700"
                 >
                   Medical
+                </span>
+              </div>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion defaultExpanded className="text m-0 border-0 shadow-none">
+            <AccordionSummary
+              id="panel-header"
+              aria-controls="panel-content"
+              expandIcon={
+                <MdExpandMore className="text text-md m-0 font-bold" />
+              }
+            >
+              Salary
+            </AccordionSummary>
+            <AccordionDetails>
+              <div className="checkboxes">
+                <Checkbox
+                  size="small"
+                  checked={isChecked[2][0]}
+                  onChange={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[2][0] = !isChecked[2][0]),
+                    ]);
+                  }}
+                />
+                <span
+                  onClick={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[2][0] = !isChecked[2][0]),
+                    ]);
+                  }}
+                  className="font-md cursor-pointer text-sm text-slate-700"
+                >
+                  $0-$5000
+                </span>
+              </div>
+              <div className="checkboxes">
+                <Checkbox
+                  size="small"
+                  checked={isChecked[2][1]}
+                  onChange={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[2][1] = !isChecked[2][1]),
+                    ]);
+                  }}
+                />
+                <span
+                  onClick={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[2][1] = !isChecked[2][1]),
+                    ]);
+                  }}
+                  className="font-md cursor-pointer text-sm text-slate-700"
+                >
+                  $5000-$15000
+                </span>
+              </div>
+              <div className="checkboxes">
+                <Checkbox
+                  size="small"
+                  checked={isChecked[2][2]}
+                  onChange={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[2][2] = !isChecked[2][2]),
+                    ]);
+                  }}
+                />
+                <span
+                  onClick={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[2][2] = !isChecked[2][2]),
+                    ]);
+                  }}
+                  className="font-md cursor-pointer text-sm text-slate-700"
+                >
+                  $15000-$30000
                 </span>
               </div>
             </AccordionDetails>

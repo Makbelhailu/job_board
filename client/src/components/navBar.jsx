@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const NavBar = () => {
-  const [path, setPath] = useState(window.location.pathname.split("/")[1]);
+  const location = useLocation()
+  console.log(location.pathname)
+  const [path, setPath] = useState(location.pathname);
 
   useEffect(() => {
-    setPath(window.location.pathname.split("/")[1]);
-  }, []);
+    setPath(location.pathname);
+  }, [location]);
   return (
     <div className="my-4 flex w-full items-center justify-between">
       <div className="logo">
@@ -19,9 +21,9 @@ const NavBar = () => {
           <li>
             <Link
               to="/"
-              className={`link ${path == "" ? "active" : ""}`}
+              className={`link ${path == "/" ? "active" : ""}`}
               onClick={(e) => {
-                setPath("");
+                setPath("/");
               }}
             >
               Home
@@ -30,9 +32,9 @@ const NavBar = () => {
           <li>
             <Link
               to="/about"
-              className={`link ${path == "about" ? "active" : ""}`}
+              className={`link ${path == "/about" ? "active" : ""}`}
               onClick={(e) => {
-                setPath("about");
+                setPath("/about");
               }}
             >
               About
@@ -41,9 +43,9 @@ const NavBar = () => {
           <li>
             <Link
               to="/jobs"
-              className={`link ${path == "jobs" ? "active" : ""}`}
+              className={`link ${path == "/jobs" ? "active" : ""}`}
               onClick={(e) => {
-                setPath("jobs");
+                setPath("/jobs");
               }}
             >
               Jobs
@@ -52,9 +54,9 @@ const NavBar = () => {
           <li>
             <Link
               to="/service"
-              className={`link ${path == "service" ? "active" : ""}`}
+              className={`link ${path == "/service" ? "active" : ""}`}
               onClick={(e) => {
-                setPath("service");
+                setPath("/service");
               }}
             >
               Service
@@ -63,9 +65,9 @@ const NavBar = () => {
           <li>
             <Link
               to="/contact"
-              className={`link ${path == "contact" ? "active" : ""}`}
+              className={`link ${path == "/contact" ? "active" : ""}`}
               onClick={(e) => {
-                setPath("contact");
+                setPath("/contact");
               }}
             >
               Contact Us

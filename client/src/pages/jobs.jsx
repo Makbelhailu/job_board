@@ -13,24 +13,27 @@ import Checkbox from "@mui/material/Checkbox";
 import JobCard from "../components/job-card";
 
 const Jobs = () => {
+  const defaultState = [
+    {
+      0: false,
+      1: false,
+      2: false,
+    },
+    {
+      0: false,
+      1: false,
+      2: false,
+    },
+    {
+      0: false,
+      1: false,
+      2: false,
+    },
+  ];
   const [location, setLocation] = useState([]);
   const [industry, setIndustry] = useState([]);
   const [salary, setSalary] = useState([]);
-  const [isChecked, setIsChecked] = useState([{
-    0: false,
-    1: false,
-    2: false
-  },
-  {
-    0: false,
-    1: false,
-    2: false
-  },
-  {
-    0: false,
-    1: false,
-    2: false
-  }]);
+  const [isChecked, setIsChecked] = useState(defaultState);
 
   const content = {
     image: "",
@@ -50,18 +53,18 @@ const Jobs = () => {
   };
 
   const clearFilter = () => {
-    setIsChecked(false)
+    setIsChecked(defaultState);
   };
   return (
     <>
-      <div className="flex justify-between gap-12">
-        <div className="sticky left-0 w-80 ">
+      <div className="flex justify-between gap-6 mt-12">
+        <div className="sticky left-0 w-96 ">
           <div className="fillter flex items-center justify-around">
             <div className="text text-md font-bold">Filter Jobs</div>
             <MyButton
               className="mb-2 rounded-md p-0 text-xs font-bold"
               colored={true}
-              // onClick={clearFilter}
+              onClick={clearFilter}
             >
               Clear All
             </MyButton>
@@ -79,13 +82,23 @@ const Jobs = () => {
             </AccordionSummary>
             <AccordionDetails>
               <div className="checkboxes">
-                <Checkbox size="small" name="dire" checked={isChecked[0][0]} onChange={() => {
-                  setIsChecked([...isChecked, isChecked[0][0] = !isChecked[0][0] ])
-                }}/>
+                <Checkbox
+                  size="small"
+                  checked={isChecked[0][0]}
+                  onChange={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[0][0] = !isChecked[0][0]),
+                    ]);
+                  }}
+                />
                 <label
                   htmlFor="dire"
                   onClick={() => {
-                    setIsChecked([...isChecked, isChecked[0][0] = !isChecked[0][0] ])
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[0][0] = !isChecked[0][0]),
+                    ]);
                   }}
                   className="font-md cursor-pointer text-sm text-slate-700"
                 >
@@ -95,26 +108,52 @@ const Jobs = () => {
               <div className="checkboxes">
                 <Checkbox
                   size="small"
-                  inputProps={{
-                    "aria-label": "Addis Ababa",
+                  checked={isChecked[0][1]}
+                  onChange={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[0][1] = !isChecked[0][1]),
+                    ]);
                   }}
                 />
-                <label className="font-md cursor-pointer text-sm text-slate-700">
+                <label
+                  onClick={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[0][1] = !isChecked[0][1]),
+                    ]);
+                  }}
+                  className="font-md cursor-pointer text-sm text-slate-700"
+                >
                   Addis Ababa
                 </label>
               </div>
               <div className="checkboxes">
                 <Checkbox
                   size="small"
-                  inputProps={{
-                    "aria-label": "Adama",
+                  checked={isChecked[0][2]}
+                  onChange={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[0][2] = !isChecked[0][2]),
+                    ]);
                   }}
                 />
-                <span className="font-md text-sm text-slate-700">Adama</span>
+                <span
+                  onClick={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[0][2] = !isChecked[0][2]),
+                    ]);
+                  }}
+                  className="font-md cursor-pointer text-sm text-slate-700"
+                >
+                  Adama
+                </span>
               </div>
             </AccordionDetails>
           </Accordion>
-          <Accordion defaultExpanded className="text text-md m-0 font-bold">
+          <Accordion defaultExpanded className="text m-0 border-0 shadow-none">
             <AccordionSummary
               id="panel-header"
               aria-controls="panel-content"
@@ -128,45 +167,83 @@ const Jobs = () => {
               <div className="checkboxes">
                 <Checkbox
                   size="small"
-                  inputProps={{
-                    "aria-label": "Dire Dawa",
+                  checked={isChecked[1][0]}
+                  onChange={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[1][0] = !isChecked[1][0]),
+                    ]);
                   }}
                 />
-                <span className="font-md text-sm text-slate-700">
-                  Dire Dawa
+                <span
+                  onClick={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[1][0] = !isChecked[1][0]),
+                    ]);
+                  }}
+                  className="font-md cursor-pointer text-sm text-slate-700"
+                >
+                  Information and Technology
                 </span>
               </div>
               <div className="checkboxes">
                 <Checkbox
                   size="small"
-                  inputProps={{
-                    "aria-label": "Addis Ababa",
+                  checked={isChecked[1][1]}
+                  onChange={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[1][1] = !isChecked[1][1]),
+                    ]);
                   }}
                 />
-                <span className="font-md text-sm text-slate-700">
-                  Addis Ababa
+                <span
+                  onClick={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[1][1] = !isChecked[1][1]),
+                    ]);
+                  }}
+                  className="font-md cursor-pointer text-sm text-slate-700"
+                >
+                  Financial Services
                 </span>
               </div>
               <div className="checkboxes">
                 <Checkbox
                   size="small"
-                  inputProps={{
-                    "aria-label": "Adama",
+                  checked={isChecked[1][2]}
+                  onChange={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[1][2] = !isChecked[1][2]),
+                    ]);
                   }}
                 />
-                <span className="font-md text-sm text-slate-700">Adama</span>
+                <span
+                  onClick={() => {
+                    setIsChecked([
+                      ...isChecked,
+                      (isChecked[1][2] = !isChecked[1][2]),
+                    ]);
+                  }}
+                  className="font-md cursor-pointer text-sm text-slate-700"
+                >
+                  Medical
+                </span>
               </div>
             </AccordionDetails>
           </Accordion>
         </div>
 
         <div className="job-lists h-aut grid w-full grid-cols-3 items-center justify-around gap-4">
-          <JobCard content={content} />
-          <JobCard content={content} />
-          <JobCard content={content} />
-          <JobCard content={content} />
-          <JobCard content={content} />
-          <JobCard content={content} />
+          <JobCard content={content} btns={true}/>
+          <JobCard content={content} btns={true}/>
+          <JobCard content={content} btns={true}/>
+          <JobCard content={content} btns={true}/>
+          <JobCard content={content} btns={true}/>
+          <JobCard content={content} btns={true}/>
         </div>
       </div>
     </>

@@ -220,12 +220,15 @@ const Home = () => {
             </p>
           </div>
           <div className="job_button self-end">
+            <Link to="/jobs">
+            
             <MyButton
               className="mb-2 rounded-md p-0 text-xs font-bold"
               colored={true}
             >
               View All Jobs
             </MyButton>
+            </Link>
           </div>
         </div>
         <div className="job_cards grid grid-cols-3 items-center justify-around gap-4">

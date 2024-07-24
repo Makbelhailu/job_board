@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import Jobs from "./pages/jobs";
-import Login from "./pages/login";
+import ApplicationForm from "./components/applicationForm";
 import Register from "./pages/register";
 import NavBar from "./components/navBar";
 import Footer from "./components/footer";
@@ -16,16 +16,16 @@ function App() {
         <header>
           <NavBar />
         </header>
-        <main className="h-[90%] m-0">
+        <main className="m-0 h-[90%]">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/jobs" element={<Jobs />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/apply/:title" element={<ApplicationForm />} />
             <Route path="/reg" element={<Register />} />
           </Routes>
         </main>
         <footer>
-        <Footer />
+          <Footer />
         </footer>
       </BrowserRouter>
     </>

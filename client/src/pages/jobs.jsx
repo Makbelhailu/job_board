@@ -57,9 +57,9 @@ const Jobs = () => {
   };
   return (
     <>
-      <div className="flex justify-between gap-4 mt-12">
-        <div className="sticky left-0 w-96 ">
-          <div className="fillter flex items-center justify-around">
+      <div className="mt-12 flex items-start justify-between gap-4">
+        <div className="sticky left-0 w-80 ">
+          <div className="flex items-center justify-around filter">
             <div className="text text-md font-bold">Filter Jobs</div>
             <MyButton
               className="mb-2 rounded-md p-0 text-xs font-bold"
@@ -155,6 +155,7 @@ const Jobs = () => {
           </Accordion>
           <Accordion defaultExpanded className="text m-0 border-0 shadow-none">
             <AccordionSummary
+              className="text text-md font-bold"
               id="panel-header"
               aria-controls="panel-content"
               expandIcon={
@@ -237,6 +238,7 @@ const Jobs = () => {
           </Accordion>
           <Accordion defaultExpanded className="text m-0 border-0 shadow-none">
             <AccordionSummary
+              className="text text-md font-bold"
               id="panel-header"
               aria-controls="panel-content"
               expandIcon={
@@ -319,13 +321,18 @@ const Jobs = () => {
           </Accordion>
         </div>
 
-        <div className="job-lists h-aut grid w-full grid-cols-3 items-center justify-around gap-4">
-          <JobCard content={content} btns={true}/>
-          <JobCard content={content} btns={true}/>
-          <JobCard content={content} btns={true}/>
-          <JobCard content={content} btns={true}/>
-          <JobCard content={content} btns={true}/>
-          <JobCard content={content} btns={true}/>
+        <div className="job-lists grid h-auto max-h-[720px] w-full grid-cols-3 gap-4 overflow-y-scroll">
+          <JobCard content={content} btns={true} />
+          <JobCard content={content} btns={true} />
+          <JobCard content={content} btns={true} />
+          <JobCard content={content} btns={true} />
+          <JobCard content={content} btns={true} />
+          <JobCard content={content} btns={true} />
+          <JobCard content={content} btns={true} />
+          <JobCard content={content} btns={true} />
+          <JobCard content={content} btns={true} />
+          <JobCard content={content} btns={true} />
+          <JobCard content={content} btns={true} />
         </div>
       </div>
     </>

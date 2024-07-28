@@ -10,12 +10,12 @@ import MyButton from "./button";
 const JobCard = ({ content, btn }) => {
   return (
     <Card
-      sx={{ maxWidth: 450, borderRadius: 2, boxShadow: 5 }}
+      sx={{ maxWidth: 450, maxHeight: 220, borderRadius: 2, boxShadow: 5 }}
       className="shadow-lg"
     >
       <Link to="/jobs">
         <CardActionArea>
-          <CardContent className="group bg-white hover:bg-secondary hover:text-white">
+          <CardContent className="group h-full w-full bg-white hover:bg-secondary hover:text-white">
             <div className="m-2">
               <div className="mb-4 flex h-full w-full gap-x-4 ">
                 <Avatar src={content.profile} alt="user icon" />

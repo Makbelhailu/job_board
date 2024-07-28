@@ -188,9 +188,17 @@ body {
     @apply bg-primary;
     @apply px-5;
     @apply py-2;
-    /* @apply hover:border-gray-400; */
-    @apply hover:bg-[#0a041a0c];
+    @apply hover:shadow-black;
+    @apply hover:shadow-inner;
+    /* @apply hover:bg-[#2313493d]; */
     /* @apply hover:text-white; */
+  }
+
+  .btn-secondary:hover {
+    background: #e0e0e0;
+    box-shadow:
+      inset 8px 8px 16px #afafaf,
+      inset -8px -8px 16px #ffffff;
   }
 
   .btn-primary {
@@ -213,4 +221,13 @@ body {
     @apply justify-center;
     @apply items-center;
   }
+}
+
+.job-lists {
+  scrollbar-width: none;
+}
+
+.job-lists::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }

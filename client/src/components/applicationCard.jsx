@@ -1,8 +1,13 @@
-import React from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Divider from "@mui/material/Divider";
+
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Box from "@mui/material/Box";
 
 import { Link } from "react-router-dom";
 import MyButton from "./button";
@@ -26,6 +31,12 @@ const ApplicationCard = ({ content, btn }) => {
     ],
   };
   btn = true;
+
+  const [value, setValue] = useState("1");
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <div className="container mt-6 px-24 py-6">
@@ -72,11 +83,89 @@ const ApplicationCard = ({ content, btn }) => {
               </Link>
             )}
           </div>
-          <Divider sx={{ marginBlock: 2 }} />
+          <Box sx={{ width: "100%" }}>
+            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                aria-label="basic tabs example"
+              >
+                <Tab
+                  className="!text-xs !font-bold"
+                  label="Description"
+                  {...a11yProps(0)}
+                />
+                <Tab
+                  className="!text-xs !font-bold"
+                  label="Responsibility"
+                  {...a11yProps(1)}
+                />
+              </Tabs>
+            </Box>
+            <CustomTabPanel value={value} index={0}>
+              <p className="mb-8 text-sm text-slate-700">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Possimus ab architecto asperiores commodi consequatur suscipit
+                dolorem ex. Nesciunt maxime recusandae quis. Quam labore dolor
+                laboriosam nulla tempora? Placeat, quisquam veritatis. Lorem
+                ipsum dolor sit amet consectetur adipisicing elit. Possimus ab
+                architecto asperiores commodi consequatur suscipit dolorem ex.
+                Nesciunt maxime recusandae quis. Quam labore dolor laboriosam
+                nulla tempora? Placeat, quisquam veritatis.
+              </p>
+
+              <h2 className="my-4 text-sm font-semibold">
+                Essential Knowledge, Skill And Experience
+              </h2>
+              <ul className="list-outside list-disc pl-8 text-sm leading-loose text-slate-700">
+                <li>skill 1</li>
+                <li>skill 2</li>
+                <li>skill 3</li>
+                <li>skill 4</li>
+              </ul>
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={1}>
+              <ul className="mt-4 list-outside list-disc text-sm leading-loose text-slate-700">
+                <li>skill 1</li>
+                <li>skill 2</li>
+                <li>skill 3</li>
+                <li>skill 4</li>
+              </ul>
+            </CustomTabPanel>
+          </Box>
         </CardContent>
       </Card>
     </div>
   );
 };
+
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+    </div>
+  );
+}
+
+CustomTabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
 
 export default ApplicationCard;

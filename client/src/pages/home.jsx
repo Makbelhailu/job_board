@@ -144,7 +144,10 @@ const Home = () => {
           </p>
         </div>
         <div className="cards mt-24 flex flex-wrap justify-around gap-y-5 px-5">
-          <Card sx={{ maxWidth: 300, borderRadius: 3 }} className="xl:mt-10">
+          <Card
+            sx={{ maxWidth: 300, borderRadius: 3, boxShadow: 5 }}
+            className="xl:mt-10"
+          >
             <CardContent className="m-5  mb-3  mr-3">
               <Avatar src={user} alt="user icon" />
               <h2 className="my-5 mb-2 text-left text-lg font-semibold">
@@ -157,7 +160,10 @@ const Home = () => {
               </p>
             </CardContent>
           </Card>
-          <Card sx={{ maxWidth: 300, borderRadius: 3 }} className="xl:mb-10">
+          <Card
+            sx={{ maxWidth: 300, borderRadius: 3, boxShadow: 5 }}
+            className="xl:mb-10"
+          >
             <CardContent className="m-5  mb-3  mr-3">
               <Avatar src={search} alt="search icon" />
               <h2 className="mb-2 mt-5 text-left text-lg font-semibold">
@@ -170,7 +176,10 @@ const Home = () => {
               </p>
             </CardContent>
           </Card>
-          <Card sx={{ maxWidth: 300, borderRadius: 3 }} className="xl:mt-10 ">
+          <Card
+            sx={{ maxWidth: 300, borderRadius: 3, boxShadow: 5 }}
+            className="xl:mt-10 "
+          >
             <CardContent className="m-5  mb-3  mr-3">
               <Avatar
                 src={file}
@@ -187,7 +196,10 @@ const Home = () => {
               </p>
             </CardContent>
           </Card>
-          <Card sx={{ maxWidth: 300, borderRadius: 3 }} className="xl:mb-10">
+          <Card
+            sx={{ maxWidth: 300, borderRadius: 3, boxShadow: 5 }}
+            className="xl:mb-10"
+          >
             <CardContent className="m-5 mb-3 mr-3">
               <Avatar
                 src={briefcase}
@@ -221,13 +233,12 @@ const Home = () => {
           </div>
           <div className="job_button self-end">
             <Link to="/jobs">
-            
-            <MyButton
-              className="mb-2 rounded-md p-0 text-xs font-bold"
-              colored={true}
-            >
-              View All Jobs
-            </MyButton>
+              <MyButton
+                className="mb-2 rounded-md p-0 text-xs font-bold"
+                colored={true}
+              >
+                View All Jobs
+              </MyButton>
             </Link>
           </div>
         </div>
@@ -304,7 +315,6 @@ const Home = () => {
         <div className="testimonials_header text-center"></div>
         <div className="testimonials"></div>
       </div>
-      
     </div>
   );
 };

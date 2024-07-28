@@ -19,7 +19,7 @@ const ApplicationForm = () => {
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked, files } = e.target;
+    const { name, value, type, files } = e.target;
     if (type === "file") {
       setFormData({ ...formData, [name]: files[0] });
     } else {

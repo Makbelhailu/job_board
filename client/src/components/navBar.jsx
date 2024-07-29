@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const NavBar = () => {
-  const location = useLocation()
-  console.log(location.pathname)
+  const location = useLocation();
+  console.log(location.pathname);
   const [path, setPath] = useState(location.pathname);
 
   useEffect(() => {
@@ -53,13 +53,13 @@ const NavBar = () => {
           </li>
           <li>
             <Link
-              to="/service"
-              className={`link ${path == "/service" ? "active" : ""}`}
+              to="/posts"
+              className={`link ${path == "/posts" ? "active" : ""}`}
               onClick={(e) => {
-                setPath("/service");
+                setPath("/posts");
               }}
             >
-              Service
+              Posts
             </Link>
           </li>
           <li>

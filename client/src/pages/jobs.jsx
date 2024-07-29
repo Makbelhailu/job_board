@@ -57,9 +57,9 @@ const Jobs = () => {
   };
   return (
     <>
-      <div className="mt-12 flex items-start justify-between gap-4">
-        <div className="sticky left-0 w-80 ">
-          <div className="flex items-center justify-around filter">
+      <div className="mt-12 flex flex-col items-center justify-center gap-4 lg:flex-row lg:items-start">
+        <div className="w-full lg:w-80 ">
+          <div className="flex items-center justify-between px-4 filter lg:justify-around">
             <div className="text text-md font-bold">Filter Jobs</div>
             <MyButton
               className="mb-2 rounded-md p-0 text-xs font-bold"
@@ -321,18 +321,18 @@ const Jobs = () => {
           </Accordion>
         </div>
 
-        <div className="job-lists grid h-auto max-h-[720px] w-full grid-cols-3 gap-4 overflow-y-scroll">
-          <JobCard content={content} btns={true} />
-          <JobCard content={content} btns={true} />
-          <JobCard content={content} btns={true} />
-          <JobCard content={content} btns={true} />
-          <JobCard content={content} btns={true} />
-          <JobCard content={content} btns={true} />
-          <JobCard content={content} btns={true} />
-          <JobCard content={content} btns={true} />
-          <JobCard content={content} btns={true} />
-          <JobCard content={content} btns={true} />
-          <JobCard content={content} btns={true} />
+        <div className="job-lists scrollbar-none grid h-auto max-h-[720px] w-full grid-cols-1 items-center justify-center gap-4 overflow-y-scroll md:grid-cols-2 xl:grid-cols-3">
+          <JobCard content={content} btn={true} />
+          <JobCard content={content} btn={true} />
+          <JobCard content={content} btn={true} />
+          <JobCard content={content} btn={true} />
+          <JobCard content={content} btn={true} />
+          <JobCard content={content} btn={true} />
+          <JobCard content={content} btn={true} />
+          <JobCard content={content} btn={true} />
+          <JobCard content={content} btn={true} />
+          <JobCard content={content} btn={true} />
+          <JobCard content={content} btn={true} />
         </div>
       </div>
     </>

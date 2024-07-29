@@ -11,7 +11,9 @@ import Box from "@mui/material/Box";
 
 import { Link } from "react-router-dom";
 import MyButton from "./button";
-const ApplicationCard = ({ content, btn }) => {
+import JobCard from "../components/job-card";
+
+const ApplicationCard = ({ content }) => {
   content = {
     _id: "2f4rrf478hgg",
     profile:
@@ -30,7 +32,6 @@ const ApplicationCard = ({ content, btn }) => {
       "soon. It merely waited do unable.",
     ],
   };
-  btn = true;
 
   const [value, setValue] = useState(0);
 
@@ -39,9 +40,9 @@ const ApplicationCard = ({ content, btn }) => {
   };
 
   return (
-    <div className="container mt-6 px-24 py-6">
+    <div className="mt-6 w-full items-center gap-x-4 gap-y-8 py-6 xl:flex">
       <Card
-        sx={{ maxWidth: "100%", borderRadius: 4, boxShadow: 3 }}
+        sx={{ maxWidth: "100%", borderRadius: 4, boxShadow: 8 }}
         className="card min-h-[40rem] w-full border p-12"
       >
         <CardContent>
@@ -75,13 +76,12 @@ const ApplicationCard = ({ content, btn }) => {
                 </div>
               </div>
             </div>
-            {btn && (
-              <Link to={`/apply/${content._id}?title=${content.title}`}>
-                <button className="btn-primary px-4 py-2 text-sm ">
-                  Apply Now
-                </button>
-              </Link>
-            )}
+
+            <Link to={`/apply/${content._id}?title=${content.title}`}>
+              <button className="btn-primary px-4 py-2 text-sm ">
+                Apply Now
+              </button>
+            </Link>
           </div>
           <Box sx={{ width: "100%" }}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -115,7 +115,7 @@ const ApplicationCard = ({ content, btn }) => {
               </p>
 
               <h2 className="my-4 text-sm font-semibold">
-                Essential Knowledge, Skill And Experience
+                Essential Knowledge, Skill And Qualification
               </h2>
               <ul className="list-outside list-disc pl-8 text-sm leading-loose text-slate-700">
                 <li>skill 1</li>
@@ -123,6 +123,10 @@ const ApplicationCard = ({ content, btn }) => {
                 <li>skill 3</li>
                 <li>skill 4</li>
               </ul>
+              <h2 className="mt-8 text-sm font-semibold">
+                Deadline:
+                <span className="ml-2 text-xs font-medium">July 5, 2024</span>
+              </h2>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
               <ul className="mt-4 list-outside list-disc text-sm leading-loose text-slate-700">
@@ -135,6 +139,19 @@ const ApplicationCard = ({ content, btn }) => {
           </Box>
         </CardContent>
       </Card>
+      <div className="job-lists scrollbar-none gird-rows-1 grid max-h-[680px] w-full grid-flow-col gap-4 overflow-x-scroll py-6 xl:w-2/5 xl:grid-flow-row xl:grid-cols-1 xl:overflow-x-hidden xl:overflow-y-scroll">
+        <JobCard content={content} btn={true} className={"w-[450px]"} />
+        <JobCard content={content} btn={true} className={"w-[450px]"} />
+        <JobCard content={content} btn={true} className={"w-[450px]"} />
+        <JobCard content={content} btn={true} className={"w-[450px]"} />
+        <JobCard content={content} btn={true} className={"w-[450px]"} />
+        <JobCard content={content} btn={true} className={"w-[450px]"} />
+        <JobCard content={content} btn={true} className={"w-[450px]"} />
+        <JobCard content={content} btn={true} className={"w-[450px]"} />
+        <JobCard content={content} btn={true} className={"w-[450px]"} />
+        <JobCard content={content} btn={true} className={"w-[450px]"} />
+        <JobCard content={content} btn={true} className={"w-[450px]"} />
+      </div>
     </div>
   );
 };

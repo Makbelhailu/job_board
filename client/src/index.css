@@ -223,11 +223,11 @@ body {
   }
 }
 
-.job-lists {
+.scrollbar-none {
   scrollbar-width: none;
 }
 
-.job-lists::-webkit-scrollbar {
+.scrollbar-none::-webkit-scrollbar {
   width: 0;
   height: 0;
 }

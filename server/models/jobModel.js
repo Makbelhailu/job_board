@@ -7,7 +7,7 @@ const jobSchema = new Schema(
       type: String,
       required: true,
     },
-    industry: {
+    sector: {
       type: String,
       required: true,
     },
@@ -16,6 +16,14 @@ const jobSchema = new Schema(
       required: true,
     },
     companyId: {
+      type: String,
+      required: true,
+    },
+    experience: {
+      type: String,
+      required: true,
+    },
+    applicant: {
       type: String,
       required: true,
     },
@@ -37,6 +45,10 @@ const jobSchema = new Schema(
     },
     vacancy: {
       type: Number,
+      required: true,
+    },
+    deadline: {
+      type: Date,
       required: true,
     },
   },

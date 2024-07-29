@@ -7,13 +7,13 @@ import { CardActionArea } from "@mui/material";
 import { Link } from "react-router-dom";
 import MyButton from "./button";
 
-const JobCard = ({ content, btn }) => {
+const JobCard = ({ content, btn, className }) => {
   return (
     <Card
-      sx={{ maxWidth: 450, maxHeight: 220, borderRadius: 2, boxShadow: 5 }}
-      className="shadow-lg"
+      sx={{ maxHeight: 275, borderRadius: 2, boxShadow: 5 }}
+      className={`shadow-lg ${className ? className : "md:w-[400]"} xl:w-full`}
     >
-      <Link to="/jobs">
+      <Link to="/jobs/jhjhk">
         <CardActionArea>
           <CardContent className="group h-full w-full bg-white hover:bg-secondary hover:text-white">
             <div className="m-2">
@@ -49,11 +49,11 @@ const JobCard = ({ content, btn }) => {
               </div>
               {btn && (
                 <div className="btns mt-4 flex gap-5">
-                  <Link to="/applications">
+                  <Link to="/apply/id?title=title">
                     <MyButton
                       colored={true}
                       className={
-                        "gropu-hover:bg-secondary-dark btn-primary mx-0 rounded-normal bg-secondary px-[6px] py-1 text-xs font-bold  text-primary group-hover:border-primary"
+                        "btn-primary mx-0 rounded-normal bg-secondary px-[6px] py-1 text-xs font-bold group-hover:border-primary"
                       }
                     >
                       Apply Now

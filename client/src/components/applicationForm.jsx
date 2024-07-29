@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaXmark } from "react-icons/fa6";
 import axios from "axios";
 import { useParams, useLocation } from "react-router-dom";
 
+import { autoResize } from "../utils/sizeUtil";
+
 const ApplicationForm = () => {
+  const textareaRef = useRef(null);
   const { id } = useParams();
   const title = new URLSearchParams(useLocation().search).get("title") || "";
   console.log(title);
@@ -17,6 +20,8 @@ const ApplicationForm = () => {
     linkedin: "",
     portfolio: "",
   });
+
+  useEffect(() => autoResize(textareaRef), [formData.coverLetter]);
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
@@ -148,10 +153,11 @@ const ApplicationForm = () => {
           <label className="mb-4 block">
             Cover Letter
             <textarea
+              ref={textareaRef}
               name="coverLetter"
               value={formData.coverLetter}
               onChange={handleChange}
-              className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
+              className="scrollbar-none w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
               rows="5"
             />
           </label>

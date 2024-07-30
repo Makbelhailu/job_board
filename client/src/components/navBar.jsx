@@ -1,9 +1,19 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
+import { UserButton, useClerk, useUser } from "@clerk/clerk-react";
+
 const NavBar = () => {
+  const { isSignedIn, user, isLoaded } = useUser();
+  const clerk = useClerk();
+  const [accountType, setAccountType] = useState("");
+
+  useEffect(() => {
+    if (isSignedIn) setAccountType(user.unsafeMetadata.accountType);
+    console.log("signedIn");
+  }, [isLoaded]);
+
   const location = useLocation();
-  console.log(location.pathname);
   const [path, setPath] = useState(location.pathname);
 
   useEffect(() => {
@@ -31,17 +41,6 @@ const NavBar = () => {
           </li>
           <li>
             <Link
-              to="/about"
-              className={`link ${path == "/about" ? "active" : ""}`}
-              onClick={(e) => {
-                setPath("/about");
-              }}
-            >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
               to="/jobs"
               className={`link ${path == "/jobs" ? "active" : ""}`}
               onClick={(e) => {
@@ -51,36 +50,75 @@ const NavBar = () => {
               Jobs
             </Link>
           </li>
+
+          {accountType ? (
+            accountType === "freelancer" ? (
+              <li>
+                <Link
+                  to="/applications"
+                  className={`link ${path == "/applications" ? "active" : ""}`}
+                  onClick={(e) => {
+                    setPath("/applications");
+                  }}
+                >
+                  Applications
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <Link
+                  to="/posts"
+                  className={`link ${path == "/posts" ? "active" : ""}`}
+                  onClick={(e) => {
+                    setPath("/posts");
+                  }}
+                >
+                  Posts
+                </Link>
+              </li>
+            )
+          ) : (
+            ""
+          )}
           <li>
             <Link
-              to="/posts"
-              className={`link ${path == "/posts" ? "active" : ""}`}
+              to="/about"
+              className={`link ${path == "/about" ? "active" : ""}`}
               onClick={(e) => {
-                setPath("/posts");
+                setPath("/about");
               }}
             >
-              Posts
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/contact"
-              className={`link ${path == "/contact" ? "active" : ""}`}
-              onClick={(e) => {
-                setPath("/contact");
-              }}
-            >
-              Contact Us
+              About
             </Link>
           </li>
         </ul>
-        <div className="profile ml-5 flex gap-2">
-          <button className="btn-secondary">Login</button>
-          <button className="btn-primary">Register</button>
-        </div>
+
+        {isSignedIn ? (
+          <UserButton
+            appearance={{ elements: { userButtonAvatarBox: "w-9 h-9" } }}
+          />
+        ) : (
+          <div className="profile ml-5 flex gap-2">
+            <button
+              className="btn-secondary"
+              onClick={() => clerk.openSignIn()}
+            >
+              Login
+            </button>
+            <button className="btn-primary" onClick={() => clerk.openSignUp()}>
+              Register
+            </button>
+          </div>
+        )}
       </nav>
     </div>
   );
 };
+
+function customLink() {
+  if(type === 'freelancer') {
+    
+  }
+}
 
 export default NavBar;

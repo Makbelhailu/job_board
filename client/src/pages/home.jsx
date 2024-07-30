@@ -22,7 +22,13 @@ import careerImg from "../assets/career-dev.jpg";
 
 import JobCard from "../components/job-card";
 
+import { useClerk, useUser } from "@clerk/clerk-react";
+import { useEffect } from "react";
+
 const Home = () => {
+  const { isSignedIn, user, isLoaded } = useUser();
+  const clerk = useClerk();
+
   const marqueeContent = [
     "Software Engineer",
     "UI/UX Designer",
@@ -84,8 +90,15 @@ const Home = () => {
           </p>
         </div>
         <div className="buttons mt-8 flex items-center justify-center gap-10">
-          <Link to="jobs">
-            <button className="btn-primary px-4 py-3">Browse Jobs</button>
+          <Link to={isSignedIn ? "jobs" : ""}>
+            <button
+              className="btn-primary px-4 py-3"
+              onClick={() => {
+                if (!isSignedIn) clerk.openSignUp();
+              }}
+            >
+              Browse Jobs
+            </button>
           </Link>
           <div className=" flex cursor-pointer items-center justify-between gap-5">
             <div className="play-button relative flex h-10 w-10 items-center justify-center rounded-full bg-secondary">
@@ -232,10 +245,13 @@ const Home = () => {
             </p>
           </div>
           <div className="job_button self-end">
-            <Link to="/jobs">
+            <Link to={isSignedIn ? "/jobs" : "/"}>
               <MyButton
                 className="mb-2 rounded-md p-0 text-xs font-bold"
                 colored={true}
+                onClick={() => {
+                  if (!isSignedIn) clerk.openSignUp();
+                }}
               >
                 View All Jobs
               </MyButton>

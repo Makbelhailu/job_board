@@ -3,7 +3,7 @@ import { FaXmark } from "react-icons/fa6";
 import axios from "axios";
 import { useParams, useLocation } from "react-router-dom";
 
-import { autoResize } from "../utils/sizeUtil";
+import { autoResize } from "../utils/functions";
 
 const ApplicationForm = () => {
   const textareaRef = useRef(null);

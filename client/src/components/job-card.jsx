@@ -4,16 +4,26 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
 
+import { useClerk, useUser } from "@clerk/clerk-react";
+
 import { Link } from "react-router-dom";
 import MyButton from "./button";
 
 const JobCard = ({ content, btn, className }) => {
+  const { isSignedIn } = useUser();
+  const clerk = useClerk();
+
   return (
     <Card
       sx={{ maxHeight: 275, borderRadius: 2, boxShadow: 5 }}
       className={`shadow-lg ${className ? className : "md:w-[400]"} xl:w-full`}
     >
-      <Link to="/jobs/jhjhk">
+      <Link
+        to={isSignedIn ? "/jobs/jhjhk" : "/"}
+        onClick={() => {
+          if (!isSignedIn) clerk.openSignUp();
+        }}
+      >
         <CardActionArea>
           <CardContent className="group h-full w-full bg-white hover:bg-secondary hover:text-white">
             <div className="m-2">
@@ -47,7 +57,7 @@ const JobCard = ({ content, btn, className }) => {
                   </div>
                 </div>
               </div>
-              {btn && (
+              {btn && isSignedIn && (
                 <div className="btns mt-4 flex gap-5">
                   <Link to="/apply/id?title=title">
                     <MyButton

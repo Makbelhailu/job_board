@@ -4,9 +4,9 @@ import figma from "../assets/figma.svg";
 import google from "../assets/google.svg";
 import linkedin from "../assets/linkedin.svg";
 import microsoft from "../assets/microsoft.svg";
-import user from "../assets/user.png";
-import search from "../assets/search.png";
-import file from "../assets/document.png";
+import userImg from "../assets/user.png";
+import searchImg from "../assets/search.png";
+import fileImg from "../assets/document.png";
 import briefcase from "../assets/case.png";
 
 import Marquee from "react-fast-marquee";
@@ -28,6 +28,10 @@ import { useEffect } from "react";
 const Home = () => {
   const { isSignedIn, user, isLoaded } = useUser();
   const clerk = useClerk();
+
+  useEffect(() => {
+    if (isSignedIn) console.log(user.id);
+  }, [isLoaded]);
 
   const marqueeContent = [
     "Software Engineer",
@@ -90,7 +94,7 @@ const Home = () => {
           </p>
         </div>
         <div className="buttons mt-8 flex items-center justify-center gap-10">
-          <Link to={isSignedIn ? "jobs" : ""}>
+          <Link to={"jobs"}>
             <button
               className="btn-primary px-4 py-3"
               onClick={() => {
@@ -162,7 +166,7 @@ const Home = () => {
             className="xl:mt-10"
           >
             <CardContent className="m-5  mb-3  mr-3">
-              <Avatar src={user} alt="user icon" />
+              <Avatar src={userImg} alt="user icon" />
               <h2 className="my-5 mb-2 text-left text-lg font-semibold">
                 Create An Account
               </h2>
@@ -178,7 +182,7 @@ const Home = () => {
             className="xl:mb-10"
           >
             <CardContent className="m-5  mb-3  mr-3">
-              <Avatar src={search} alt="search icon" />
+              <Avatar src={searchImg} alt="search icon" />
               <h2 className="mb-2 mt-5 text-left text-lg font-semibold">
                 Search Job
               </h2>
@@ -195,7 +199,7 @@ const Home = () => {
           >
             <CardContent className="m-5  mb-3  mr-3">
               <Avatar
-                src={file}
+                src={fileImg}
                 alt="document icon"
                 className="bg-[#2cbb543d]"
               />
@@ -326,10 +330,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="testimonials_container">
-        <div className="testimonials_header text-center"></div>
-        <div className="testimonials"></div>
       </div>
     </div>
   );

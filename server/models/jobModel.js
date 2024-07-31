@@ -20,7 +20,7 @@ const jobSchema = new Schema(
       required: true,
     },
     experience: {
-      type: String,
+      type: Number,
       required: true,
     },
     applicant: {

@@ -1,15 +1,16 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const jobRoute = require("./routes/jobs");
-const userRoute = require("./routes/users");
-const authRoute = require("./routes/auth");
-const applicationRoute = require("./routes/applications");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 require("dotenv").config();
+const companyInfo = require("./middlewares/clerkMiddleware");
+const jobRoute = require("./routes/jobs");
+const applicationRoute = require("./routes/applications");
 
 const app = express();
+
+// app.use(companyInfo);
 
 app.use(cors());
 app.use(express.json());

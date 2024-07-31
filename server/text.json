@@ -1,0 +1,202 @@
+[
+  {
+    "title": "Full Stack Developer",
+    "sector": "Information and Technology",
+    "type": "FullTime",
+    "companyId": "user_2k0xNs5MoQoKHTF36tZ11WQ0eed",
+    "experience": 2,
+    "applicant": "male",
+    "location": "Addis Ababa",
+    "salary": "20000/month",
+    "description": "We are seeking a talented Full Stack Developer to join our dynamic team. The ideal candidate will have experience in both front-end and back-end development, with a solid understanding of web technologies, databases, and UI/UX design principles. You will work on building and maintaining web applications, ensuring they are robust, scalable, and user-friendly. Proficiency in MERN stack, Django, and PHP is a plus. Join us to contribute to exciting projects and grow your skills in a collaborative environment.",
+    "requirements": [
+      "HTML, CSS, JavaScript, and frameworks like React or Angular.",
+      "Experience with server-side languages and frameworks such as Node.js, Django, or PHP.",
+      "Familiarity with both relational databases (e.g., MySQL, PostgreSQL) and NoSQL databases (e.g., MongoDB).",
+      "Experience with Git and collaborative workflows.",
+      "Ability to work well in a team and communicate effectively."
+    ],
+    "vacancy": 5,
+    "deadline": { "$date": "2024-07-31T12:00:00Z" }
+  },
+  {
+    "title": "Backend Developer",
+    "sector": "Information and Technology",
+    "type": "Remote",
+    "companyId": "user_2jxiq4AQlKpLiH7dsow2842oSy3",
+    "experience": 3,
+    "applicant": "both",
+    "location": "Remote",
+    "salary": "18000/month",
+    "description": "Looking for a skilled Backend Developer to work remotely. The candidate should have experience with server-side technologies and databases. Proficiency in Node.js and Python is essential.",
+    "requirements": [
+      "Strong understanding of Node.js and Python.",
+      "Experience with SQL and NoSQL databases.",
+      "Knowledge of RESTful APIs.",
+      "Good problem-solving skills.",
+      "Ability to work independently and in a team."
+    ],
+    "vacancy": 3,
+    "deadline": { "$date": "2024-08-15T12:00:00Z" }
+  },
+  {
+    "title": "Frontend Developer",
+    "sector": "Information and Technology",
+    "type": "FullTime",
+    "companyId": "user_2jYcbG5FsNb8VctIOgDzoxn72Iw",
+    "experience": 1,
+    "applicant": "female",
+    "location": "Addis Ababa",
+    "salary": "15000/month",
+    "description": "Join our team as a Frontend Developer. The ideal candidate should have a keen eye for design and a strong understanding of web technologies, especially React.",
+    "requirements": [
+      "Proficiency in HTML, CSS, JavaScript, and React.",
+      "Experience with responsive design and cross-browser compatibility.",
+      "Knowledge of UI/UX design principles.",
+      "Experience with Git.",
+      "Strong communication skills."
+    ],
+    "vacancy": 2,
+    "deadline": { "$date": "2024-08-01T12:00:00Z" }
+  },
+  {
+    "title": "Database Administrator",
+    "sector": "Information and Technology",
+    "type": "PartTime",
+    "companyId": "user_2k0xNs5MoQoKHTF36tZ11WQ0eed",
+    "experience": 4,
+    "applicant": "male",
+    "location": "Addis Ababa",
+    "salary": "10000/month",
+    "description": "We are looking for a part-time Database Administrator. The candidate should have experience in managing both SQL and NoSQL databases.",
+    "requirements": [
+      "Experience with database administration.",
+      "Strong knowledge of MySQL and MongoDB.",
+      "Ability to troubleshoot database issues.",
+      "Experience with backup and recovery procedures.",
+      "Good communication skills."
+    ],
+    "vacancy": 1,
+    "deadline": { "$date": "2024-08-10T12:00:00Z" }
+  },
+  {
+    "title": "Full Stack Developer",
+    "sector": "Medical",
+    "type": "FullTime",
+    "companyId": "user_2jxiq4AQlKpLiH7dsow2842oSy3",
+    "experience": 3,
+    "applicant": "both",
+    "location": "Addis Ababa",
+    "salary": "22000/month",
+    "description": "Join our medical tech team as a Full Stack Developer. The ideal candidate will work on developing and maintaining applications in the healthcare sector.",
+    "requirements": [
+      "Experience with full stack development.",
+      "Proficiency in JavaScript, Python, and Django.",
+      "Knowledge of healthcare industry standards is a plus.",
+      "Strong problem-solving skills.",
+      "Ability to work in a fast-paced environment."
+    ],
+    "vacancy": 4,
+    "deadline": { "$date": "2024-08-20T12:00:00Z" }
+  },
+  {
+    "title": "Mobile App Developer",
+    "sector": "Information and Technology",
+    "type": "FullTime",
+    "companyId": "user_2jYcbG5FsNb8VctIOgDzoxn72Iw",
+    "experience": 2,
+    "applicant": "female",
+    "location": "Addis Ababa",
+    "salary": "19000/month",
+    "description": "Seeking a talented Mobile App Developer with experience in React Native or Flutter. The candidate will work on developing cross-platform mobile applications.",
+    "requirements": [
+      "Experience with mobile app development.",
+      "Proficiency in React Native or Flutter.",
+      "Knowledge of mobile UI/UX design principles.",
+      "Experience with RESTful APIs.",
+      "Ability to work in a team."
+    ],
+    "vacancy": 3,
+    "deadline": { "$date": "2024-08-05T12:00:00Z" }
+  },
+  {
+    "title": "Data Scientist",
+    "sector": "Medical",
+    "type": "Remote",
+    "companyId": "user_2k0xNs5MoQoKHTF36tZ11WQ0eed",
+    "experience": 5,
+    "applicant": "both",
+    "location": "Remote",
+    "salary": "25000/month",
+    "description": "We are looking for a Data Scientist to join our remote team. The candidate should have experience in data analysis and machine learning, especially in the medical field.",
+    "requirements": [
+      "Strong background in data science.",
+      "Experience with Python, R, and SQL.",
+      "Knowledge of machine learning algorithms.",
+      "Experience in the medical field is a plus.",
+      "Strong analytical skills."
+    ],
+    "vacancy": 2,
+    "deadline": { "$date": "2024-08-25T12:00:00Z" }
+  },
+  {
+    "title": "System Administrator",
+    "sector": "Information and Technology",
+    "type": "PartTime",
+    "companyId": "user_2jxiq4AQlKpLiH7dsow2842oSy3",
+    "experience": 3,
+    "applicant": "male",
+    "location": "Addis Ababa",
+    "salary": "15000/month",
+    "description": "Seeking a part-time System Administrator to manage our IT infrastructure. The candidate should have experience with network and server management.",
+    "requirements": [
+      "Experience in system administration.",
+      "Knowledge of network protocols and security.",
+      "Experience with Windows and Linux servers.",
+      "Good problem-solving skills.",
+      "Ability to work independently."
+    ],
+    "vacancy": 1,
+    "deadline": { "$date": "2024-08-30T12:00:00Z" }
+  },
+  {
+    "title": "Frontend Developer",
+    "sector": "Medical",
+    "type": "Remote",
+    "companyId": "user_2jYcbG5FsNb8VctIOgDzoxn72Iw",
+    "experience": 2,
+    "applicant": "female",
+    "location": "Remote",
+    "salary": "17000/month",
+    "description": "Join our medical team as a remote Frontend Developer. The ideal candidate should have a strong understanding of React and experience with medical applications.",
+    "requirements": [
+      "Proficiency in React and JavaScript.",
+      "Experience with responsive design.",
+      "Knowledge of medical applications is a plus.",
+      "Experience with Git.",
+      "Strong communication skills."
+    ],
+    "vacancy": 2,
+    "deadline": { "$date": "2024-09-01T12:00:00Z" }
+  },
+  {
+    "title": "Full Stack Developer",
+    "sector": "Information and Technology",
+    "type": "FullTime",
+    "companyId": "user_2k0xNs5MoQoKHTF36tZ11WQ0eed",
+    "experience": 2,
+    "applicant": "male",
+    "location": "Addis Ababa",
+    "salary": "20000/month",
+    "description": "We are seeking a talented Full Stack Developer to join our dynamic team. The ideal candidate will have experience in both front-end and back-end development, with a solid understanding of web technologies, databases, and UI/UX design principles. You will work on building and maintaining web applications, ensuring they are robust, scalable, and user-friendly. Proficiency in MERN stack, Django, and PHP is a plus. Join us to contribute to exciting projects and grow your skills in a collaborative environment.",
+    "requirements": [
+      "HTML, CSS, JavaScript, and frameworks like React or Angular.",
+      "Experience with server-side languages and frameworks such as Node.js, Django, or PHP.",
+      "Familiarity with both relational databases (e.g., MySQL, PostgreSQL) and NoSQL databases (e.g., MongoDB).",
+      "Experience with Git and collaborative workflows.",
+      "Ability to work well in a team and communicate effectively."
+    ],
+    "vacancy": 5,
+    "deadline": { "$date": "2024-07-31T12:00:00Z" }
+  }
+]

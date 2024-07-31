@@ -8,6 +8,7 @@ import { useClerk, useUser } from "@clerk/clerk-react";
 
 import { Link } from "react-router-dom";
 import MyButton from "./button";
+import { FaLocationDot } from "react-icons/fa6";
 
 const JobCard = ({ content, btn, className }) => {
   const { isSignedIn } = useUser();
@@ -45,7 +46,7 @@ const JobCard = ({ content, btn, className }) => {
                     {content.description}
                   </p>
                 </div>
-                <div className="flex items-center justify-start gap-x-3 text-center">
+                <div className="flex flex-wrap items-center justify-start gap-x-2 gap-y-3 text-center">
                   <div className="rounded-md bg-blueish-100 px-2 py-1 text-xs font-medium text-blueish group-hover:bg-secondary-dark group-hover:text-white">
                     2 Positions
                   </div>

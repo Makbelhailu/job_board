@@ -37,7 +37,7 @@ const Jobs = () => {
 
   const content = {
     image: "",
-    username: "make",
+    username: "Google",
     location: "New York, USA",
     title: "software engineer",
     description:
@@ -100,7 +100,7 @@ const Jobs = () => {
                       (isChecked[0][0] = !isChecked[0][0]),
                     ]);
                   }}
-                  className="font-md cursor-pointer text-sm text-slate-700"
+                  className="cursor-pointer text-xs font-semibold text-slate-700"
                 >
                   Dire Dawa
                 </label>
@@ -123,7 +123,7 @@ const Jobs = () => {
                       (isChecked[0][1] = !isChecked[0][1]),
                     ]);
                   }}
-                  className="font-md cursor-pointer text-sm text-slate-700"
+                  className="cursor-pointer text-xs font-semibold text-slate-700"
                 >
                   Addis Ababa
                 </label>
@@ -146,7 +146,7 @@ const Jobs = () => {
                       (isChecked[0][2] = !isChecked[0][2]),
                     ]);
                   }}
-                  className="font-md cursor-pointer text-sm text-slate-700"
+                  className="cursor-pointer text-xs font-semibold text-slate-700"
                 >
                   Adama
                 </span>
@@ -183,7 +183,7 @@ const Jobs = () => {
                       (isChecked[1][0] = !isChecked[1][0]),
                     ]);
                   }}
-                  className="font-md cursor-pointer text-sm text-slate-700"
+                  className="cursor-pointer text-xs font-semibold text-slate-700"
                 >
                   Information and Technology
                 </span>
@@ -206,7 +206,7 @@ const Jobs = () => {
                       (isChecked[1][1] = !isChecked[1][1]),
                     ]);
                   }}
-                  className="font-md cursor-pointer text-sm text-slate-700"
+                  className="cursor-pointer text-xs font-semibold text-slate-700"
                 >
                   Financial Services
                 </span>
@@ -229,7 +229,7 @@ const Jobs = () => {
                       (isChecked[1][2] = !isChecked[1][2]),
                     ]);
                   }}
-                  className="font-md cursor-pointer text-sm text-slate-700"
+                  className="cursor-pointer text-xs font-semibold text-slate-700"
                 >
                   Medical
                 </span>
@@ -266,7 +266,7 @@ const Jobs = () => {
                       (isChecked[2][0] = !isChecked[2][0]),
                     ]);
                   }}
-                  className="font-md cursor-pointer text-sm text-slate-700"
+                  className="cursor-pointer text-sm font-semibold text-slate-700"
                 >
                   $0-$5000
                 </span>
@@ -289,9 +289,9 @@ const Jobs = () => {
                       (isChecked[2][1] = !isChecked[2][1]),
                     ]);
                   }}
-                  className="font-md cursor-pointer text-sm text-slate-700"
+                  className="cursor-pointer text-sm font-semibold text-slate-700"
                 >
-                  $5000-$15000
+                  $5000-$20000
                 </span>
               </div>
               <div className="checkboxes">
@@ -312,9 +312,9 @@ const Jobs = () => {
                       (isChecked[2][2] = !isChecked[2][2]),
                     ]);
                   }}
-                  className="font-md cursor-pointer text-sm text-slate-700"
+                  className="cursor-pointer text-sm font-semibold text-slate-700"
                 >
-                  $15000-$30000
+                  &gt; $20000
                 </span>
               </div>
             </AccordionDetails>

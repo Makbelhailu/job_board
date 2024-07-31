@@ -10,7 +10,6 @@ const NavBar = () => {
 
   useEffect(() => {
     if (isSignedIn) setAccountType(user.unsafeMetadata.accountType);
-    console.log("signedIn");
   }, [isLoaded]);
 
   const location = useLocation();
@@ -51,35 +50,7 @@ const NavBar = () => {
             </Link>
           </li>
 
-          {accountType ? (
-            accountType === "freelancer" ? (
-              <li>
-                <Link
-                  to="/applications"
-                  className={`link ${path == "/applications" ? "active" : ""}`}
-                  onClick={(e) => {
-                    setPath("/applications");
-                  }}
-                >
-                  Applications
-                </Link>
-              </li>
-            ) : (
-              <li>
-                <Link
-                  to="/posts"
-                  className={`link ${path == "/posts" ? "active" : ""}`}
-                  onClick={(e) => {
-                    setPath("/posts");
-                  }}
-                >
-                  Posts
-                </Link>
-              </li>
-            )
-          ) : (
-            ""
-          )}
+          {accountType && <customLink type={accountType} />}
           <li>
             <Link
               to="/about"
@@ -115,9 +86,35 @@ const NavBar = () => {
   );
 };
 
-function customLink() {
-  if(type === 'freelancer') {
-    
+function customLink({ type }) {
+  if (type === "freelancer") {
+    return (
+      <li>
+        <Link
+          to="/applications"
+          className={`link ${path == "/applications" ? "active" : ""}`}
+          onClick={(e) => {
+            setPath("/applications");
+          }}
+        >
+          Applications
+        </Link>
+      </li>
+    );
+  } else if (type === "company") {
+    return (
+      <li>
+        <Link
+          to="/posts"
+          className={`link ${path == "/posts" ? "active" : ""}`}
+          onClick={(e) => {
+            setPath("/posts");
+          }}
+        >
+          Posts
+        </Link>
+      </li>
+    );
   }
 }
 

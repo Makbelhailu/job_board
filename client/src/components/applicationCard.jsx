@@ -3,25 +3,27 @@ import PropTypes from "prop-types";
 import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import Divider from "@mui/material/Divider";
 
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 
 import { Link } from "react-router-dom";
-import MyButton from "./button";
 import JobCard from "../components/job-card";
+
+import { FaLocationDot } from "react-icons/fa6";
 
 const ApplicationCard = ({ content }) => {
   content = {
     _id: "2f4rrf478hgg",
+    username: "Hulu Technology",
     profile:
       "https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-512.png",
     title: "Full Stack Developer",
     type: "FullTime",
     vacancy: 2,
     salary: "120,000/Year",
+    location: "Addis Ababa",
     experience: 2,
     description:
       " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, animi? Temporibus ab asperiores enim perferendis! Quibusdam similique delectus omnis laborum voluptate hic at suscipit. Hic vel non voluptatibus alias aspernatur.",
@@ -58,7 +60,10 @@ const ApplicationCard = ({ content }) => {
 
               <div className="texts">
                 <h2 className="text-3xl font-bold">{content.title}</h2>
-                <div className="info my-3 flex items-center gap-4">
+                <h4 className="pl-1 text-xs font-semibold uppercase text-slate-700 group-hover:text-white">
+                  {content.username}
+                </h4>
+                <div className="info my-4 flex items-center gap-4">
                   <div className="rounded-md bg-blueish-100 px-2 py-1 text-xs font-medium text-blueish-dark">
                     {content.vacancy > 1
                       ? `${content.vacancy} Positions`
@@ -69,6 +74,10 @@ const ApplicationCard = ({ content }) => {
                   </div>
                   <div className="rounded-md bg-greenish-100 px-2 py-1 text-xs font-medium text-greenish-dark ">
                     ${content.salary}
+                  </div>
+                  <div className="flex items-center gap-x-[2px] rounded-md bg-orangeish-100 px-2 py-1 text-xs font-medium text-orangeish ">
+                    <FaLocationDot className="text-xs" />
+                    <span>{content.location}</span>
                   </div>
                   <div className="rounded-md bg-greenish-100 px-2 py-1 text-xs font-medium text-redish ">
                     {content.experience} Years

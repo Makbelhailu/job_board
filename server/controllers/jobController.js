@@ -9,18 +9,10 @@ const getAllJobs = async (req, res) => {
   if (!jobList) {
     return res.status(400).json({ error: "error fetching all the jobs" });
   }
-  // const fullList = await Promise.all(
-  //   jobList.map(async (job) => {
-  //     let userInfo = await companyInfo(job.companyId);
-  //     let jobObj = job.toObject();
-  //     if (userInfo) {
-  //       jobObj.profile = userInfo.imageUrl;
-  //       jobObj.username = userInfo.username;
-  //     }
-  //     return jobObj;
-  //   })
-  // );
-  res.status(200).json(jobList);
+
+  const fullList = await companyInfo(jobList);
+
+  res.status(200).json(fullList);
   console.log("all jobs fetched");
 };
 
@@ -50,10 +42,10 @@ const createJob = async (req, res) => {
     vacancy,
   } = req.body;
   try {
-    let userInfo = await companyInfo(job.companyId);
+    // let userInfo = await companyInfo(job.companyId);
     const joblist = await JobList.create({
-      profile: userInfo.imageUrl,
-      username: userInfo.username,
+      // profile: userInfo.imageUrl,
+      // username: userInfo.username,
       title,
       type,
       company,

@@ -12,9 +12,18 @@ import AccountType from "./components/accountType";
 
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 
-function App() {
-  const [count, setCount] = useState(0);
+import { fetchJobs } from "./utils/functions";
+import { useSetRecoilState } from "recoil";
+import { jobsState } from "./utils/states";
 
+function App() {
+  const setJobs = useSetRecoilState(jobsState);
+
+  useEffect(() => {
+    fetchJobs()
+      .then((data) => setJobs(data))
+      .catch((err) => console.log("error fetching jobs: ", err));
+  }, []);
   return (
     <>
       <BrowserRouter>

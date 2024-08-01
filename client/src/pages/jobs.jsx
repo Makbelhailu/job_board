@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MyButton from "../components/button";
 
 import Accordion from "@mui/material/Accordion";
@@ -6,13 +6,19 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import { MdExpandMore } from "react-icons/md";
 
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
+// import FormGroup from "@mui/material/FormGroup";
+// import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
 import JobCard from "../components/job-card";
 
+import { useRecoilValue } from "recoil";
+import { jobsState } from "../utils/states";
 const Jobs = () => {
+  const jobList = useRecoilValue(jobsState);
+  useEffect(() => {
+    console.log(jobList);
+  }, [jobList]);
   const defaultState = [
     {
       0: false,
@@ -61,13 +67,15 @@ const Jobs = () => {
         <div className="w-full lg:w-80 ">
           <div className="flex items-center justify-between px-4 filter lg:justify-around">
             <div className="text text-md font-bold">Filter Jobs</div>
-            <MyButton
-              className="mb-2 rounded-md p-0 text-xs font-bold"
-              colored={true}
-              onClick={clearFilter}
-            >
-              Clear All
-            </MyButton>
+            <div>
+              <MyButton
+                className="mb-2 rounded-md p-0 text-xs font-bold"
+                colored={true}
+                onClick={clearFilter}
+              >
+                Clear All
+              </MyButton>
+            </div>
           </div>
           <Accordion defaultExpanded className="m-0 border-0 shadow-none">
             <AccordionSummary

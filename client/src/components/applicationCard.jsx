@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
@@ -8,34 +8,24 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import JobCard from "../components/job-card";
+import { useRecoilValue } from "recoil";
+import { jobsState } from "../utils/states";
 
 import { FaLocationDot } from "react-icons/fa6";
 
-const ApplicationCard = ({ content }) => {
-  content = {
-    _id: "2f4rrf478hgg",
-    username: "Hulu Technology",
-    profile:
-      "https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-512.png",
-    title: "Full Stack Developer",
-    type: "FullTime",
-    vacancy: 2,
-    salary: "120,000/Year",
-    location: "Addis Ababa",
-    experience: 2,
-    description:
-      " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, animi? Temporibus ab asperiores enim perferendis! Quibusdam similique delectus omnis laborum voluptate hic at suscipit. Hic vel non voluptatibus alias aspernatur.",
-    requirements: [
-      "Sooner settle add put you sudden him.",
-      "To sorry world an at do spoil along.",
-      "Incommode he depending do frankness remainder to. Edward day",
-      "soon. It merely waited do unable.",
-    ],
-  };
-
+const ApplicationCard = () => {
+  const jobList = useRecoilValue(jobsState);
   const [value, setValue] = useState(0);
+  const { id } = useParams();
+  const [jobInfo, setJobInfo] = useState(
+    jobList.filter((job) => job._id === id)[0],
+  );
+
+  useEffect(() => {
+    setJobInfo(jobList.filter((job) => job._id === id)[0]);
+  }, [jobList]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -51,42 +41,42 @@ const ApplicationCard = ({ content }) => {
           <div className="header flex items-center justify-between">
             <div className="title flex items-start gap-8">
               <Avatar
-                src={content.profile}
+                src={jobInfo.profile || ""}
                 alt="user icon"
                 sx={{ width: 60, height: 60 }}
               >
-                H
+                {jobInfo.username}
               </Avatar>
 
               <div className="texts">
-                <h2 className="text-3xl font-bold">{content.title}</h2>
+                <h2 className="text-3xl font-bold">{jobInfo.title}</h2>
                 <h4 className="pl-1 text-xs font-semibold uppercase text-slate-700 group-hover:text-white">
-                  {content.username}
+                  {jobInfo.username}
                 </h4>
                 <div className="info my-4 flex items-center gap-4">
                   <div className="rounded-md bg-blueish-100 px-2 py-1 text-xs font-medium text-blueish-dark">
-                    {content.vacancy > 1
-                      ? `${content.vacancy} Positions`
-                      : `${content.vacancy} Position`}
+                    {jobInfo.vacancy > 1
+                      ? `${jobInfo.vacancy} Positions`
+                      : `${jobInfo.vacancy} Position`}
                   </div>
                   <div className="rounded-md  bg-orangeish-100 px-2 py-1 text-xs font-medium text-orangeish-dark ">
-                    {content.type}
+                    {jobInfo.type}
                   </div>
                   <div className="rounded-md bg-greenish-100 px-2 py-1 text-xs font-medium text-greenish-dark ">
-                    ${content.salary}
+                    ${jobInfo.salary}
                   </div>
                   <div className="flex items-center gap-x-[2px] rounded-md bg-orangeish-100 px-2 py-1 text-xs font-medium text-orangeish ">
                     <FaLocationDot className="text-xs" />
-                    <span>{content.location}</span>
+                    <span>{jobInfo.location}</span>
                   </div>
                   <div className="rounded-md bg-greenish-100 px-2 py-1 text-xs font-medium text-redish ">
-                    {content.experience} Years
+                    {jobInfo.experience} Years
                   </div>
                 </div>
               </div>
             </div>
 
-            <Link to={`/apply/${content._id}?title=${content.title}`}>
+            <Link to={`/apply/${jobInfo._id}?title=${jobInfo.title}`}>
               <button className="btn-primary px-4 py-2 text-sm ">
                 Apply Now
               </button>
@@ -113,24 +103,16 @@ const ApplicationCard = ({ content }) => {
             </Box>
             <CustomTabPanel value={value} index={0}>
               <p className="mb-8 text-sm text-slate-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Possimus ab architecto asperiores commodi consequatur suscipit
-                dolorem ex. Nesciunt maxime recusandae quis. Quam labore dolor
-                laboriosam nulla tempora? Placeat, quisquam veritatis. Lorem
-                ipsum dolor sit amet consectetur adipisicing elit. Possimus ab
-                architecto asperiores commodi consequatur suscipit dolorem ex.
-                Nesciunt maxime recusandae quis. Quam labore dolor laboriosam
-                nulla tempora? Placeat, quisquam veritatis.
+                {jobInfo.description}
               </p>
 
               <h2 className="my-4 text-sm font-semibold">
                 Essential Knowledge, Skill And Qualification
               </h2>
               <ul className="list-outside list-disc pl-8 text-sm leading-loose text-slate-700">
-                <li>skill 1</li>
-                <li>skill 2</li>
-                <li>skill 3</li>
-                <li>skill 4</li>
+                {jobInfo["requirements"].map((req, key) => (
+                  <li key={key}>{req}</li>
+                ))}
               </ul>
               <h2 className="mt-8 text-sm font-semibold">
                 Deadline:
@@ -149,17 +131,16 @@ const ApplicationCard = ({ content }) => {
         </CardContent>
       </Card>
       <div className="job-lists scrollbar-none gird-rows-1 grid max-h-[680px] w-full grid-flow-col gap-4 overflow-x-scroll py-6 xl:w-2/5 xl:grid-flow-row xl:grid-cols-1 xl:overflow-x-hidden xl:overflow-y-scroll">
-        <JobCard content={content} btn={true} className={"w-[450px]"} />
-        <JobCard content={content} btn={true} className={"w-[450px]"} />
-        <JobCard content={content} btn={true} className={"w-[450px]"} />
-        <JobCard content={content} btn={true} className={"w-[450px]"} />
-        <JobCard content={content} btn={true} className={"w-[450px]"} />
-        <JobCard content={content} btn={true} className={"w-[450px]"} />
-        <JobCard content={content} btn={true} className={"w-[450px]"} />
-        <JobCard content={content} btn={true} className={"w-[450px]"} />
-        <JobCard content={content} btn={true} className={"w-[450px]"} />
-        <JobCard content={content} btn={true} className={"w-[450px]"} />
-        <JobCard content={content} btn={true} className={"w-[450px]"} />
+        {jobList
+          .filter((job) => job._id !== id)
+          .map((content, key) => (
+            <JobCard
+              key={key}
+              content={content}
+              btn={true}
+              className={"w-[450px]"}
+            />
+          ))}
       </div>
     </div>
   );

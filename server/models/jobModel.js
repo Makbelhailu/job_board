@@ -43,6 +43,10 @@ const jobSchema = new Schema(
       type: [String],
       required: true,
     },
+    responsibility: {
+      type: [String],
+      required: true,
+    },
     vacancy: {
       type: Number,
       required: true,

@@ -6,19 +6,16 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import { MdExpandMore } from "react-icons/md";
 
-// import FormGroup from "@mui/material/FormGroup";
-// import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
 import JobCard from "../components/job-card";
 
 import { useRecoilValue } from "recoil";
 import { jobsState } from "../utils/states";
+
 const Jobs = () => {
   const jobList = useRecoilValue(jobsState);
-  useEffect(() => {
-    console.log(jobList);
-  }, [jobList]);
+
   const defaultState = [
     {
       0: false,
@@ -330,17 +327,9 @@ const Jobs = () => {
         </div>
 
         <div className="job-lists scrollbar-none grid h-auto max-h-[720px] w-full grid-cols-1 items-center justify-center gap-4 overflow-y-scroll md:grid-cols-2 xl:grid-cols-3">
-          <JobCard content={content} btn={true} />
-          <JobCard content={content} btn={true} />
-          <JobCard content={content} btn={true} />
-          <JobCard content={content} btn={true} />
-          <JobCard content={content} btn={true} />
-          <JobCard content={content} btn={true} />
-          <JobCard content={content} btn={true} />
-          <JobCard content={content} btn={true} />
-          <JobCard content={content} btn={true} />
-          <JobCard content={content} btn={true} />
-          <JobCard content={content} btn={true} />
+          {jobList.map((content, key) => (
+            <JobCard key={key} content={content} btn={true} />
+          ))}
         </div>
       </div>
     </>

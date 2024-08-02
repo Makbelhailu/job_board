@@ -24,14 +24,17 @@ import JobCard from "../components/job-card";
 
 import { useClerk, useUser } from "@clerk/clerk-react";
 import { useEffect } from "react";
+import { jobsState, userState } from "../utils/states";
+import { useRecoilValue } from "recoil";
 
 const Home = () => {
-  const { isSignedIn, user, isLoaded } = useUser();
+  const { user, isSignedIn } = useRecoilValue(userState);
+  const jobList = useRecoilValue(jobsState);
   const clerk = useClerk();
 
   useEffect(() => {
     if (isSignedIn) console.log(user.id);
-  }, [isLoaded]);
+  }, [isSignedIn]);
 
   const marqueeContent = [
     "Software Engineer",
@@ -263,12 +266,9 @@ const Home = () => {
           </div>
         </div>
         <div className="job_cards grid grid-cols-3 items-center justify-around gap-4">
-          <JobCard content={content} />
-          <JobCard content={content} />
-          <JobCard content={content} />
-          <JobCard content={content} />
-          <JobCard content={content} />
-          <JobCard content={content} />
+          {jobList.slice(0, 6).map((content, key) => (
+            <JobCard key={key} content={content} />
+          ))}
         </div>
       </div>
       <div className="offers_container my-28 px-12">

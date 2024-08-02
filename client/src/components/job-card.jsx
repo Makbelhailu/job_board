@@ -6,13 +6,14 @@ import { CardActionArea } from "@mui/material";
 
 import { useClerk, useUser } from "@clerk/clerk-react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MyButton from "./button";
 import { FaLocationDot } from "react-icons/fa6";
 
 const JobCard = ({ content, btn, className }) => {
   const { isSignedIn } = useUser();
   const clerk = useClerk();
+  const navigate = useNavigate();
 
   return (
     <Card
@@ -20,7 +21,7 @@ const JobCard = ({ content, btn, className }) => {
       className={`shadow-lg ${className ? className : "md:w-[400]"} xl:w-full`}
     >
       <Link
-        to={isSignedIn ? "/jobs/jhjhk" : "/"}
+        to={isSignedIn ? `/jobs/${content._id}` : "/"}
         onClick={() => {
           if (!isSignedIn) clerk.openSignUp();
         }}
@@ -48,19 +49,21 @@ const JobCard = ({ content, btn, className }) => {
                 </div>
                 <div className="flex flex-wrap items-center justify-start gap-x-2 gap-y-3 text-center">
                   <div className="rounded-md bg-blueish-100 px-2 py-1 text-xs font-medium text-blueish group-hover:bg-secondary-dark group-hover:text-white">
-                    2 Positions
+                    {content.vacancy > 1
+                      ? `${content.vacancy} Positions`
+                      : `${content.vacancy} Position`}
                   </div>
                   <div className="rounded-md  bg-orangeish-100 px-2 py-1 text-xs font-medium text-orangeish group-hover:bg-secondary-dark  group-hover:text-white">
-                    Fulltime
+                    {content.type}
                   </div>
                   <div className="rounded-md bg-greenish-100 px-2 py-1 text-xs font-medium text-greenish group-hover:bg-secondary-dark  group-hover:text-white">
-                    $2000/month
+                    ${content.salary}
                   </div>
                 </div>
               </div>
               {btn && isSignedIn && (
                 <div className="btns mt-4 flex gap-5">
-                  <Link to="/apply/id?title=title">
+                  <Link to={`/apply/${content._id}?title=${content.title}`}>
                     <MyButton
                       colored={true}
                       className={

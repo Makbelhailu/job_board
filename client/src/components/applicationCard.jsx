@@ -12,6 +12,7 @@ import { Link, useParams } from "react-router-dom";
 import JobCard from "../components/job-card";
 import { useRecoilValue } from "recoil";
 import { jobsState } from "../utils/states";
+import { formatDate } from "../utils/functions";
 
 import { FaLocationDot } from "react-icons/fa6";
 
@@ -25,7 +26,7 @@ const ApplicationCard = () => {
 
   useEffect(() => {
     setJobInfo(jobList.filter((job) => job._id === id)[0]);
-  }, [jobList]);
+  }, [id]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -41,7 +42,7 @@ const ApplicationCard = () => {
           <div className="header flex items-center justify-between">
             <div className="title flex items-start gap-8">
               <Avatar
-                src={jobInfo.profile || ""}
+                src={jobInfo.profile}
                 alt="user icon"
                 sx={{ width: 60, height: 60 }}
               >
@@ -116,15 +117,16 @@ const ApplicationCard = () => {
               </ul>
               <h2 className="mt-8 text-sm font-semibold">
                 Deadline:
-                <span className="ml-2 text-xs font-medium">July 5, 2024</span>
+                <span className="ml-2 text-xs font-medium">
+                  {formatDate(jobInfo.deadline)}
+                </span>
               </h2>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
               <ul className="mt-4 list-outside list-disc text-sm leading-loose text-slate-700">
-                <li>skill 1</li>
-                <li>skill 2</li>
-                <li>skill 3</li>
-                <li>skill 4</li>
+                {jobInfo["responsibility"].map((req, key) => (
+                  <li key={key}>{req}</li>
+                ))}
               </ul>
             </CustomTabPanel>
           </Box>

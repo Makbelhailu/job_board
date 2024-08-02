@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment";
 
 export const autoResize = (ref) => {
   const textarea = ref.current;
@@ -14,3 +15,5 @@ export const fetchJobs = () => {
       throw err;
     });
 };
+
+export const formatDate = (date) => moment(date).format("MMMM Do, YYYY");

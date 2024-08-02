@@ -25,7 +25,10 @@ function App() {
 
   useEffect(() => {
     fetchJobs()
-      .then((data) => setJobs(data))
+      .then((data) => {
+        setJobs(data);
+        setIsLoading(false);
+      })
       .catch((err) => console.log("error fetching jobs: ", err));
   }, []);
   useEffect(() => {
@@ -33,33 +36,36 @@ function App() {
   }, [isLoaded]);
   return (
     <>
-      <BrowserRouter>
-        <header>
-          <NavBar />
-        </header>
-        {}
-        <main className="m-0 h-[90%]">
-          <SignedOut>
-            <Routes>
-              <Route path="*" element={<ErrorPage />} />
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </SignedOut>
-          <SignedIn>
-            <Routes>
-              <Route path="*" element={<ErrorPage />} />
-              <Route path="/" element={<Home />} />
-              <Route path="/account-type" element={<AccountType />} />
-              <Route path="/jobs" element={<Jobs />} />
-              <Route path="/jobs/:id" element={<ApplicationCard />} />
-              <Route path="/apply/:title" element={<ApplicationForm />} />
-            </Routes>
-          </SignedIn>
-        </main>
-        <footer>
-          <Footer />
-        </footer>
-      </BrowserRouter>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <BrowserRouter>
+          <header>
+            <NavBar />
+          </header>
+          <main className="m-0 h-[90%]">
+            <SignedOut>
+              <Routes>
+                <Route path="*" element={<ErrorPage />} />
+                <Route path="/" element={<Home />} />
+              </Routes>
+            </SignedOut>
+            <SignedIn>
+              <Routes>
+                <Route path="*" element={<ErrorPage />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/account-type" element={<AccountType />} />
+                <Route path="/jobs" element={<Jobs />} />
+                <Route path="/jobs/:id" element={<ApplicationCard />} />
+                <Route path="/apply/:title" element={<ApplicationForm />} />
+              </Routes>
+            </SignedIn>
+          </main>
+          <footer>
+            <Footer />
+          </footer>
+        </BrowserRouter>
+      )}
     </>
   );
 }

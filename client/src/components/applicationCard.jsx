@@ -13,6 +13,7 @@ import JobCard from "../components/job-card";
 import { useRecoilValue } from "recoil";
 import { jobsState } from "../utils/states";
 import { formatDate } from "../utils/functions";
+import ErrorPage from "../components/errorPage";
 
 import { FaLocationDot } from "react-icons/fa6";
 
@@ -26,13 +27,13 @@ const ApplicationCard = () => {
 
   useEffect(() => {
     setJobInfo(jobList.filter((job) => job._id === id)[0]);
-  }, [id]);
+  }, [jobList, id]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  return (
+  return jobInfo && Object.keys(jobInfo).length !== 0 ? (
     <div className="mt-6 w-full items-center gap-x-4 gap-y-8 py-6 xl:flex">
       <Card
         sx={{ maxWidth: "100%", borderRadius: 4, boxShadow: 8 }}
@@ -132,7 +133,7 @@ const ApplicationCard = () => {
           </Box>
         </CardContent>
       </Card>
-      <div className="job-lists scrollbar-none gird-rows-1 grid max-h-[680px] w-full grid-flow-col gap-4 overflow-x-scroll py-6 xl:w-2/5 xl:grid-flow-row xl:grid-cols-1 xl:overflow-x-hidden xl:overflow-y-scroll">
+      <div className="job-lists scrollbar-none gird-rows-1 grid max-h-[680px] w-full grid-flow-col gap-4 overflow-x-scroll py-6 xl:w-2/5 xl:grid-flow-row xl:grid-cols-1 xl:overflow-x-hidden xl:overflow-y-scroll xl:py-0">
         {jobList
           .filter((job) => job._id !== id)
           .map((content, key) => (
@@ -145,6 +146,8 @@ const ApplicationCard = () => {
           ))}
       </div>
     </div>
+  ) : (
+    <ErrorPage />
   );
 };
 

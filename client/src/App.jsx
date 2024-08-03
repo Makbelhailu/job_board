@@ -24,12 +24,19 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchJobs()
-      .then((data) => {
-        setJobs(data);
-        setIsLoading(false);
-      })
-      .catch((err) => console.log("error fetching jobs: ", err));
+    const fetchInterval = setInterval(() => {
+      fetchJobs()
+        .then((data) => {
+          setJobs(data);
+          setIsLoading(false);
+          clearInterval(fetchInterval);
+        })
+        .catch((err) => {
+          console.log("error fetching jobs:", err.message);
+        });
+    }, 5000);
+
+    return () => clearInterval(fetchInterval);
   }, []);
   useEffect(() => {
     if (isSignedIn) setUserInfo({ user, isSignedIn });

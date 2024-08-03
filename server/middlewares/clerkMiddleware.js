@@ -1,6 +1,10 @@
 require("dotenv").config();
 const { createClerkClient } = require("@clerk/clerk-sdk-node");
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 const companyInfo = async (jobList) => {
   try {
     const clerkClient = createClerkClient({
@@ -23,7 +27,8 @@ const companyInfo = async (jobList) => {
     return fullJobList;
   } catch (err) {
     console.log("error fetching company info", err);
-    return jobList;
+    await sleep(2000);
+    return companyInfo(jobList);
   }
 };
 

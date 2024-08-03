@@ -44,7 +44,7 @@ const Jobs = () => {
     location: "New York, USA",
     title: "software engineer",
     description:
-      "lorem hi im the lost guy that you asked to find so take a rest it seems you already found me lorem hi im the lost guy that you asked to find so take a rest it seems you already found me it seems you already found me ",
+      "hi im the lost guy that you asked to find so take a rest it seems you already found me lorem hi im the lost guy that you asked to find so take a rest it seems you already found me it seems you already found me ",
   };
 
   const handleCheck = (checked, value, state, func) => {

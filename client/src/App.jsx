@@ -38,6 +38,7 @@ function App() {
 
     return () => clearInterval(fetchInterval);
   }, []);
+
   useEffect(() => {
     if (isSignedIn) setUserInfo({ user, isSignedIn });
   }, [isLoaded]);

@@ -256,9 +256,9 @@ const Home = () => {
               <MyButton
                 className="mb-2 rounded-md p-0 text-xs font-bold"
                 colored={true}
-                onClick={() => {
-                  if (!isSignedIn) clerk.openSignUp();
-                }}
+                // onClick={() => {
+                //   if (!isSignedIn) clerk.openSignUp();
+                // }}
               >
                 View All Jobs
               </MyButton>

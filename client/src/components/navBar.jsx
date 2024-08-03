@@ -8,16 +8,19 @@ const NavBar = () => {
   const clerk = useClerk();
   const [accountType, setAccountType] = useState("");
 
-  useEffect(() => {
-    if (isSignedIn) setAccountType(user.unsafeMetadata.accountType);
-  }, [isLoaded]);
-
   const location = useLocation();
   const [path, setPath] = useState(location.pathname);
 
   useEffect(() => {
+    if (isSignedIn) {
+      setAccountType(user.unsafeMetadata.AccountType);
+    }
+  }, [isLoaded]);
+
+  useEffect(() => {
     setPath(location.pathname);
   }, [location]);
+
   return (
     <div className="my-4 flex w-full items-center justify-between">
       <div className="logo">
@@ -50,7 +53,9 @@ const NavBar = () => {
             </Link>
           </li>
 
-          {accountType && <customLink type={accountType} />}
+          {accountType && (
+            <CustomLink type={accountType} path={path} setPath={setPath} />
+          )}
           <li>
             <Link
               to="/about"
@@ -86,7 +91,7 @@ const NavBar = () => {
   );
 };
 
-function customLink({ type }) {
+function CustomLink({ type, path, setPath }) {
   if (type === "freelancer") {
     return (
       <li>

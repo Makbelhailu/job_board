@@ -15,7 +15,7 @@ import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { fetchJobs } from "./utils/functions";
 import { useSetRecoilState } from "recoil";
 import { jobsState, userState } from "./utils/states";
-import { useClerk, useUser } from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
 
 function App() {
   const setJobs = useSetRecoilState(jobsState);
@@ -53,18 +53,18 @@ function App() {
           <main className="m-0 h-[90%]">
             <SignedOut>
               <Routes>
-                <Route path="*" element={<ErrorPage />} />
                 <Route path="/" element={<Home />} />
+                <Route path="*" element={<ErrorPage />} />
               </Routes>
             </SignedOut>
             <SignedIn>
               <Routes>
-                <Route path="*" element={<ErrorPage />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/account-type" element={<AccountType />} />
                 <Route path="/jobs" element={<Jobs />} />
                 <Route path="/jobs/:id" element={<ApplicationCard />} />
                 <Route path="/apply/:title" element={<ApplicationForm />} />
+                <Route path="*" element={<ErrorPage />} />
               </Routes>
             </SignedIn>
           </main>

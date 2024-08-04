@@ -8,6 +8,7 @@ const getAllJobs = async (req, res) => {
   const limit = parseInt(req.body.limit) || 12;
   const skip = (page - 1) * limit;
 
+  console.log(page);
   const jobList = await JobList.find({})
     .sort({ createdAt: -1 })
     .skip(skip)

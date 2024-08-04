@@ -354,7 +354,7 @@ const Jobs = () => {
                 <JobCard key={key} content={content} btn={true} />
               ))}
             </div>
-            <Pagination count={10} />
+            <Pagination count={10} shape="rounded" size="large" />
           </div>
         )}
       </div>

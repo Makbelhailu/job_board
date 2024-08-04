@@ -93,7 +93,7 @@ const Jobs = () => {
   return (
     <>
       <div className="mt-12 flex flex-col items-center justify-center gap-4 lg:flex-row lg:items-start">
-        <div className="w-full lg:w-80 ">
+        <div className="w-full ">
           <div className="flex w-full items-center justify-between px-4 filter lg:justify-around">
             <div className="text text-md font-bold">Filter Jobs</div>
             <div>

@@ -7,7 +7,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { MdExpandMore } from "react-icons/md";
 
@@ -20,6 +20,7 @@ import { jobsState } from "../utils/states";
 import { fetchJobs } from "../utils/functions";
 
 const Jobs = () => {
+  const [count, setCount] = useState(1);
   const [jobList, setJobList] = useRecoilState(jobsState);
   const [isLoading, setIsLoading] = useState(true);
   const path = useLocation();
@@ -59,10 +60,11 @@ const Jobs = () => {
 
   useEffect(() => {
     const fetchInterval = setInterval(() => {
-      fetchJobs()
+      fetchJobs(page)
         .then((data) => {
           setJobList(data);
           setIsLoading(false);
+          if (data.length >= 12) setCount(count + 1);
           clearInterval(fetchInterval);
         })
         .catch((err) => {
@@ -71,7 +73,7 @@ const Jobs = () => {
     }, 5000);
 
     return () => clearInterval(fetchInterval);
-  }, []);
+  }, [path]);
   const handleCheck = (checked, value, state, func) => {
     if (checked) {
       func([...state, value]);
@@ -362,7 +364,7 @@ const Jobs = () => {
             </div>
             <Pagination
               page={page}
-              count={10}
+              count={count}
               renderItem={(item) => (
                 <PaginationItem
                   component={Link}

@@ -9,7 +9,7 @@ export const autoResize = (ref) => {
 
 export const fetchJobs = (page = 1) => {
   return axios
-    .get("http://localhost:5000/api/v1/jobs", { page })
+    .get("http://localhost:5000/api/v1/jobs", { page: page })
     .then((res) => res.data)
     .catch((err) => {
       throw err;

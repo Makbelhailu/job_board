@@ -61,6 +61,7 @@ const Jobs = () => {
     setQuery(new URLSearchParams(path.search));
     setPage(parseInt(query.get("page") || "1", 10));
   }, [path]);
+
   useEffect(() => {
     const fetchInterval = setInterval(() => {
       fetchJobs(page)
@@ -77,7 +78,7 @@ const Jobs = () => {
     }, 5000);
 
     return () => clearInterval(fetchInterval);
-  }, [path]);
+  }, [page]);
   const handleCheck = (checked, value, state, func) => {
     if (checked) {
       func([...state, value]);
@@ -93,7 +94,7 @@ const Jobs = () => {
     <>
       <div className="mt-12 flex flex-col items-center justify-center gap-4 lg:flex-row lg:items-start">
         <div className="w-full lg:w-80 ">
-          <div className="flex items-center justify-between px-4 filter lg:justify-around">
+          <div className="flex w-full items-center justify-between px-4 filter lg:justify-around">
             <div className="text text-md font-bold">Filter Jobs</div>
             <div>
               <MyButton

@@ -344,7 +344,7 @@ const Jobs = () => {
           </Accordion>
         </div>
 
-        <div className="job-lists scrollbar-none grid h-[720px] w-full grid-cols-1 items-center justify-center gap-4 overflow-y-scroll md:grid-cols-2 xl:grid-cols-3">
+        <div className="job-lists scrollbar-none grid max-h-[720px] w-full grid-cols-1 items-center justify-center gap-4 overflow-y-scroll md:grid-cols-2 xl:grid-cols-3">
           {isLoading ? (
             <Loading />
           ) : (

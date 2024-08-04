@@ -6,6 +6,9 @@ import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Pagination from "@mui/material/Pagination";
+import PaginationItem from "@mui/material/PaginationItem";
+import { useLocation } from "react-router-dom";
+
 import { MdExpandMore } from "react-icons/md";
 
 import Checkbox from "@mui/material/Checkbox";
@@ -19,6 +22,9 @@ import { fetchJobs } from "../utils/functions";
 const Jobs = () => {
   const [jobList, setJobList] = useRecoilState(jobsState);
   const [isLoading, setIsLoading] = useState(true);
+  const path = useLocation();
+  const query = new URLSearchParams(path.search);
+  const page = parseInt(query.get("page") || "1", 10);
 
   const defaultState = [
     {
@@ -354,7 +360,17 @@ const Jobs = () => {
                 <JobCard key={key} content={content} btn={true} />
               ))}
             </div>
-            <Pagination count={10} shape="rounded" size="large" />
+            <Pagination
+              page={page}
+              count={10}
+              renderItem={(item) => (
+                <PaginationItem
+                  component={Link}
+                  to={`/jobs${item.page === 1 ? "" : `?page=${item.page}`}`}
+                  {...item}
+                />
+              )}
+            />
           </div>
         )}
       </div>

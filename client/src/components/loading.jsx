@@ -5,8 +5,8 @@ import "ldrs/grid";
 
 const Loading = () => {
   return (
-    <div className="bg-gradient absolute left-0 top-0 grid h-full w-screen place-items-center">
-      <l-grid size="250" speed="1.5" color="#fff"></l-grid>
+    <div className="grid h-full w-full place-items-center">
+      <l-grid size="250" speed="1.5" color="#571cbd"></l-grid>
     </div>
   );
 };

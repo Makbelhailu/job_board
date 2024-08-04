@@ -4,7 +4,14 @@ const companyInfo = require("../middlewares/clerkMiddleware");
 
 // get all data
 const getAllJobs = async (req, res) => {
-  const jobList = await JobList.find().sort({ createdAt: 1 });
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 12;
+  const skip = (page - 1) * limit;
+
+  const jobList = await JobList.find({})
+    .sort({ createdAt: -1 })
+    .skip(skip)
+    .limit(limit);
 
   if (!jobList) {
     return res.status(400).json({ error: "error fetching all the jobs" });

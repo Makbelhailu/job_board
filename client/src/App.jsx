@@ -18,62 +18,40 @@ import { jobsState, userState } from "./utils/states";
 import { useUser } from "@clerk/clerk-react";
 
 function App() {
-  const setJobs = useSetRecoilState(jobsState);
   const setUserInfo = useSetRecoilState(userState);
   const { isSignedIn, user, isLoaded } = useUser();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchInterval = setInterval(() => {
-      fetchJobs()
-        .then((data) => {
-          setJobs(data);
-          setIsLoading(false);
-          clearInterval(fetchInterval);
-        })
-        .catch((err) => {
-          console.log("error fetching jobs:", err.message);
-        });
-    }, 5000);
-
-    return () => clearInterval(fetchInterval);
-  }, []);
 
   useEffect(() => {
     if (isSignedIn) setUserInfo({ user, isSignedIn });
   }, [isLoaded]);
   return (
     <>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <BrowserRouter>
-          <header>
-            <NavBar />
-          </header>
-          <main className="m-0 h-[90%]">
-            <SignedOut>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="*" element={<ErrorPage />} />
-              </Routes>
-            </SignedOut>
-            <SignedIn>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/account-type" element={<AccountType />} />
-                <Route path="/jobs" element={<Jobs />} />
-                <Route path="/jobs/:id" element={<ApplicationCard />} />
-                <Route path="/apply/:title" element={<ApplicationForm />} />
-                <Route path="*" element={<ErrorPage />} />
-              </Routes>
-            </SignedIn>
-          </main>
-          <footer>
-            <Footer />
-          </footer>
-        </BrowserRouter>
-      )}
+      <BrowserRouter>
+        <header>
+          <NavBar />
+        </header>
+        <main className="m-0 h-[90%]">
+          <SignedOut>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="*" element={<ErrorPage />} />
+            </Routes>
+          </SignedOut>
+          <SignedIn>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/account-type" element={<AccountType />} />
+              <Route path="/jobs" element={<Jobs />} />
+              <Route path="/jobs/:id" element={<ApplicationCard />} />
+              <Route path="/apply/:title" element={<ApplicationForm />} />
+              <Route path="*" element={<ErrorPage />} />
+            </Routes>
+          </SignedIn>
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </BrowserRouter>
     </>
   );
 }

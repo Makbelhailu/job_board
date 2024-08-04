@@ -25,11 +25,7 @@ const Jobs = () => {
   const [isLoading, setIsLoading] = useState(true);
   const path = useLocation();
   const [query, setQuery] = useState(new URLSearchParams(path.search));
-  const [page, setPage] = parseInt(query.get("page") || "1", 10);
-  useEffect(() => {
-    const query = new URLSearchParams(path.search);
-    const page = parseInt(query.get("page") || "1", 10);
-  });
+  const [page, setPage] = useState(parseInt(query.get("page") || "1", 10));
 
   const defaultState = [
     {
@@ -61,7 +57,10 @@ const Jobs = () => {
     description:
       "hi im the lost guy that you asked to find so take a rest it seems you already found me lorem hi im the lost guy that you asked to find so take a rest it seems you already found me it seems you already found me ",
   };
-
+  useEffect(() => {
+    setQuery(new URLSearchParams(path.search));
+    setPage(parseInt(query.get("page") || "1", 10));
+  }, [path]);
   useEffect(() => {
     const fetchInterval = setInterval(() => {
       fetchJobs(page)

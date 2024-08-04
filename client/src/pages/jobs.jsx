@@ -348,7 +348,7 @@ const Jobs = () => {
         {isLoading ? (
           <Loading />
         ) : (
-          <div className="">
+          <div className="flex flex-col items-center justify-center gap-8">
             <div className="job-lists scrollbar-none grid max-h-[720px] w-full grid-cols-1 items-center justify-center gap-4 overflow-y-scroll md:grid-cols-2 xl:grid-cols-3">
               {jobList.map((content, key) => (
                 <JobCard key={key} content={content} btn={true} />

@@ -24,8 +24,12 @@ const Jobs = () => {
   const [jobList, setJobList] = useRecoilState(jobsState);
   const [isLoading, setIsLoading] = useState(true);
   const path = useLocation();
-  const query = new URLSearchParams(path.search);
-  const page = parseInt(query.get("page") || "1", 10);
+  const [query, setQuery] = useState(new URLSearchParams(path.search));
+  const [page, setPage] = parseInt(query.get("page") || "1", 10);
+  useEffect(() => {
+    const query = new URLSearchParams(path.search);
+    const page = parseInt(query.get("page") || "1", 10);
+  });
 
   const defaultState = [
     {

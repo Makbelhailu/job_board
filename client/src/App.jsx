@@ -13,6 +13,7 @@ import AccountType from "./components/accountType";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 
 import { fetchJobs } from "./utils/functions";
+import { useRecoilState } from "recoil";
 import { useSetRecoilState } from "recoil";
 import { jobsState, userState } from "./utils/states";
 import { useUser } from "@clerk/clerk-react";
@@ -44,6 +45,9 @@ function App() {
     if (isSignedIn) setUserInfo({ ...user, isSignedIn });
   }, [isLoaded]);
 
+  useEffect(() => {
+    console.log(userInfo);
+  }, [userInfo]);
   return (
     <>
       <BrowserRouter>

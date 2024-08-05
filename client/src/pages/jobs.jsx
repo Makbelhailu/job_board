@@ -66,7 +66,7 @@ const Jobs = () => {
     setQuery(useQuery(path));
     setPage(parseInt(query.get("page") || "1", 10));
     setIsLoading(true);
-  }, [path]);
+  }, [path, search]);
 
   useEffect(() => {
     const fetchInterval = setInterval(() => {

@@ -40,38 +40,17 @@ const Footer = () => {
         </div>
         <ul className="flex list-none flex-col gap-2 text-xs font-medium text-slate-100">
           <li>
-            <Link
-              to="/"
-              onClick={(e) => {
-                setPath("/");
-              }}
-            >
-              Home
-            </Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link
-              to="/jobs"
-              onClick={(e) => {
-                setPath("/jobs");
-              }}
-            >
-              Jobs
-            </Link>
+            <Link to="/jobs">Jobs</Link>
           </li>
 
           {accountType && (
             <CustomLink type={accountType} path={path} setPath={setPath} />
           )}
           <li>
-            <Link
-              to="/about"
-              onClick={(e) => {
-                setPath("/about");
-              }}
-            >
-              About
-            </Link>
+            <Link to="/about">About</Link>
           </li>
         </ul>
       </div>
@@ -120,27 +99,13 @@ function CustomLink({ type, path, setPath }) {
   if (type === "freelancer") {
     return (
       <li>
-        <Link
-          to="/applications"
-          onClick={(e) => {
-            setPath("/applications");
-          }}
-        >
-          Applications
-        </Link>
+        <Link to="/applications">Applications</Link>
       </li>
     );
   } else if (type === "company") {
     return (
       <li>
-        <Link
-          to="/posts"
-          onClick={(e) => {
-            setPath("/posts");
-          }}
-        >
-          Posts
-        </Link>
+        <Link to="/posts">Posts</Link>
       </li>
     );
   }

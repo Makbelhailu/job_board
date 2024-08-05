@@ -60,6 +60,7 @@ const Jobs = () => {
   useEffect(() => {
     setQuery(new URLSearchParams(path.search));
     setPage(parseInt(query.get("page") || "1", 10));
+    setIsLoading(true);
   }, [path]);
 
   useEffect(() => {

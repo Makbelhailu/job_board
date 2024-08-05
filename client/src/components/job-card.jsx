@@ -17,7 +17,7 @@ const JobCard = ({ content, btn, className }) => {
 
   return (
     <Card
-      sx={{ maxHeight: 275, borderRadius: 2, boxShadow: 5 }}
+      sx={{ height: 275, borderRadius: 2, boxShadow: 5 }}
       className={`shadow-lg ${className ? className : "md:w-[400px]"} xl:w-auto xl:max-w-[350px]`}
     >
       <Link

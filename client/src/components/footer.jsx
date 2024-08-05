@@ -122,7 +122,6 @@ function CustomLink({ type, path, setPath }) {
       <li>
         <Link
           to="/applications"
-          className={`link ${path == "/applications" ? "active" : ""}`}
           onClick={(e) => {
             setPath("/applications");
           }}
@@ -136,7 +135,6 @@ function CustomLink({ type, path, setPath }) {
       <li>
         <Link
           to="/posts"
-          className={`link ${path == "/posts" ? "active" : ""}`}
           onClick={(e) => {
             setPath("/posts");
           }}

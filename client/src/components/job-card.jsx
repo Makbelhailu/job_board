@@ -26,7 +26,9 @@ const JobCard = ({ content, btn, className }) => {
           if (!isSignedIn) clerk.openSignUp();
         }}
       >
-        <CardActionArea>
+        <CardActionArea
+          sx={{ margin: 0, padding: 0, width: "100%", height: "100%" }}
+        >
           <CardContent className="group h-full w-full bg-white hover:bg-secondary hover:text-white">
             <div className="m-2">
               <div className="mb-4 flex h-full w-full gap-x-4 ">

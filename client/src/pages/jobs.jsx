@@ -79,7 +79,7 @@ const Jobs = () => {
     }, 5000);
 
     return () => clearInterval(fetchInterval);
-  }, [page]);
+  }, [page, isLoading]);
   const handleCheck = (checked, value, state, func) => {
     if (checked) {
       func([...state, value]);

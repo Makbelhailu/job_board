@@ -20,7 +20,7 @@ import { useUser } from "@clerk/clerk-react";
 function App() {
   const setUserInfo = useSetRecoilState(userState);
   const setJobList = useSetRecoilState(jobsState);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { isSignedIn, user, isLoaded } = useUser();
 
   useEffect(() => {

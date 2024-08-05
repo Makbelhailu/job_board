@@ -53,6 +53,7 @@ function App() {
           <SignedOut>
             <Routes>
               <Route path="/" element={<Home isLoading={isLoading} />} />
+              <Route path="/jobs" element={<Jobs />} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </SignedOut>

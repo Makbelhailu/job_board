@@ -74,10 +74,10 @@ const Jobs = () => {
       fetchJobs(page)
         .then((data) => {
           setJobList(data);
-          setIsLoading(false);
           if (data.length >= 12 && page == count) setCount(count + 1);
           console.log("12 job fetched with page", page);
           clearInterval(fetchInterval);
+          setIsLoading(false);
         })
         .catch((err) => {
           console.log("error fetching jobs:", err.message);

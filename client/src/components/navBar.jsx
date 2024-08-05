@@ -6,18 +6,13 @@ import { userState } from "../utils/states";
 import { useRecoilValue } from "recoil";
 
 const NavBar = () => {
-  const { isSignedIn, user, isLoaded } = useUser();
+  // const { isSignedIn, user, isLoaded } = useUser();
   const clerk = useClerk();
-  const users = useRecoilValue(userState);
+  const user = useRecoilValue(userState);
+  const accountType = user.unsafeMetadata.AccountType;
 
   const location = useLocation();
   const [path, setPath] = useState(location.pathname);
-
-  useEffect(() => {
-    if (isSignedIn) {
-      setAccountType(user.unsafeMetadata.AccountType);
-    }
-  }, [isLoaded]);
 
   useEffect(() => {
     setPath(location.pathname);
@@ -71,7 +66,7 @@ const NavBar = () => {
           </li>
         </ul>
 
-        {isSignedIn ? (
+        {user.isSignedIn ? (
           <UserButton
             appearance={{ elements: { userButtonAvatarBox: "w-9 h-9" } }}
           />

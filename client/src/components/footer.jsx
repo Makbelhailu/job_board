@@ -45,7 +45,7 @@ const Footer = () => {
           <li>
             <Link to="/jobs">Jobs</Link>
           </li>
-          {type === "freelancer" ? (
+          {accountType === "freelancer" ? (
             <li>
               <Link to="/applications">Applications</Link>
             </li>
@@ -100,5 +100,37 @@ const Footer = () => {
     </div>
   );
 };
+
+function CustomLink({ type, path, setPath }) {
+  if (type === "freelancer") {
+    return (
+      <li>
+        <Link
+          to="/applications"
+          className={`link ${path == "/applications" ? "active" : ""}`}
+          onClick={(e) => {
+            setPath("/applications");
+          }}
+        >
+          Applications
+        </Link>
+      </li>
+    );
+  } else if (type === "company") {
+    return (
+      <li>
+        <Link
+          to="/posts"
+          className={`link ${path == "/posts" ? "active" : ""}`}
+          onClick={(e) => {
+            setPath("/posts");
+          }}
+        >
+          Posts
+        </Link>
+      </li>
+    );
+  }
+}
 
 export default Footer;

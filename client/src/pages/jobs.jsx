@@ -23,11 +23,11 @@ const Jobs = () => {
   const [jobList, setJobList] = useRecoilState(jobsState);
   const [isLoading, setIsLoading] = useState(true);
   const path = useLocation();
-  const [query, setQuery] = useState(useQuery(path));
+  const [query, setQuery] = useState(useQuery());
   const [page, setPage] = useState(parseInt(query.get("page") || "1", 10));
   const [count, setCount] = useState(page);
 
-  function useQuery(path) {
+  function useQuery() {
     return new URLSearchParams(path.search);
   }
 
@@ -62,7 +62,7 @@ const Jobs = () => {
       "hi im the lost guy that you asked to find so take a rest it seems you already found me lorem hi im the lost guy that you asked to find so take a rest it seems you already found me it seems you already found me ",
   };
   useEffect(() => {
-    setQuery(useQuery(path));
+    setQuery(useQuery());
     setPage(parseInt(query.get("page") || "1", 10));
     setIsLoading(true);
   }, [path]);

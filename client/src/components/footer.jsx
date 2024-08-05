@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { useClerk, useUser } from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
 const Footer = () => {
   const { isSignedIn, user, isLoaded } = useUser();
-  const clerk = useClerk();
   const [accountType, setAccountType] = useState("");
 
   useEffect(() => {
@@ -21,9 +20,11 @@ const Footer = () => {
     >
       <div className="overall md:col-span-2 lg:col-span-2 xl:col-span-2">
         <div className="logo text-left">
-          <h1 className="mb-5 text-2xl font-bold uppercase text-primary">
-            job<span className="text-orangeish">hunt</span>
-          </h1>
+          <Link to="/">
+            <h1 className="mb-5 text-2xl font-bold uppercase text-primary">
+              job<span className="text-orangeish">hunt</span>
+            </h1>
+          </Link>
         </div>
         <div className="description">
           <p className="pr-16 text-xs font-medium text-slate-100">

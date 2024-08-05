@@ -20,12 +20,12 @@ import { jobsState } from "../utils/states";
 import { fetchJobs } from "../utils/functions";
 
 const Jobs = () => {
-  const [count, setCount] = useState(1);
   const [jobList, setJobList] = useRecoilState(jobsState);
   const [isLoading, setIsLoading] = useState(true);
   const path = useLocation();
   const [query, setQuery] = useState(new URLSearchParams(path.search));
   const [page, setPage] = useState(parseInt(query.get("page") || "1", 10));
+  const [count, setCount] = useState(page);
 
   const defaultState = [
     {

@@ -380,7 +380,7 @@ const Jobs = () => {
               renderItem={(item) => (
                 <PaginationItem
                   component={Link}
-                  to={`/jobs${item.page === 1 ? "" : `?page=${item.page}`}`}
+                  to={`/jobs?page=${item.page}`}
                   {...item}
                 />
               )}

@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import { UserButton, useClerk, useUser } from "@clerk/clerk-react";
+import { userState } from "../utils/states";
+import { useRecoilValue } from "recoil";
 
 const NavBar = () => {
   const { isSignedIn, user, isLoaded } = useUser();
   const clerk = useClerk();
-  const [accountType, setAccountType] = useState("");
+  const users = useRecoilValue(userState);
 
   const location = useLocation();
   const [path, setPath] = useState(location.pathname);

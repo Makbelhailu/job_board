@@ -42,7 +42,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (isSignedIn) setUserInfo({ ...user, isSignedIn });
+    if (isSignedIn) setUserInfo({ user, isSignedIn });
   }, [isLoaded]);
 
   useEffect(() => {

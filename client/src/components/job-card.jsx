@@ -18,7 +18,7 @@ const JobCard = ({ content, btn, className }) => {
   return (
     <Card
       sx={{ maxHeight: 275, borderRadius: 2, boxShadow: 5 }}
-      className={`shadow-lg ${className ? className : "md:w-[400px]"} xl:w-[350px]`}
+      className={`shadow-lg ${className ? className : "md:w-[400px]"} xl:w-auto xl:max-w-[350px]`}
     >
       <Link
         to={isSignedIn ? `/jobs/${content._id}` : "/"}

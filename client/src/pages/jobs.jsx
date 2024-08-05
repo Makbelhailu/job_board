@@ -64,6 +64,7 @@ const Jobs = () => {
   };
   useEffect(() => {
     setQuery(useQuery(path));
+    console.log(query.get("page"));
     setPage(parseInt(query.get("page") || "1", 10));
     setIsLoading(true);
   }, [path, search]);

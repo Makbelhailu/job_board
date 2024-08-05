@@ -70,7 +70,7 @@ const Jobs = () => {
           setJobList(data);
           setIsLoading(false);
           if (data.length >= 12) setCount(count + 1);
-          console.log("12 job fetched");
+          console.log("12 job fetched with page", page);
           clearInterval(fetchInterval);
         })
         .catch((err) => {

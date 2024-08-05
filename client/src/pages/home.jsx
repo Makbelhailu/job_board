@@ -267,7 +267,7 @@ const Home = ({ isLoading }) => {
           </div>
         </div>
         {isLoading ? (
-          <Loading />
+          <Loading size={80} />
         ) : (
           <div className="job_cards grid grid-cols-3 items-center justify-around gap-4">
             {jobList.slice(0, 6).map((content, key) => (

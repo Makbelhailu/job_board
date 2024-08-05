@@ -21,13 +21,14 @@ import projectProfileImg from "../assets/project-profile.jpg";
 import careerImg from "../assets/career-dev.jpg";
 
 import JobCard from "../components/job-card";
+import Loading from "../components/loading";
 
 import { useClerk, useUser } from "@clerk/clerk-react";
 import { useEffect } from "react";
 import { jobsState, userState } from "../utils/states";
 import { useRecoilValue } from "recoil";
 
-const Home = () => {
+const Home = ({ isLoading }) => {
   const { user, isSignedIn } = useRecoilValue(userState);
   const jobList = useRecoilValue(jobsState);
   const clerk = useClerk();
@@ -265,11 +266,15 @@ const Home = () => {
             </Link>
           </div>
         </div>
-        <div className="job_cards grid grid-cols-3 items-center justify-around gap-4">
-          {jobList.slice(0, 6).map((content, key) => (
-            <JobCard key={key} content={content} />
-          ))}
-        </div>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <div className="job_cards grid grid-cols-3 items-center justify-around gap-4">
+            {jobList.slice(0, 6).map((content, key) => (
+              <JobCard key={key} content={content} />
+            ))}
+          </div>
+        )}
       </div>
       <div className="offers_container my-28 px-12">
         <div className="offer_title mb-12 w-[45%] text-left">

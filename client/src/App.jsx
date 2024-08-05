@@ -19,7 +19,26 @@ import { useUser } from "@clerk/clerk-react";
 
 function App() {
   const setUserInfo = useSetRecoilState(userState);
+  const setJobList = useSetRecoilState(jobsState);
+  const [isLoading, setIsLoading] = useState(false);
   const { isSignedIn, user, isLoaded } = useUser();
+
+  useEffect(() => {
+    const fetchInterval = setInterval(() => {
+      fetchJobs()
+        .then((data) => {
+          setJobList(data);
+          setIsLoading(false);
+          console.log("12 job fetched");
+          clearInterval(fetchInterval);
+        })
+        .catch((err) => {
+          console.log("error fetching jobs:", err.message);
+        });
+    }, 5000);
+
+    return () => clearInterval(fetchInterval);
+  }, []);
 
   useEffect(() => {
     if (isSignedIn) setUserInfo({ user, isSignedIn });
@@ -33,13 +52,13 @@ function App() {
         <main className="m-0 h-[90%]">
           <SignedOut>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home isLoading={isLoading} />} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </SignedOut>
           <SignedIn>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home isLoading={isLoading} />} />
               <Route path="/account-type" element={<AccountType />} />
               <Route path="/jobs" element={<Jobs />} />
               <Route path="/jobs/:id" element={<ApplicationCard />} />

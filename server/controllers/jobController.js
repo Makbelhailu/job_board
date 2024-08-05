@@ -4,8 +4,8 @@ const companyInfo = require("../middlewares/clerkMiddleware");
 
 // get all data
 const getAllJobs = async (req, res) => {
-  const page = parseInt(req.query.page);
-  const limit = parseInt(req.query.limit) || 12;
+  const page = parseInt(req.query.page, 10);
+  const limit = 12;
   const skip = (page - 1) * limit;
 
   console.log(page);

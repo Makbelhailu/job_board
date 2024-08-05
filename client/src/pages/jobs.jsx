@@ -371,7 +371,7 @@ const Jobs = () => {
             <Pagination
               page={page}
               count={count}
-              size="larg"
+              size="large"
               renderItem={(item) => (
                 <PaginationItem
                   component={Link}

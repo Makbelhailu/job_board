@@ -24,6 +24,7 @@ const Jobs = () => {
   const [isLoading, setIsLoading] = useState(true);
   const path = useLocation();
   const [query, setQuery] = useState(useQuery(path));
+  const search = query.get("search");
   const [page, setPage] = useState(parseInt(query.get("page") || "1", 10));
   const [count, setCount] = useState(page);
 

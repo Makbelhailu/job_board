@@ -58,7 +58,7 @@ const Jobs = () => {
       "hi im the lost guy that you asked to find so take a rest it seems you already found me lorem hi im the lost guy that you asked to find so take a rest it seems you already found me it seems you already found me ",
   };
   useEffect(() => {
-    setQuery(new URLSearchParams(path.search));
+    setQuery();
     setPage(parseInt(query.get("page") || "1", 10));
     setIsLoading(true);
   }, [path]);

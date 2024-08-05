@@ -40,23 +40,38 @@ const Footer = () => {
         </div>
         <ul className="flex list-none flex-col gap-2 text-xs font-medium text-slate-100">
           <li>
-            <Link to="/">Home</Link>
+            <Link
+              to="/"
+              onClick={(e) => {
+                setPath("/");
+              }}
+            >
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/jobs">Jobs</Link>
+            <Link
+              to="/jobs"
+              onClick={(e) => {
+                setPath("/jobs");
+              }}
+            >
+              Jobs
+            </Link>
           </li>
-          {accountType === "freelancer" ? (
-            <li>
-              <Link to="/applications">Applications</Link>
-            </li>
-          ) : (
-            <li>
-              <Link to="/posts">Posts</Link>
-            </li>
-          )}
 
+          {accountType && (
+            <CustomLink type={accountType} path={path} setPath={setPath} />
+          )}
           <li>
-            <Link to="/about">About</Link>
+            <Link
+              to="/about"
+              onClick={(e) => {
+                setPath("/about");
+              }}
+            >
+              About
+            </Link>
           </li>
         </ul>
       </div>

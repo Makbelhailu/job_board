@@ -41,7 +41,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (isSignedIn) setUserInfo({ user, isSignedIn });
+    if (isSignedIn) setUserInfo({ ...user, isSignedIn });
   }, [isLoaded]);
   return (
     <>
@@ -60,7 +60,7 @@ function App() {
           <SignedIn>
             <Routes>
               <Route path="/" element={<Home isLoading={isLoading} />} />
-              <Route path="/account-type" element={<AccountType />} />
+              {<Route path="/account-type" element={<AccountType />} />}
               <Route path="/jobs" element={<Jobs />} />
               <Route path="/jobs/:id" element={<ApplicationCard />} />
               <Route path="/apply/:title" element={<ApplicationForm />} />

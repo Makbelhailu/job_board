@@ -18,7 +18,7 @@ import { jobsState, userState } from "./utils/states";
 import { useUser } from "@clerk/clerk-react";
 
 function App() {
-  const setUserInfo = useSetRecoilState(userState);
+  const [userInfo, setUserInfo] = useRecoilState(userState);
   const setJobList = useSetRecoilState(jobsState);
   const [isLoading, setIsLoading] = useState(true);
   const { isSignedIn, user, isLoaded } = useUser();
@@ -43,6 +43,7 @@ function App() {
   useEffect(() => {
     if (isSignedIn) setUserInfo({ ...user, isSignedIn });
   }, [isLoaded]);
+
   return (
     <>
       <BrowserRouter>

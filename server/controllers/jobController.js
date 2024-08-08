@@ -16,7 +16,8 @@ const getAllJobs = async (req, res) => {
     .populate({
       path: "companyId",
       model: "User",
-      select: "userId username profile A",
+      select: "userId username profile accountType",
+      match: { userId: "$companyId" },
     });
 
   if (!jobList) {

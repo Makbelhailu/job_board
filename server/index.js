@@ -17,6 +17,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(morgan("dev"));
 
+app.post("");
+
 app.use("/api/v1/jobs", jobRoute);
 app.use("/api/v1/applications", applicationRoute);
 

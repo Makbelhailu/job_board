@@ -1,6 +1,6 @@
 const User = require("../models/userModel");
 const Job = require("../models/jobModel");
-const Application = required("../models/applicationModel");
+const Application = require("../models/applicationModel");
 
 const clerkWebhook = async (req, res) => {
   const event = req.body;

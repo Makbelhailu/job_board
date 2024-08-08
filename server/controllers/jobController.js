@@ -13,7 +13,7 @@ const getAllJobs = async (req, res) => {
     .populate({
       path: "companyId",
       model: "User",
-      select: "userId username profile accountType",
+      select: "username profile",
       match: { userId: "$companyId" },
     })
     .sort({ createdAt: -1 })
@@ -23,9 +23,9 @@ const getAllJobs = async (req, res) => {
     return res.status(400).json({ error: "error fetching all the jobs" });
   }
 
-  const fullList = await companyInfo(jobList);
+  // const fullList = await companyInfo(jobList);
 
-  res.status(200).json(fullList);
+  res.status(200).json(jobList);
   console.log("all jobs fetched");
 };
 

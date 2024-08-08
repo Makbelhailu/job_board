@@ -7,8 +7,8 @@ import ApplicationForm from "./components/applicationForm";
 import Loading from "./components/loading";
 import NavBar from "./components/navBar";
 import Footer from "./components/footer";
-import ErrorPage from "./components/errorPage";
-import AccountType from "./components/accountType";
+import ErrorPage from "./pages/errorPage";
+import AccountType from "./pages/accountType";
 
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 

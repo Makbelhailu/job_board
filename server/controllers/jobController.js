@@ -18,7 +18,13 @@ const getAllJobs = async (req, res) => {
     })
     .sort({ createdAt: -1 })
     .skip(skip)
-    .limit(limit);
+    .limit(limit)
+    .exec((err, jobs) => {
+      if (err) {
+        console.error(err);
+      }
+      return jobs; // Jobs will include populated User data
+    });
   if (!jobList) {
     return res.status(400).json({ error: "error fetching all the jobs" });
   }

@@ -27,7 +27,8 @@ const getAllJobs = async (req, res) => {
       map[user.userId] = user;
       return map;
     }, {});
-    const fullList = jobList.reduce();
+
+    const fullList = jobList.map((job) => {});
     res.status(200).json(jobList);
     console.log("all jobs fetched");
   } catch (err) {

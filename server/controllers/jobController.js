@@ -15,6 +15,8 @@ const getAllJobs = async (req, res) => {
     .limit(limit)
     .populate({
       path: "companyId",
+      model: "User",
+      select: "userId username profile A",
     });
 
   if (!jobList) {

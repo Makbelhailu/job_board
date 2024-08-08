@@ -1,5 +1,6 @@
 require("dotenv").config();
 const { createClerkClient } = require("@clerk/clerk-sdk-node");
+const User = require("../models/userModel");
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -21,7 +22,7 @@ const companyInfo = async (jobList) => {
       profile: userMap[job.companyId].profile,
     }));
 
-    return fullJobList;
+    return fullList;
   } catch (err) {
     console.log("error fetching company info", err);
     throw Error(err);

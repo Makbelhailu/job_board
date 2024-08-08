@@ -20,7 +20,7 @@ const getAllJobs = async (req, res) => {
       return res.status(400).json({ error: "error fetching all the jobs" });
     }
 
-    const fullList = await companyInfo()
+    const fullList = await companyInfo(jobList);
 
     res.status(200).json(fullList);
     console.log("all jobs fetched");

@@ -21,7 +21,7 @@ const getAllJobs = async (req, res) => {
     }
 
     const companyIds = jobList.map((job) => job.companyId);
-
+    const companyInfo = await User.find({ userId: { $in: companyIds } });
     res.status(200).json(jobList);
     console.log("all jobs fetched");
   } catch (err) {

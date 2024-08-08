@@ -133,7 +133,7 @@ const ApplicationCard = () => {
           </Box>
         </CardContent>
       </Card>
-      <div className="job-lists scrollbar-none gird-rows-1 grid max-h-[680px] w-full grid-flow-col gap-4 overflow-x-scroll py-6 xl:w-2/5 xl:grid-flow-row xl:grid-cols-1 xl:overflow-x-hidden xl:overflow-y-scroll xl:py-0">
+      <div className="job-lists scrollbar-none gird-rows-1 grid max-h-[680px] w-full grid-flow-col gap-4 overflow-x-scroll py-6 xl:w-2/5 xl:grid-flow-row xl:grid-cols-1 xl:overflow-x-hidden xl:overflow-y-scroll xl:px-1 xl:py-0">
         {jobList
           .filter((job) => job._id !== id)
           .map((content, key) => (
@@ -141,7 +141,7 @@ const ApplicationCard = () => {
               key={key}
               content={content}
               btn={true}
-              className={"w-[450px]"}
+              className={"w-[450px] xl:w-full"}
             />
           ))}
       </div>

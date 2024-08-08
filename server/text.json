@@ -1,5 +1,283 @@
 [
   {
+    "title": "Backend Developer",
+    "sector": "Information and Technology",
+    "type": "FullTime",
+    "companyId": "user_2jYcbG5FsNb8VctIOgDzoxn72Iw",
+    "experience": 3,
+    "applicant": "both",
+    "location": "Nairobi",
+    "salary": "15000/month",
+    "description": "We are looking for a skilled Backend Developer to join our team. The ideal candidate will have experience with server-side technologies and be proficient in Node.js or Django. You will work closely with our front-end developers to integrate APIs and ensure the performance and responsiveness of our applications.",
+    "requirements": [
+      "Proficiency in server-side languages such as Node.js or Django.",
+      "Experience with RESTful APIs and integration with front-end technologies.",
+      "Knowledge of database systems like MongoDB and MySQL.",
+      "Familiarity with Git and version control systems.",
+      "Ability to work in a team and communicate effectively."
+    ],
+    "responsibility": [
+      "Develop and maintain server-side applications.",
+      "Integrate front-end components with server-side logic.",
+      "Ensure security and data protection.",
+      "Optimize applications for maximum speed and scalability.",
+      "Collaborate with front-end developers and other team members."
+    ],
+    "vacancy": 2,
+    "deadline": { "$date": "2024-08-15T12:00:00Z" }
+  },
+  {
+    "title": "Data Analyst",
+    "sector": "Medical",
+    "type": "PartTime",
+    "companyId": "user_2jxiq4AQlKpLiH7dsow2842oSy3",
+    "experience": 2,
+    "applicant": "female",
+    "location": "Lagos",
+    "salary": "10000/month",
+    "description": "We are seeking a Data Analyst to help our medical research team analyze and interpret data. The ideal candidate will have a strong background in statistics and experience with data visualization tools. You will work closely with our researchers to provide insights that inform our studies.",
+    "requirements": [
+      "Strong background in statistics and data analysis.",
+      "Proficiency in data visualization tools like Tableau or Power BI.",
+      "Experience with data cleaning and preparation.",
+      "Familiarity with statistical software such as R or Python.",
+      "Strong analytical and problem-solving skills."
+    ],
+    "responsibility": [
+      "Analyze and interpret data from various sources.",
+      "Create visualizations to present data insights.",
+      "Collaborate with researchers to understand data needs.",
+      "Prepare and clean data for analysis.",
+      "Present findings to the research team and stakeholders."
+    ],
+    "vacancy": 1,
+    "deadline": { "$date": "2024-08-20T12:00:00Z" }
+  },
+  {
+    "title": "UI/UX Designer",
+    "sector": "Information and Technology",
+    "type": "Remote",
+    "companyId": "user_2k0xNs5MoQoKHTF36tZ11WQ0eed",
+    "experience": 4,
+    "applicant": "both",
+    "location": "Remote",
+    "salary": "25000/month",
+    "description": "We are looking for a talented UI/UX Designer to create amazing user experiences. The ideal candidate should have an eye for clean and artful design, possess superior UI/UX skills, and be able to translate high-level requirements into interaction flows and artifacts.",
+    "requirements": [
+      "Proven work experience as a UI/UX Designer.",
+      "Proficiency in design software such as Sketch, Adobe XD, or Figma.",
+      "Experience with user research and wireframing.",
+      "Strong portfolio showcasing design projects.",
+      "Ability to work remotely and manage time effectively."
+    ],
+    "responsibility": [
+      "Design user interfaces and user experiences for web and mobile applications.",
+      "Create wireframes, prototypes, and user flows.",
+      "Conduct user research and evaluate user feedback.",
+      "Collaborate with developers to implement designs.",
+      "Stay up-to-date with the latest design trends and technologies."
+    ],
+    "vacancy": 3,
+    "deadline": { "$date": "2024-08-25T12:00:00Z" }
+  },
+  {
+    "title": "Full Stack Engineer",
+    "sector": "Information and Technology",
+    "type": "FullTime",
+    "companyId": "user_2jxiq4AQlKpLiH7dsow2842oSy3",
+    "experience": 5,
+    "applicant": "both",
+    "location": "Cairo",
+    "salary": "30000/month",
+    "description": "Join our team as a Full Stack Engineer! We are looking for an experienced engineer to develop scalable web applications. The ideal candidate should be proficient in both front-end and back-end technologies and have a strong understanding of software development practices.",
+    "requirements": [
+      "Experience with front-end technologies like HTML, CSS, and JavaScript.",
+      "Proficiency in back-end frameworks such as Node.js, Django, or Ruby on Rails.",
+      "Strong understanding of databases, both SQL and NoSQL.",
+      "Experience with version control systems like Git.",
+      "Excellent problem-solving and analytical skills."
+    ],
+    "responsibility": [
+      "Develop and maintain web applications from the ground up.",
+      "Collaborate with cross-functional teams to define, design, and ship new features.",
+      "Ensure the technical feasibility of UI/UX designs.",
+      "Optimize application performance for maximum speed and scalability.",
+      "Stay current with emerging technologies and industry trends."
+    ],
+    "vacancy": 4,
+    "deadline": { "$date": "2024-08-30T12:00:00Z" }
+  },
+  {
+    "title": "Mobile App Developer",
+    "sector": "Information and Technology",
+    "type": "Remote",
+    "companyId": "user_2jYcbG5FsNb8VctIOgDzoxn72Iw",
+    "experience": 3,
+    "applicant": "male",
+    "location": "Remote",
+    "salary": "22000/month",
+    "description": "We are looking for a Mobile App Developer to join our team remotely. The ideal candidate will have experience in developing mobile applications for both iOS and Android platforms. You will work closely with our design and product teams to build user-friendly and efficient mobile apps.",
+    "requirements": [
+      "Experience in mobile app development for iOS and Android.",
+      "Proficiency in programming languages such as Swift, Kotlin, or React Native.",
+      "Knowledge of mobile app architecture and design patterns.",
+      "Experience with mobile app testing and deployment.",
+      "Strong understanding of mobile UI/UX principles."
+    ],
+    "responsibility": [
+      "Develop and maintain mobile applications.",
+      "Collaborate with designers and product managers to define app features.",
+      "Ensure code quality and maintainability.",
+      "Implement app functionalities and features.",
+      "Optimize app performance and user experience."
+    ],
+    "vacancy": 2,
+    "deadline": { "$date": "2024-09-05T12:00:00Z" }
+  },
+  {
+    "title": "Graphic Designer",
+    "sector": "Information and Technology",
+    "type": "PartTime",
+    "companyId": "user_2k0xNs5MoQoKHTF36tZ11WQ0eed",
+    "experience": 2,
+    "applicant": "female",
+    "location": "Kigali",
+    "salary": "15000/month",
+    "description": "We are seeking a creative Graphic Designer to join our marketing team on a part-time basis. The ideal candidate will have experience in creating visual content for both digital and print media. You will work on a variety of projects, including social media graphics, brochures, and website visuals.",
+    "requirements": [
+      "Proven experience as a Graphic Designer.",
+      "Proficiency in design software like Adobe Photoshop, Illustrator, or InDesign.",
+      "Strong portfolio showcasing a variety of design work.",
+      "Understanding of visual communication and branding.",
+      "Ability to meet deadlines and work independently."
+    ],
+    "responsibility": [
+      "Create visual content for marketing and promotional materials.",
+      "Design graphics for social media, websites, and print.",
+      "Collaborate with the marketing team to develop visual concepts.",
+      "Ensure consistency in branding and visual identity.",
+      "Stay updated with design trends and tools."
+    ],
+    "vacancy": 1,
+    "deadline": { "$date": "2024-09-10T12:00:00Z" }
+  },
+  {
+    "title": "Project Manager",
+    "sector": "Medical",
+    "type": "FullTime",
+    "companyId": "user_2jxiq4AQlKpLiH7dsow2842oSy3",
+    "experience": 6,
+    "applicant": "both",
+    "location": "Cape Town",
+    "salary": "35000/month",
+    "description": "We are looking for an experienced Project Manager to lead and coordinate medical research projects. The ideal candidate will have a strong background in project management and experience in the healthcare or medical research field. You will be responsible for planning, executing, and overseeing projects from inception to completion.",
+    "requirements": [
+      "Proven experience as a Project Manager.",
+      "Strong understanding of project management methodologies.",
+      "Experience in the healthcare or medical research sector.",
+      "Excellent organizational and leadership skills.",
+      "Strong communication and interpersonal abilities."
+    ],
+    "responsibility": [
+      "Plan and oversee medical research projects.",
+      "Coordinate with cross-functional teams to ensure project success.",
+      "Manage project timelines, budgets, and resources.",
+      "Communicate project status and progress to stakeholders.",
+      "Ensure projects are completed on time and within scope."
+    ],
+    "vacancy": 3,
+    "deadline": { "$date": "2024-09-15T12:00:00Z" }
+  },
+  {
+    "title": "DevOps Engineer",
+    "sector": "Information and Technology",
+    "type": "FullTime",
+    "companyId": "user_2jYcbG5FsNb8VctIOgDzoxn72Iw",
+    "experience": 4,
+    "applicant": "both",
+    "location": "Johannesburg",
+    "salary": "28000/month",
+    "description": "Join our team as a DevOps Engineer! We are seeking an experienced professional to manage our infrastructure and deployment processes. The ideal candidate will have a strong background in system administration, automation, and cloud technologies. You will work closely with our development team to ensure smooth deployment and operation of our systems.",
+    "requirements": [
+      "Experience with cloud platforms such as AWS, Azure, or Google Cloud.",
+      "Proficiency in automation tools like Ansible, Puppet, or Chef.",
+      "Strong understanding of CI/CD pipelines and deployment processes.",
+      "Experience with containerization tools like Docker and Kubernetes.",
+      "Strong problem-solving and troubleshooting skills."
+    ],
+    "responsibility": [
+      "Manage and maintain cloud infrastructure.",
+      "Implement and manage CI/CD pipelines.",
+      "Automate deployment and configuration processes.",
+      "Monitor system performance and troubleshoot issues.",
+      "Collaborate with development and operations teams."
+    ],
+    "vacancy": 2,
+    "deadline": { "$date": "2024-09-20T12:00:00Z" }
+  },
+  {
+    "title": "Content Writer",
+    "sector": "Information and Technology",
+    "type": "Remote",
+    "companyId": "user_2k0xNs5MoQoKHTF36tZ11WQ0eed",
+    "experience": 1,
+    "applicant": "both",
+    "location": "Remote",
+    "salary": "12000/month",
+    "description": "We are seeking a talented Content Writer to create engaging and informative content for our website and marketing materials. The ideal candidate will have a passion for writing and a strong command of the English language. You will work remotely and collaborate with our marketing team to produce high-quality content.",
+    "requirements": [
+      "Excellent writing and editing skills in English.",
+      "Experience in content creation for websites, blogs, or social media.",
+      "Strong research skills and attention to detail.",
+      "Ability to meet deadlines and work independently.",
+      "Familiarity with SEO best practices is a plus."
+    ],
+    "responsibility": [
+      "Write and edit content for our website and marketing materials.",
+      "Conduct research to ensure accuracy and relevance.",
+      "Collaborate with the marketing team to develop content strategies.",
+      "Ensure content aligns with our brand voice and tone.",
+      "Stay updated with industry trends and best practices."
+    ],
+    "vacancy": 3,
+    "deadline": { "$date": "2024-09-25T12:00:00Z" }
+  },
+  {
+    "title": "HR Specialist",
+    "sector": "Medical",
+    "type": "PartTime",
+    "companyId": "user_2jxiq4AQlKpLiH7dsow2842oSy3",
+    "experience": 5,
+    "applicant": "female",
+    "location": "Accra",
+    "salary": "18000/month",
+    "description": "We are looking for an HR Specialist to join our team on a part-time basis. The ideal candidate will have experience in human resources, particularly in the healthcare or medical sector. You will be responsible for managing recruitment, employee relations, and compliance with company policies.",
+    "requirements": [
+      "Proven experience as an HR Specialist or similar role.",
+      "Knowledge of HR practices and labor laws.",
+      "Experience in the healthcare or medical sector is a plus.",
+      "Strong communication and interpersonal skills.",
+      "Ability to work independently and manage multiple tasks."
+    ],
+    "responsibility": [
+      "Manage recruitment and onboarding processes.",
+      "Ensure compliance with company policies and labor laws.",
+      "Handle employee relations and conflict resolution.",
+      "Maintain employee records and manage HR documentation.",
+      "Collaborate with management on HR strategies and initiatives."
+    ],
+    "vacancy": 1,
+    "deadline": { "$date": "2024-09-30T12:00:00Z" }
+  }
+]
+
+
+
+// additional
+
+
+[
+  {
     "title": "Full Stack Developer",
     "sector": "Information and Technology",
     "type": "FullTime",
@@ -16,8 +294,15 @@
       "Experience with Git and collaborative workflows.",
       "Ability to work well in a team and communicate effectively."
     ],
+    "responsibility": [
+      "Develop and maintain web applications.",
+      "Collaborate with cross-functional teams to define and design new features.",
+      "Optimize applications for maximum speed and scalability.",
+      "Troubleshoot and debug applications.",
+      "Stay up-to-date with emerging technologies."
+    ],
     "vacancy": 5,
-    "deadline": { "$date": "2024-07-31T12:00:00Z" }
+    "deadline": { "$date": "2024-08-31T12:00:00Z" }
   },
   {
     "title": "Backend Developer",
@@ -25,178 +310,241 @@
     "type": "Remote",
     "companyId": "user_2jxiq4AQlKpLiH7dsow2842oSy3",
     "experience": 3,
-    "applicant": "both",
+    "applicant": "female",
     "location": "Remote",
-    "salary": "18000/month",
-    "description": "Looking for a skilled Backend Developer to work remotely. The candidate should have experience with server-side technologies and databases. Proficiency in Node.js and Python is essential.",
+    "salary": "25000/month",
+    "description": "Looking for an experienced Backend Developer to build and maintain server-side logic, ensure high performance and responsiveness to requests from the front-end, and integrate elements developed by front-end developers. Knowledge of server-side frameworks and databases is essential.",
     "requirements": [
-      "Strong understanding of Node.js and Python.",
-      "Experience with SQL and NoSQL databases.",
-      "Knowledge of RESTful APIs.",
-      "Good problem-solving skills.",
-      "Ability to work independently and in a team."
+      "Proficiency in server-side languages such as Node.js, Python, or Ruby.",
+      "Experience with database management systems like MySQL, PostgreSQL, or MongoDB.",
+      "Strong understanding of RESTful APIs and web services.",
+      "Familiarity with version control tools like Git.",
+      "Excellent problem-solving skills."
+    ],
+    "responsibility": [
+      "Develop server-side logic and maintain databases.",
+      "Ensure high performance and responsiveness to requests.",
+      "Integrate user-facing elements with server-side logic.",
+      "Write reusable, testable, and efficient code.",
+      "Implement security and data protection measures."
+    ],
+    "vacancy": 3,
+    "deadline": { "$date": "2024-09-15T12:00:00Z" }
+  },
+  {
+    "title": "UI/UX Designer",
+    "sector": "Information and Technology",
+    "type": "PartTime",
+    "companyId": "user_2jYcbG5FsNb8VctIOgDzoxn72Iw",
+    "experience": 1,
+    "applicant": "both",
+    "location": "Addis Ababa",
+    "salary": "15000/month",
+    "description": "We are looking for a creative UI/UX Designer to join our team. The ideal candidate will have experience in designing user-friendly interfaces and creating seamless user experiences. A strong portfolio showcasing design skills is required.",
+    "requirements": [
+      "Proficiency in design tools like Adobe XD, Figma, or Sketch.",
+      "Understanding of user-centered design principles.",
+      "Ability to create wireframes, prototypes, and visual designs.",
+      "Strong communication and collaboration skills.",
+      "Attention to detail and problem-solving mindset."
+    ],
+    "responsibility": [
+      "Design user interfaces for web and mobile applications.",
+      "Collaborate with developers to ensure smooth implementation of designs.",
+      "Conduct user research and gather feedback.",
+      "Create wireframes, prototypes, and visual designs.",
+      "Stay updated with industry trends and best practices."
+    ],
+    "vacancy": 2,
+    "deadline": { "$date": "2024-08-20T12:00:00Z" }
+  },
+  {
+    "title": "Data Analyst",
+    "sector": "Information and Technology",
+    "type": "FullTime",
+    "companyId": "user_2k0xNs5MoQoKHTF36tZ11WQ0eed",
+    "experience": 4,
+    "applicant": "both",
+    "location": "Addis Ababa",
+    "salary": "30000/month",
+    "description": "Seeking a Data Analyst to interpret data and turn it into information that can offer ways to improve a business. The candidate will collect, process, and analyze data, and create reports based on the insights derived from the data.",
+    "requirements": [
+      "Proficiency in SQL, Excel, and data visualization tools (e.g., Tableau, Power BI).",
+      "Strong analytical and problem-solving skills.",
+      "Experience with statistical analysis and data modeling.",
+      "Ability to communicate findings clearly and effectively.",
+      "Attention to detail and accuracy."
+    ],
+    "responsibility": [
+      "Collect, process, and analyze data from various sources.",
+      "Interpret data to identify trends and patterns.",
+      "Create reports and visualizations to communicate findings.",
+      "Collaborate with teams to implement data-driven decisions.",
+      "Ensure data accuracy and integrity."
+    ],
+    "vacancy": 1,
+    "deadline": { "$date": "2024-08-31T12:00:00Z" }
+  },
+  {
+    "title": "Front-End Developer",
+    "sector": "Information and Technology",
+    "type": "FullTime",
+    "companyId": "user_2jxiq4AQlKpLiH7dsow2842oSy3",
+    "experience": 2,
+    "applicant": "female",
+    "location": "Addis Ababa",
+    "salary": "22000/month",
+    "description": "We are looking for a Front-End Developer who is passionate about creating beautiful and functional user interfaces. The ideal candidate should be proficient in HTML, CSS, JavaScript, and modern frameworks like React or Vue.js.",
+    "requirements": [
+      "Proficiency in HTML, CSS, JavaScript, and modern frameworks.",
+      "Experience with responsive and mobile-first design.",
+      "Understanding of web performance optimization techniques.",
+      "Ability to collaborate with back-end developers and designers.",
+      "Strong attention to detail and a keen eye for design."
+    ],
+    "responsibility": [
+      "Develop user-friendly web interfaces.",
+      "Collaborate with designers to implement design mockups.",
+      "Optimize applications for maximum speed and scalability.",
+      "Maintain and improve website features.",
+      "Ensure cross-browser compatibility and responsiveness."
+    ],
+    "vacancy": 4,
+    "deadline": { "$date": "2024-09-10T12:00:00Z" }
+  },
+  {
+    "title": "IT Support Specialist",
+    "sector": "Information and Technology",
+    "type": "PartTime",
+    "companyId": "user_2jYcbG5FsNb8VctIOgDzoxn72Iw",
+    "experience": 1,
+    "applicant": "male",
+    "location": "Addis Ababa",
+    "salary": "10000/month",
+    "description": "We are seeking an IT Support Specialist to provide technical assistance and support for incoming queries and issues related to computer systems, software, and hardware. The ideal candidate should have a strong understanding of computer systems and a customer-oriented mindset.",
+    "requirements": [
+      "Basic understanding of computer systems and networks.",
+      "Proficiency in troubleshooting hardware and software issues.",
+      "Excellent communication and customer service skills.",
+      "Ability to work well under pressure.",
+      "Attention to detail and strong organizational skills."
+    ],
+    "responsibility": [
+      "Provide technical support for hardware and software issues.",
+      "Assist users with installations and configurations.",
+      "Maintain and update IT documentation.",
+      "Respond to support requests in a timely manner.",
+      "Collaborate with other IT team members to resolve complex issues."
     ],
     "vacancy": 3,
     "deadline": { "$date": "2024-08-15T12:00:00Z" }
   },
   {
-    "title": "Frontend Developer",
-    "sector": "Information and Technology",
-    "type": "FullTime",
-    "companyId": "user_2jYcbG5FsNb8VctIOgDzoxn72Iw",
-    "experience": 1,
-    "applicant": "female",
-    "location": "Addis Ababa",
-    "salary": "15000/month",
-    "description": "Join our team as a Frontend Developer. The ideal candidate should have a keen eye for design and a strong understanding of web technologies, especially React.",
-    "requirements": [
-      "Proficiency in HTML, CSS, JavaScript, and React.",
-      "Experience with responsive design and cross-browser compatibility.",
-      "Knowledge of UI/UX design principles.",
-      "Experience with Git.",
-      "Strong communication skills."
-    ],
-    "vacancy": 2,
-    "deadline": { "$date": "2024-08-01T12:00:00Z" }
-  },
-  {
-    "title": "Database Administrator",
-    "sector": "Information and Technology",
-    "type": "PartTime",
-    "companyId": "user_2k0xNs5MoQoKHTF36tZ11WQ0eed",
-    "experience": 4,
-    "applicant": "male",
-    "location": "Addis Ababa",
-    "salary": "10000/month",
-    "description": "We are looking for a part-time Database Administrator. The candidate should have experience in managing both SQL and NoSQL databases.",
-    "requirements": [
-      "Experience with database administration.",
-      "Strong knowledge of MySQL and MongoDB.",
-      "Ability to troubleshoot database issues.",
-      "Experience with backup and recovery procedures.",
-      "Good communication skills."
-    ],
-    "vacancy": 1,
-    "deadline": { "$date": "2024-08-10T12:00:00Z" }
-  },
-  {
-    "title": "Full Stack Developer",
+    "title": "Medical Officer",
     "sector": "Medical",
     "type": "FullTime",
-    "companyId": "user_2jxiq4AQlKpLiH7dsow2842oSy3",
+    "companyId": "user_2k0xNs5MoQoKHTF36tZ11WQ0eed",
     "experience": 3,
     "applicant": "both",
     "location": "Addis Ababa",
-    "salary": "22000/month",
-    "description": "Join our medical tech team as a Full Stack Developer. The ideal candidate will work on developing and maintaining applications in the healthcare sector.",
+    "salary": "35000/month",
+    "description": "We are looking for a qualified Medical Officer to join our team. The candidate will be responsible for providing medical care and support, diagnosing and treating illnesses, and working with other healthcare professionals to ensure the well-being of patients.",
     "requirements": [
-      "Experience with full stack development.",
-      "Proficiency in JavaScript, Python, and Django.",
-      "Knowledge of healthcare industry standards is a plus.",
-      "Strong problem-solving skills.",
-      "Ability to work in a fast-paced environment."
+      "Medical degree and valid license to practice.",
+      "Experience in diagnosing and treating illnesses.",
+      "Excellent communication and interpersonal skills.",
+      "Ability to work in a team and handle emergency situations.",
+      "Strong attention to detail and empathy for patients."
     ],
-    "vacancy": 4,
-    "deadline": { "$date": "2024-08-20T12:00:00Z" }
+    "responsibility": [
+      "Provide medical care and support to patients.",
+      "Diagnose and treat illnesses and injuries.",
+      "Prescribe medications and treatments.",
+      "Collaborate with other healthcare professionals.",
+      "Maintain patient records and ensure confidentiality."
+    ],
+    "vacancy": 2,
+    "deadline": { "$date": "2024-09-05T12:00:00Z" }
   },
   {
-    "title": "Mobile App Developer",
-    "sector": "Information and Technology",
-    "type": "FullTime",
-    "companyId": "user_2jYcbG5FsNb8VctIOgDzoxn72Iw",
+    "title": "Nurse",
+    "sector": "Medical",
+    "type": "PartTime",
+    "companyId": "user_2jxiq4AQlKpLiH7dsow2842oSy3",
     "experience": 2,
     "applicant": "female",
     "location": "Addis Ababa",
-    "salary": "19000/month",
-    "description": "Seeking a talented Mobile App Developer with experience in React Native or Flutter. The candidate will work on developing cross-platform mobile applications.",
+    "salary": "15000/month",
+    "description": "Seeking a compassionate and skilled Nurse to provide patient care, administer medications, and work closely with doctors and other healthcare professionals. The ideal candidate should have experience in patient care and a commitment to improving patient outcomes.",
     "requirements": [
-      "Experience with mobile app development.",
-      "Proficiency in React Native or Flutter.",
-      "Knowledge of mobile UI/UX design principles.",
-      "Experience with RESTful APIs.",
-      "Ability to work in a team."
+      "Valid nursing license and relevant qualifications.",
+      "Experience in patient care and medical procedures.",
+      "Strong communication and organizational skills.",
+      "Ability to work in a fast-paced environment.",
+      "Empathy and dedication to patient care."
     ],
-    "vacancy": 3,
-    "deadline": { "$date": "2024-08-05T12:00:00Z" }
-  },
-  {
-    "title": "Data Scientist",
-    "sector": "Medical",
-    "type": "Remote",
-    "companyId": "user_2k0xNs5MoQoKHTF36tZ11WQ0eed",
-    "experience": 5,
-    "applicant": "both",
-    "location": "Remote",
-    "salary": "25000/month",
-    "description": "We are looking for a Data Scientist to join our remote team. The candidate should have experience in data analysis and machine learning, especially in the medical field.",
-    "requirements": [
-      "Strong background in data science.",
-      "Experience with Python, R, and SQL.",
-      "Knowledge of machine learning algorithms.",
-      "Experience in the medical field is a plus.",
-      "Strong analytical skills."
+    "responsibility": [
+      "Provide patient care and support.",
+      "Administer medications and treatments.",
+      "Monitor and record patient conditions.",
+      "Assist doctors with medical procedures.",
+      "Educate patients and families about health management."
     ],
-    "vacancy": 2,
+    "vacancy": 4,
     "deadline": { "$date": "2024-08-25T12:00:00Z" }
   },
   {
-    "title": "System Administrator",
-    "sector": "Information and Technology",
-    "type": "PartTime",
-    "companyId": "user_2jxiq4AQlKpLiH7dsow2842oSy3",
-    "experience": 3,
-    "applicant": "male",
-    "location": "Addis Ababa",
-    "salary": "15000/month",
-    "description": "Seeking a part-time System Administrator to manage our IT infrastructure. The candidate should have experience with network and server management.",
-    "requirements": [
-      "Experience in system administration.",
-      "Knowledge of network protocols and security.",
-      "Experience with Windows and Linux servers.",
-      "Good problem-solving skills.",
-      "Ability to work independently."
-    ],
-    "vacancy": 1,
-    "deadline": { "$date": "2024-08-30T12:00:00Z" }
-  },
-  {
-    "title": "Frontend Developer",
+    "title": "Pharmacist",
     "sector": "Medical",
-    "type": "Remote",
+    "type": "FullTime",
     "companyId": "user_2jYcbG5FsNb8VctIOgDzoxn72Iw",
     "experience": 2,
-    "applicant": "female",
-    "location": "Remote",
-    "salary": "17000/month",
-    "description": "Join our medical team as a remote Frontend Developer. The ideal candidate should have a strong understanding of React and experience with medical applications.",
-    "requirements": [
-      "Proficiency in React and JavaScript.",
-      "Experience with responsive design.",
-      "Knowledge of medical applications is a plus.",
-      "Experience with Git.",
-      "Strong communication skills."
-    ],
-    "vacancy": 2,
-    "deadline": { "$date": "2024-09-01T12:00:00Z" }
-  },
-  {
-    "title": "Full Stack Developer",
-    "sector": "Information and Technology",
-    "type": "FullTime",
-    "companyId": "user_2k0xNs5MoQoKHTF36tZ11WQ0eed",
-    "experience": 2,
-    "applicant": "male",
+    "applicant": "both",
     "location": "Addis Ababa",
     "salary": "20000/month",
-    "description": "We are seeking a talented Full Stack Developer to join our dynamic team. The ideal candidate will have experience in both front-end and back-end development, with a solid understanding of web technologies, databases, and UI/UX design principles. You will work on building and maintaining web applications, ensuring they are robust, scalable, and user-friendly. Proficiency in MERN stack, Django, and PHP is a plus. Join us to contribute to exciting projects and grow your skills in a collaborative environment.",
+    "description": "We are looking for a qualified Pharmacist to dispense medications and provide information to patients about the use and effects of medicines. The ideal candidate will have a strong understanding of pharmaceuticals and a commitment to patient safety.",
     "requirements": [
-      "HTML, CSS, JavaScript, and frameworks like React or Angular.",
-      "Experience with server-side languages and frameworks such as Node.js, Django, or PHP.",
-      "Familiarity with both relational databases (e.g., MySQL, PostgreSQL) and NoSQL databases (e.g., MongoDB).",
-      "Experience with Git and collaborative workflows.",
-      "Ability to work well in a team and communicate effectively."
+      "Bachelor's degree in Pharmacy and a valid license.",
+      "Knowledge of pharmaceuticals and drug interactions.",
+      "Strong attention to detail and accuracy.",
+      "Excellent communication and customer service skills.",
+      "Ability to work in a team and manage inventory."
     ],
-    "vacancy": 5,
-    "deadline": { "$date": "2024-07-31T12:00:00Z" }
+    "responsibility": [
+      "Dispense medications accurately and safely.",
+      "Provide information to patients about medications and their use.",
+      "Monitor patient outcomes and report adverse effects.",
+      "Manage pharmacy inventory and ensure proper storage.",
+      "Collaborate with healthcare professionals to optimize patient care."
+    ],
+    "vacancy": 1,
+    "deadline": { "$date": "2024-09-10T12:00:00Z" }
+  },
+  {
+    "title": "Lab Technician",
+    "sector": "Medical",
+    "type": "FullTime",
+    "companyId": "user_2k0xNs5MoQoKHTF36tZ11WQ0eed",
+    "experience": 1,
+    "applicant": "male",
+    "location": "Addis Ababa",
+    "salary": "18000/month",
+    "description": "We are seeking a Lab Technician to perform laboratory tests, analyze samples, and assist in diagnostic procedures. The ideal candidate should have experience in a laboratory setting and be familiar with lab equipment and safety protocols.",
+    "requirements": [
+      "Diploma or degree in Laboratory Technology.",
+      "Experience in laboratory testing and procedures.",
+      "Knowledge of lab equipment and safety protocols.",
+      "Attention to detail and accuracy.",
+      "Good communication and teamwork skills."
+    ],
+    "responsibility": [
+      "Conduct laboratory tests and procedures.",
+      "Analyze samples and interpret results.",
+      "Maintain lab equipment and ensure safety protocols.",
+      "Document test results and maintain records.",
+      "Collaborate with healthcare professionals for accurate diagnosis."
+    ],
+    "vacancy": 3,
+    "deadline": { "$date": "2024-08-30T12:00:00Z" }
   }
 ]

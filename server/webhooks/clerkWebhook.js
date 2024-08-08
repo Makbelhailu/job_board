@@ -24,6 +24,8 @@ const clerkWebhook = async (req, res) => {
     } else if (event.type === "user.deleted") {
       await User.findOneAndDelete({ userId: id });
       await Job.deleteMany({ companyId: id });
+      await Application.deleteMany({ userId: id });
+
       res.status(200).send("Webhook received successfully");
     } else {
       // For other events, just acknowledge receipt

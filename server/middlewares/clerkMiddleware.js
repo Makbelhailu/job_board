@@ -7,28 +7,25 @@ function sleep(ms) {
 
 const companyInfo = async (jobList) => {
   try {
-    const clerkClient = createClerkClient({
-      secretKey: process.env.CLERK_SECRET_KEY,
-    });
-    const allUserInfo = await clerkClient.users.getUserList();
+    const companyIds = jobList.map((job) => job.companyId);
+    const users = await User.find({ userId: { $in: companyIds } });
 
-    const fullJobList = jobList.map((job) => {
-      const jobObj = job.toObject();
-      const userInfo = allUserInfo["data"].filter(
-        (data) => data["id"] === job.companyId
-      );
-      if (userInfo) {
-        jobObj.profile = userInfo[0].imageUrl;
-        jobObj.username = userInfo[0].username;
-      }
-      return jobObj;
+    const userMap = users.reduce((map, user) => {
+      map[user.userId] = user;
+      return map;
+    }, {});
+
+    const fullList = jobList.map((job) => ({
+      ...job._doc,
+      username: userMap[job.companyId].username,
+      profile: userMap[job.companyId].profile,
+    }));
     });
 
     return fullJobList;
   } catch (err) {
     console.log("error fetching company info", err);
-    await sleep(2000);
-    return companyInfo(jobList);
+    throw Error(err)
   }
 };
 

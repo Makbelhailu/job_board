@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(morgan("dev"));
 
-app.post("", clerkWebhook);
+app.post("/webhook/clerk", clerkWebhook);
 
 app.use("/api/v1/jobs", jobRoute);
 app.use("/api/v1/applications", applicationRoute);

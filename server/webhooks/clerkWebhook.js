@@ -19,6 +19,8 @@ export const clerkWebhook = async (req, res) => {
       // Respond with a 200 status to acknowledge the webhook was received
       res.status(200).send("Webhook received successfully");
     } else if (event.type === "user.deleted") {
+      await User.findOneAndDelete({ userId: id });
+      res.status(200).send("Webhook received successfully");
     } else {
       // For other events, just acknowledge receipt
       res.status(200).send("Event ignored");

@@ -253,7 +253,7 @@ const Home = ({ isLoading }) => {
             </p>
           </div>
           <div className="job_button self-end">
-            <Link to={isSignedIn ? "/jobs" : "/"}>
+            <Link to={"/jobs"}>
               <MyButton
                 className="mb-2 rounded-md p-0 text-xs font-bold"
                 colored={true}
@@ -271,7 +271,7 @@ const Home = ({ isLoading }) => {
         ) : (
           <div className="job_cards grid grid-cols-3 items-center justify-around gap-4">
             {jobList.slice(0, 6).map((content, key) => (
-              <JobCard key={key} content={content} />
+              <JobCard key={key} content={content} className={"w-full"} />
             ))}
           </div>
         )}

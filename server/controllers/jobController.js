@@ -12,13 +12,13 @@ const getAllJobs = async (req, res) => {
   const jobList = await JobList.find()
     .sort({ createdAt: -1 })
     .skip(skip)
-    .limit(limit)
-    .populate({
-      path: "companyId",
-      model: "User",
-      select: "userId username profile accountType",
-      match: { userId: "$companyId" },
-    });
+    .limit(limit);
+  // .populate({
+  //   path: "companyId",
+  //   model: "User",
+  //   select: "userId username profile accountType",
+  //   match: { userId: "$companyId" },
+  // });
 
   if (!jobList) {
     return res.status(400).json({ error: "error fetching all the jobs" });

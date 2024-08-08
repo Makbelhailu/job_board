@@ -29,6 +29,7 @@ function App() {
       fetchJobs()
         .then((data) => {
           setJobList(data);
+          console.dir(data);
           setIsLoading(false);
           console.log("12 job fetched");
           clearInterval(fetchInterval);

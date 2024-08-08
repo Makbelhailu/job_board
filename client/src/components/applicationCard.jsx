@@ -13,7 +13,7 @@ import JobCard from "../components/job-card";
 import { useRecoilValue } from "recoil";
 import { jobsState } from "../utils/states";
 import { formatDate } from "../utils/functions";
-import ErrorPage from "../components/errorPage";
+import ErrorPage from "../pages/errorPage";
 
 import { FaLocationDot } from "react-icons/fa6";
 

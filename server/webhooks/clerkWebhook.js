@@ -10,7 +10,7 @@ const clerkWebhook = async (req, res) => {
     const userData = event.data;
     const { id, username, image_url, unsafe_metadata, created_at } = userData;
 
-    if (event.type === "user.created" || event.type === "user.updated") {
+    if (event.type === "user.created") {
       await User.create({
         userId: id,
         username,
@@ -19,6 +19,20 @@ const clerkWebhook = async (req, res) => {
         created_at,
         updated_at: new Date(),
       });
+
+      // Respond with a 200 status to acknowledge the webhook was received
+      res.status(200).send("Webhook received successfully");
+      console.log("Webhook received successfully");
+    } else if (event.type === "user.updated") {
+      await User.findOneAndUpdate(
+        { userId: id },
+        {
+          username,
+          profile: image_url,
+          accountType: unsafe_metadata.AccountType,
+          updated_at: new Date(),
+        }
+      );
 
       // Respond with a 200 status to acknowledge the webhook was received
       res.status(200).send("Webhook received successfully");

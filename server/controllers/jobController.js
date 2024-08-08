@@ -14,7 +14,7 @@ const getAllJobs = async (req, res) => {
       .populate({
         path: "companyId",
         model: "User",
-        select: "username profile",
+        select: "userId username profile",
         match: { userId: "$companyId" },
       })
       .sort({ createdAt: -1 })

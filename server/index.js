@@ -7,7 +7,7 @@ require("dotenv").config();
 const companyInfo = require("./middlewares/clerkMiddleware");
 const jobRoute = require("./routes/jobs");
 const applicationRoute = require("./routes/applications");
-
+const clerkWebhook = require("./webhooks/clerkWebhook");
 const app = express();
 
 // app.use(companyInfo);
@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(morgan("dev"));
 
-app.post("");
+app.post("", clerkWebhook);
 
 app.use("/api/v1/jobs", jobRoute);
 app.use("/api/v1/applications", applicationRoute);

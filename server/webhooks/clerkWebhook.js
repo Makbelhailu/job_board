@@ -1,6 +1,6 @@
 const User = require("../models/userModel");
 
-export const clerkWebhook = async (req, res) => {
+exports.clerkWebhook = async (req, res) => {
   const event = req.body;
 
   try {

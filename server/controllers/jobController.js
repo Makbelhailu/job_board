@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const JobList = require("../models/jobModel");
+const User = require("../models/userModel");
 const companyInfo = require("../middlewares/clerkMiddleware");
 
 // get all data
@@ -11,12 +12,6 @@ const getAllJobs = async (req, res) => {
   console.log(page);
   try {
     const jobList = await JobList.find()
-      .populate({
-        path: "companyId",
-        model: "User",
-        select: "userId username profile",
-        match: { userId: "$companyId" },
-      })
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit);

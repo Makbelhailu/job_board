@@ -20,7 +20,7 @@ const getAllJobs = async (req, res) => {
       return res.status(400).json({ error: "error fetching all the jobs" });
     }
 
-    // const fullList = await companyInfo(jobList);
+    const companyIds = jobList.map((job) => job.companyId);
 
     res.status(200).json(jobList);
     console.log("all jobs fetched");

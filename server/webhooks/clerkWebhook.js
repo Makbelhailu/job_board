@@ -5,12 +5,12 @@ export const clerkWebhook = async (req, res) => {
     if (event.type === "user.created" || event.type === "user.updated") {
       const userData = event.data;
 
-      const { id, username, imageUrl, last_name, created_at } = userData;
+      const { id, username, imageUrl, created_at } = userData;
 
       await User.upsert({
-        id,
+        userId: id,
         username,
-        profile: 
+        profile: imageUrl,
         created_at,
         updated_at: new Date(),
       });

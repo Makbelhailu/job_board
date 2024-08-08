@@ -20,12 +20,11 @@ const companyInfo = async (jobList) => {
       username: userMap[job.companyId].username,
       profile: userMap[job.companyId].profile,
     }));
-    });
 
     return fullJobList;
   } catch (err) {
     console.log("error fetching company info", err);
-    throw Error(err)
+    throw Error(err);
   }
 };
 

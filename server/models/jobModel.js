@@ -18,7 +18,6 @@ const jobSchema = new Schema(
     companyId: {
       type: String,
       ref: "User",
-      required: true,
     },
     experience: {
       type: Number,

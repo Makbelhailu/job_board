@@ -20,19 +20,7 @@ const getAllJobs = async (req, res) => {
       return res.status(400).json({ error: "error fetching all the jobs" });
     }
 
-    const companyIds = jobList.map((job) => job.companyId);
-    const users = await User.find({ userId: { $in: companyIds } });
-
-    const userMap = users.reduce((map, user) => {
-      map[user.userId] = user;
-      return map;
-    }, {});
-
-    const fullList = jobList.map((job) => ({
-      ...job._doc,
-      username: userMap[job.companyId].username,
-      profile: userMap[job.companyId].profile,
-    }));
+    const fullList = await companyInfo()
 
     res.status(200).json(fullList);
     console.log("all jobs fetched");

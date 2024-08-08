@@ -5,13 +5,14 @@ const clerkWebhook = async (req, res) => {
 
   try {
     const userData = event.data;
-    const { id, username, imageUrl, created_at } = userData;
+    const { id, username, imageUrl, unsafeMetadata, created_at } = userData;
 
     if (event.type === "user.created" || event.type === "user.updated") {
       await User.upsert({
         userId: id,
         username,
         profile: imageUrl,
+        accountType: unsafeMetadata.AccountType,
         created_at,
         updated_at: new Date(),
       });

@@ -9,30 +9,30 @@ const getAllJobs = async (req, res) => {
   const skip = (page - 1) * limit;
 
   console.log(page);
-  const jobList = await JobList.find()
-    .populate({
-      path: "companyId",
-      model: "User",
-      select: "username profile",
-      match: { userId: "$companyId" },
-    })
-    .sort({ createdAt: -1 })
-    .skip(skip)
-    .limit(limit)
-    .exec((err, jobs) => {
-      if (err) {
-        console.error(err);
-      }
-      return jobs; // Jobs will include populated User data
-    });
-  if (!jobList) {
-    return res.status(400).json({ error: "error fetching all the jobs" });
+  try {
+    const jobList = await JobList.find()
+      .populate({
+        path: "companyId",
+        model: "User",
+        select: "username profile",
+        match: { userId: "$companyId" },
+      })
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    if (!jobList) {
+      return res.status(400).json({ error: "error fetching all the jobs" });
+    }
+
+    // const fullList = await companyInfo(jobList);
+
+    res.status(200).json(jobList);
+    console.log("all jobs fetched");
+  } catch (err) {
+    console.error("job fetch error: ", err);
+    return res.status(500).json({ error: "internal server error" });
   }
-
-  // const fullList = await companyInfo(jobList);
-
-  res.status(200).json(jobList);
-  console.log("all jobs fetched");
 };
 
 //get a single job

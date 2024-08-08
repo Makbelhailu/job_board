@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const Job = require("../models/jobModel");
 
 const clerkWebhook = async (req, res) => {
   const event = req.body;
@@ -21,6 +22,7 @@ const clerkWebhook = async (req, res) => {
       res.status(200).send("Webhook received successfully");
     } else if (event.type === "user.deleted") {
       await User.findOneAndDelete({ userId: id });
+      await Job.deleteMany({ companyId: id });
       res.status(200).send("Webhook received successfully");
     } else {
       // For other events, just acknowledge receipt

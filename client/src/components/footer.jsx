@@ -46,9 +46,7 @@ const Footer = () => {
             <Link to="/jobs">Jobs</Link>
           </li>
 
-          {accountType && (
-            <CustomLink type={accountType} path={path} setPath={setPath} />
-          )}
+          {accountType && <CustomLink type={accountType} />}
           <li>
             <Link to="/about">About</Link>
           </li>
@@ -95,7 +93,7 @@ const Footer = () => {
   );
 };
 
-function CustomLink({ type, path, setPath }) {
+function CustomLink({ type }) {
   if (type === "freelancer") {
     return (
       <li>

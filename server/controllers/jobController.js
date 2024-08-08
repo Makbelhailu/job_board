@@ -23,7 +23,7 @@ const getAllJobs = async (req, res) => {
     const companyIds = jobList.map((job) => job.companyId);
     const users = await User.find({ userId: { $in: companyIds } });
 
-    const userMap = companyInfo.reduce((map, user) => {
+    const userMap = users.reduce((map, user) => {
       map[user.userId] = user;
       return map;
     }, {});

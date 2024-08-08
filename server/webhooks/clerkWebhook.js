@@ -1,6 +1,6 @@
 const User = require("../models/userModel");
 
-exports.clerkWebhook = async (req, res) => {
+const clerkWebhook = async (req, res) => {
   const event = req.body;
 
   try {
@@ -30,3 +30,5 @@ exports.clerkWebhook = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 };
+
+module.exports = clerkWebhook;

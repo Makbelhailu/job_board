@@ -9,10 +9,13 @@ const getAllJobs = async (req, res) => {
   const skip = (page - 1) * limit;
 
   console.log(page);
-  const jobList = await JobList.find({})
+  const jobList = await JobList.find()
     .sort({ createdAt: -1 })
     .skip(skip)
-    .limit(limit);
+    .limit(limit)
+    .populate({
+      path: "companyId",
+    });
 
   if (!jobList) {
     return res.status(400).json({ error: "error fetching all the jobs" });

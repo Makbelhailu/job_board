@@ -11,7 +11,7 @@ const clerkWebhook = async (req, res) => {
     const { id, username, image_url, unsafe_metadata, created_at } = userData;
 
     if (event.type === "user.created" || event.type === "user.updated") {
-      await User.inser({
+      await User.create({
         userId: id,
         username,
         profile: image_url,

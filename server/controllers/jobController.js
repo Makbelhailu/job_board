@@ -28,8 +28,13 @@ const getAllJobs = async (req, res) => {
       return map;
     }, {});
 
-    const fullList = jobList.map((job) => {});
-    res.status(200).json(jobList);
+    const fullList = jobList.map((job) => ({
+      ...job._doc,
+      username: userMap[job.companyId].username,
+      profile: userMap[job.companyId].profile,
+    }));
+
+    res.status(200).json(fullList);
     console.log("all jobs fetched");
   } catch (err) {
     console.error("job fetch error: ", err);

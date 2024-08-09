@@ -105,7 +105,7 @@ const Jobs = () => {
             <div className="text text-md font-bold">Filter Jobs</div>
             <div>
               <MyButton
-                className="mb-2 rounded-md p-0 text-xs font-bold"
+                className="mb-2 cursor-pointer rounded-md p-0 text-xs font-bold"
                 colored={true}
                 onClick={clearFilter}
               >

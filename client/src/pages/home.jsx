@@ -118,7 +118,7 @@ const Home = ({ isLoading }) => {
           </div>
         </div>
       </div>
-      <div className="marquees relative mt-20">
+      <div className="marquees relative mt-20 ">
         <Marquee
           className="my-3"
           direction="right"

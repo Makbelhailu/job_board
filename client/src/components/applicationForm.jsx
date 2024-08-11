@@ -77,7 +77,7 @@ const ApplicationForm = () => {
             <section className="mb-4">
               <h2 className="mb-2 text-xl font-bold">Personal Information</h2>
               <div className="flex flex-wrap items-center justify-between">
-                <label className="mb-2 block w-full font-medium">
+                <label className="mb-2 block w-auto font-medium">
                   Full Name
                   <input
                     type="text"

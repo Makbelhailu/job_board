@@ -76,28 +76,30 @@ const ApplicationForm = () => {
 
             <section className="mb-4">
               <h2 className="mb-2 text-xl font-bold">Personal Information</h2>
-              <label className="mb-2 block font-medium">
-                Full Name
-                <input
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
-                  required
-                />
-              </label>
-              <label className="mb-2 block font-medium">
-                Email Address
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
-                  required
-                />
-              </label>
+              <div className="flex flex-wrap items-center justify-between gap-1">
+                <label className="mb-2 block w-full font-medium">
+                  Full Name
+                  <input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
+                    required
+                  />
+                </label>
+                <label className="mb-2 block w-full font-medium">
+                  Email Address
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
+                    required
+                  />
+                </label>
+              </div>
               <label className="mb-2 block font-medium">
                 Phone Number
                 <input

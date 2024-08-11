@@ -76,7 +76,7 @@ const ApplicationForm = () => {
 
             <section className="mb-4">
               <h2 className="mb-2 text-xl font-bold">Personal Information</h2>
-              <div className="flex flex-wrap items-center justify-between gap-1">
+              <div className="flex flex-wrap items-center justify-between">
                 <label className="mb-2 block font-medium">
                   Full Name
                   <input
@@ -100,28 +100,30 @@ const ApplicationForm = () => {
                   />
                 </label>
               </div>
-              <label className="mb-2 block font-medium">
-                Phone Number
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
-                  required
-                />
-              </label>
-              <label className="mb-4 block font-medium">
-                Address
-                <input
-                  type="text"
-                  name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                  className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
-                  required
-                />
-              </label>
+              <div className="flex flex-wrap items-center justify-between">
+                <label className="mb-2 block font-medium">
+                  Phone Number
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
+                    required
+                  />
+                </label>
+                <label className="mb-4 block font-medium">
+                  Address
+                  <input
+                    type="text"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
+                    required
+                  />
+                </label>
+              </div>
             </section>
             <section className="mb-4">
               <h2 className="mb-2 text-xl font-bold">Resume/CV</h2>

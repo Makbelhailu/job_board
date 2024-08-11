@@ -84,7 +84,7 @@ const ApplicationForm = () => {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
-                    className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
+                    className=" rounded-lg border-2 border-gray-400 bg-primary p-2"
                     required
                   />
                 </label>

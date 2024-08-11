@@ -153,7 +153,6 @@ const ApplicationForm = () => {
             </section>
 
             <section className="mb-4">
-              {/* <h2 className="mb-2 text-xl font-bold">Cover Letter</h2> */}
               <label className="mb-4 block font-medium">
                 Cover Letter
                 <textarea

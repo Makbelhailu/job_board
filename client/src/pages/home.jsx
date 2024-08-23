@@ -278,7 +278,7 @@ const Home = ({ isLoading }) => {
       </div>
       <div className="offers_container my-28 px-12">
         <div className="offer_title mb-12 w-[45%] text-left">
-          <h2 className="mb-3  text-4xl font-bold capitalize">what we offer</h2>
+          <h2 className="mb-3  text-4xl font-bold capitalize">what we{" "}<span className="text-secondary">offer</span></h2>
           <p className="text-xs font-semibold leading-loose text-slate-700">
             Job Portal is the right platform for you to get various job
             recommendations, get career counseling, and find your ideal job

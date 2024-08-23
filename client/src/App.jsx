@@ -9,6 +9,7 @@ import NavBar from "./components/navBar";
 import Footer from "./components/footer";
 import ErrorPage from "./pages/errorPage";
 import AccountType from "./pages/accountType";
+import Post from "./pages/post"
 
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 
@@ -60,6 +61,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home isLoading={isLoading} />} />
               <Route path="/jobs" element={<Jobs />} />
+              <Route path="/post" element={<Post />} />
+
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </SignedOut>
@@ -68,6 +71,7 @@ function App() {
               <Route path="/" element={<Home isLoading={isLoading} />} />
               {<Route path="/account-type" element={<AccountType />} />}
               <Route path="/jobs" element={<Jobs />} />
+              <Route path="/post" element={<Post />} />
               <Route path="/jobs/:id" element={<ApplicationCard />} />
               <Route path="/apply/:title" element={<ApplicationForm />} />
               <Route path="*" element={<ErrorPage />} />

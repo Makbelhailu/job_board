@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -6,19 +6,17 @@ import { CardActionArea } from "@mui/material";
 
 import { useClerk, useUser } from "@clerk/clerk-react";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MyButton from "./button";
-import { FaLocationDot } from "react-icons/fa6";
 
 const JobCard = ({ content, btn, className }) => {
   const { isSignedIn } = useUser();
   const clerk = useClerk();
-  const navigate = useNavigate();
 
   return (
     <Card
-      sx={{ borderRadius: 2, boxShadow: 5 }}
-      className={`shadow-lg h-full ${className ? className : "md:w-[400px] xl:w-auto xl:max-w-[350px]"}`}
+      sx={{ minHeight: "100%", borderRadius: 2, boxShadow: 5 }}
+      className={`h-full w-full shadow-lg ${className ? className : "sm:w-[600px] md:w-full xl:w-auto xl:max-w-[350px]"}`}
     >
       <Link
         to={isSignedIn ? `/jobs/${content._id}` : "/"}
@@ -83,6 +81,26 @@ const JobCard = ({ content, btn, className }) => {
       </Link>
     </Card>
   );
+};
+
+JobCard.propTypes = {
+  content: PropTypes.shape({
+    _id: PropTypes.string,
+    title: PropTypes.string,
+    type: PropTypes.string,
+    salary: PropTypes.string,
+    vacancy: PropTypes.number,
+    location: PropTypes.string,
+    description: PropTypes.string,
+    profile: PropTypes.string,
+    username: PropTypes.string,
+  }),
+  btn: PropTypes.bool,
+  className: PropTypes.string,
+};
+JobCard.defaultProps = {
+  btn: false,
+  className: "",
 };
 
 export default JobCard;

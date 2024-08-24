@@ -17,7 +17,7 @@ import JobCard from "../components/job-card";
 
 import { useRecoilState } from "recoil";
 import { jobsState } from "../utils/states";
-import { fetchJobs } from "../utils/functions";
+import { fetchJobs, useQuery } from "../utils/functions";
 
 const Jobs = () => {
   const [jobList, setJobList] = useRecoilState(jobsState);
@@ -27,10 +27,6 @@ const Jobs = () => {
   const search = query.get("search");
   const [page, setPage] = useState(parseInt(query.get("page") || "1", 10));
   const [count, setCount] = useState(page);
-
-  function useQuery(path) {
-    return new URLSearchParams(path.search);
-  }
 
   const defaultState = [
     {
@@ -86,7 +82,7 @@ const Jobs = () => {
 
     return () => clearInterval(fetchInterval);
   }, [page, isLoading]);
-  const handleCheck = (checked, value, state, func) => {
+  const handleCheck = ({ checked, value }, state, func) => {
     if (checked) {
       func([...state, value]);
     } else {
@@ -369,7 +365,7 @@ const Jobs = () => {
           <Loading />
         ) : (
           <div className="flex flex-col items-center justify-center gap-8">
-            <div className="job-lists scrollbar-none grid max-h-[720px] w-full grid-cols-1 items-center justify-center gap-2 overflow-y-scroll p-1 md:grid-cols-2 xl:grid-cols-3">
+            <div className="job-lists scrollbar-none grid h-full w-full grid-cols-1 items-center justify-center gap-4 overflow-y-scroll  p-1 md:grid-cols-2 xl:grid-cols-3">
               {jobList.map((content, key) => (
                 <JobCard key={key} content={content} btn={true} />
               ))}

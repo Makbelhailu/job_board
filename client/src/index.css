@@ -285,3 +285,9 @@ body {
 .box {
   flex: 1 0 300px;
 }
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}

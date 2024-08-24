@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaXmark } from "react-icons/fa6";
 import axios from "axios";
 import { useParams, useLocation } from "react-router-dom";

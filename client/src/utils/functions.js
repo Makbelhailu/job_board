@@ -17,3 +17,7 @@ export const fetchJobs = (page = 1) => {
 };
 
 export const formatDate = (date) => moment(date).format("MMMM Do, YYYY");
+
+export function useQuery(path) {
+  return new URLSearchParams(path.search);
+}

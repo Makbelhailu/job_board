@@ -65,9 +65,8 @@ const JobCard = ({ content, btn, className }) => {
                 <div className="btns mt-4 flex gap-5">
                   <Link to={`/apply/${content._id}?title=${content.title}`}>
                     <MyButton
-                      colored={true}
                       className={
-                        "btn-primary mx-0 rounded-normal bg-secondary px-[6px] py-1 text-xs font-bold group-hover:border-primary"
+                        "btn-primary mx-0 rounded-normal bg-secondary px-[6px] py-1 text-xs font-bold outline-none group-hover:border-primary group-hover:outline"
                       }
                     >
                       Apply Now

@@ -76,7 +76,7 @@ const ApplicationForm = () => {
 
             <section className="mb-4">
               <h2 className="mb-2 text-xl font-bold">Personal Information</h2>
-              <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="mb-2 flex flex-wrap items-center justify-between gap-3">
                 <label className="box mb-2 block w-fit font-medium">
                   Full Name
                   <input
@@ -100,8 +100,8 @@ const ApplicationForm = () => {
                   />
                 </label>
               </div>
-              <div className="flex flex-wrap items-center justify-between">
-                <label className="mb-2 block font-medium">
+              <div className="mb-2 flex w-full flex-wrap items-center justify-between gap-3">
+                <label className="box mb-2 block font-medium">
                   Phone Number
                   <input
                     type="tel"
@@ -112,7 +112,7 @@ const ApplicationForm = () => {
                     required
                   />
                 </label>
-                <label className="mb-4 block font-medium">
+                <label className=" box mb-2 block font-medium">
                   Address
                   <input
                     type="text"

@@ -21,19 +21,19 @@ export default {
       borderRadius: {
         normal: "10px",
       },
-      // screens: {
-      //   xs: {min:"0px", max:"576px"},
+      screens: {
+        xs: "480px",
 
-      //   sm: { min: "576px", max: "768px" },
+        //   sm: { min: "576px", max: "768px" },
 
-      //   md: { min: "768px", max: "992px" },
+        //   md: { min: "768px", max: "992px" },
 
-      //   lg: { min: "992px", max: "1200px" },
+        //   lg: { min: "992px", max: "1200px" },
 
-      //   xl: "1200px",
+        //   xl: "1200px",
 
-      //   "2xl": "1400px",
-      // },
+        //   "2xl": "1400px",
+      },
     },
   },
   corePlugins: {

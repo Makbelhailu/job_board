@@ -3,6 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 
 import { UserButton, useClerk, useUser } from "@clerk/clerk-react";
 
+import MyDrawer from "./drawer";
+import CustomLink from "./customLink";
+
 const NavBar = () => {
   const { isSignedIn, user, isLoaded } = useUser();
   const clerk = useClerk();
@@ -28,7 +31,7 @@ const NavBar = () => {
           job<span className="text-orangeish">hunt</span>
         </h1>
       </div>
-      <nav className="flex items-center justify-between  gap-10">
+      <nav className=" hidden items-center justify-between gap-10 md:flex">
         <ul className="text-md inline-flex gap-x-10 text-center font-semibold">
           <li>
             <Link
@@ -54,7 +57,14 @@ const NavBar = () => {
           </li>
 
           {accountType && (
-            <CustomLink type={accountType} path={path} setPath={setPath} />
+            <li>
+              <CustomLink
+                type={accountType}
+                path={path}
+                setPath={setPath}
+                className="link"
+              />
+            </li>
           )}
           <li>
             <Link
@@ -68,7 +78,6 @@ const NavBar = () => {
             </Link>
           </li>
         </ul>
-
         {isSignedIn ? (
           <UserButton
             appearance={{ elements: { userButtonAvatarBox: "w-9 h-9" } }}
@@ -87,40 +96,9 @@ const NavBar = () => {
           </div>
         )}
       </nav>
+      <MyDrawer customLink={<CustomLink />} />
     </div>
   );
 };
-
-function CustomLink({ type, path, setPath }) {
-  if (type === "freelancer") {
-    return (
-      <li>
-        <Link
-          to="/applications"
-          className={`link ${path == "/applications" ? "active" : ""}`}
-          onClick={(e) => {
-            setPath("/applications");
-          }}
-        >
-          Applications
-        </Link>
-      </li>
-    );
-  } else if (type === "company") {
-    return (
-      <li>
-        <Link
-          to="/posts"
-          className={`link ${path == "/posts" ? "active" : ""}`}
-          onClick={(e) => {
-            setPath("/posts");
-          }}
-        >
-          Posts
-        </Link>
-      </li>
-    );
-  }
-}
 
 export default NavBar;

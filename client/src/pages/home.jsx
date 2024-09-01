@@ -240,7 +240,7 @@ const Home = ({ isLoading }) => {
         </div>
       </div>
       <div className="job_container px-12">
-        <div className="job_header my-12 flex items-center justify-between">
+        <div className="job_header my-12 flex flex-col items-center justify-between gap-y-5 md:flex-row">
           <div className="job_content">
             <h1 className="mb-2 text-left text-4xl font-bold">
               <span className="text-secondary">Latest and Top</span> Job
@@ -269,23 +269,25 @@ const Home = ({ isLoading }) => {
         {isLoading ? (
           <Loading size={80} />
         ) : (
-          <div className="job_cards grid grid-cols-3 items-center justify-around gap-4">
+          <div className="job_cards grid grid-cols-1 items-center justify-around gap-4 md:grid-cols-2 xl:grid-cols-3">
             {jobList.slice(0, 6).map((content, key) => (
               <JobCard key={key} content={content} className={"w-full"} />
             ))}
           </div>
         )}
       </div>
-      <div className="offers_container my-28 px-12">
-        <div className="offer_title mb-12 w-[45%] text-left">
-          <h2 className="mb-3  text-4xl font-bold capitalize">what we{" "}<span className="text-secondary">offer</span></h2>
+      <div className="offers_container mb-12 mt-28 px-12">
+        <div className="offer_title mb-12 w-full text-left md:w-[45%]">
+          <h2 className="mb-3  text-4xl font-bold capitalize">
+            what we <span className="text-secondary">offer</span>
+          </h2>
           <p className="text-xs font-semibold leading-loose text-slate-700">
             Job Portal is the right platform for you to get various job
             recommendations, get career counseling, and find your ideal job
             profile.
           </p>
         </div>
-        <div className="offers grid grid-cols-3 gap-5 ">
+        <div className="offers grid grid-cols-1 gap-x-5 gap-y-10 md:grid-cols-3 ">
           <div className="offer rounded-md text-left">
             <img
               src={jobImg}

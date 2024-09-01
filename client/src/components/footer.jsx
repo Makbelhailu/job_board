@@ -14,8 +14,7 @@ const Footer = () => {
 
   return (
     <div
-      className="footer_container xs:grid-cols-1 m-0 grid w-full
-    grid-cols-5 items-start justify-between gap-14 rounded-t-3xl bg-secondary px-6 pb-2 pt-6 text-left
+      className="footer_container m-0 grid w-full grid-cols-1 items-start justify-between gap-14 rounded-t-3xl bg-secondary px-6 pb-2 pt-6 text-left
     text-white sm:grid-cols-2 md:grid-cols-5 md:gap-2 lg:gap-8"
     >
       <div className="overall md:col-span-2 lg:col-span-2 xl:col-span-2">
@@ -34,7 +33,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-      <div className="pages">
+      <div className="pages sm:text-center md:text-left">
         <div className="title mb-4">
           <h3 className="text-sm font-bold ">Pages</h3>
         </div>
@@ -65,11 +64,11 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <div className="footer_contact ">
+      <div className="footer_contact sm:text-center md:text-left">
         <div className="title mb-4">
           <h3 className="text-sm font-bold ">Contact Us</h3>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col justify-center gap-2 sm:items-center md:items-start">
           <div className="phone_contact flex items-center">
             <a href="tel:+251904537541" className="decoration-none">
               <p className="text-xs font-medium text-slate-100">
@@ -103,7 +102,7 @@ function CustomLink({ type }) {
   } else if (type === "company") {
     return (
       <li>
-        <Link to="/posts">Posts</Link>
+        <Link to="/my-post">Posts</Link>
       </li>
     );
   }

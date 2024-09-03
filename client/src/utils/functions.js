@@ -7,9 +7,13 @@ export const autoResize = (ref) => {
   textarea.style.height = textarea.scrollHeight + "px"; // Set the height to the scrollHeight
 };
 
+export const api = axios.create({
+  baseURL: "http://localhost:5000/api/v1", // Replace with your API's base URL
+});
+
 export const fetchJobs = (page = 1) => {
-  return axios
-    .get(`http://localhost:5000/api/v1/jobs?page=${page}`)
+  return api
+    .get(`/jobs?page=${page}`)
     .then((res) => res.data)
     .catch((err) => {
       throw err;

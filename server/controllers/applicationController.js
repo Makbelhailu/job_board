@@ -18,7 +18,7 @@ const getAllApplications = async (req, res) => {
 
 //get a singel application
 const getApplication = async (req, res) => {
-  const { id } = req.params;
+  const { userId, jobId } = req.query;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "invalid id" });
@@ -26,20 +26,50 @@ const getApplication = async (req, res) => {
   const app = await App.findOne({ id: id });
 
   if (!app) {
-    res.status(400).json({ error: "error getting the application" });
+    res
+      .status(400)
+      .json({ status: false, error: "error getting the application" });
   }
-  res.status(200).json(app);
+  res.status(200).json({ status: true, app });
 };
 
 //create application
 const createApplication = async (req, res) => {
-  const { userId, jobId, letter, email } = req.body;
-  //const resumeUrl = resume?.fileName;
+  const {
+    fullName,
+    email,
+    phone,
+    address,
+    coverLetter,
+    linkedin,
+    portfolio,
+    jobId,
+    userId,
+  } = req.body;
+  if (!mongoose.Types.ObjectId.isValid(userId)) {
+    return res.status(404).json({ status: false, error: "invalid User Id" });
+  } else if (!mongoose.Types.ObjectId.isValid(jobId)) {
+    return res.status(404).json({ status: false, error: "invalid Job Id" });
+  }
+
+  const { originalName, location } = req.file;
   try {
-    const app = await App.create({ userId, jobId, letter, email });
-    res.status(200).json(app);
+    const app = await App.create({
+      userId,
+      jobId,
+      fullName,
+      email,
+      phone,
+      address,
+      coverLetter,
+      linkedin,
+      portfolio,
+      resume: originalName,
+      resumeUrl: location,
+    });
+    res.status(200).json({ status: true, app });
   } catch (error) {
-    res.status(404).json({ error: error.message });
+    res.status(404).json({ status: false, error: error.message });
   }
 };
 
@@ -48,14 +78,16 @@ const updateApplication = async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "invalid id" });
+    return res.status(404).json({ status: false, error: "invalid id" });
   }
   const app = await App.findOneAndUpdate({ _id: id }, { ...req.body });
 
   if (!app) {
-    res.status(400).json({ error: "error updating the application" });
+    res
+      .status(400)
+      .json({ status: false, error: "error updating the application" });
   }
-  res.status(200).json(app);
+  res.status(200).json({ status: true, app });
 };
 
 //delete application
@@ -68,9 +100,11 @@ const deleteApplication = async (req, res) => {
   const app = await App.findOneAndDelete({ _id: id });
 
   if (!app) {
-    res.status(400).json({ error: "error deleting the application" });
+    res
+      .status(400)
+      .json({ status: false, error: "error deleting the application" });
   }
-  res.status(200).json(app);
+  res.status(200).json({ status: true, app });
 };
 
 module.exports = {

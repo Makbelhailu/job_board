@@ -78,7 +78,9 @@ const ApplicationCard = () => {
               </div>
             </div>
 
-            <Link to={`/apply/${jobInfo._id}?title=${jobInfo.title}`}>
+            <Link
+              to={`/apply/${jobInfo._id}?title=${jobInfo.title}&salary=${jobInfo.salary}`}
+            >
               <button className="btn-primary px-4 py-2 text-sm ">
                 Apply Now
               </button>

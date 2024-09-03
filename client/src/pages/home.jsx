@@ -59,22 +59,22 @@ const Home = ({ isLoading }) => {
   return (
     <div className="home relative mt-24 w-full text-center">
       <div className="icons">
-        <div className="icon absolute left-96 top-0 bg-white shadow-md">
+        <div className="icon absolute right-24 top-0 bg-white  shadow-md sm:left-96">
           <img src={fb} alt="facebook icon" className="h-5 w-5" />
         </div>
         <div className="icon absolute left-32 top-40 bg-white shadow-md">
           <img src={amazon} alt="amazon icon" className="h-5 w-5" />
         </div>
-        <div className="icon absolute left-96 top-64 bg-white shadow-md">
+        <div className="icon absolute right-14 top-[24rem] bg-white shadow-md sm:left-96 sm:top-64">
           <img src={figma} alt="figma icon" className="h-5 w-5" />
         </div>
-        <div className="icon absolute right-72 top-12 bg-white shadow-md">
+        <div className="icon absolute top-12 bg-white shadow-md max-sm:left-24 sm:right-72">
           <img src={google} alt="google icon" className="h-5 w-5" />
         </div>
-        <div className="icon absolute right-36 top-32 bg-white shadow-md">
+        <div className="icon absolute right-8 top-32 bg-white shadow-md sm:right-36">
           <img src={linkedin} alt="linkedin icon" className="h-5 w-5" />
         </div>
-        <div className="icon absolute right-80 top-80 bg-white shadow-md">
+        <div className="icon absolute right-72 top-80 bg-white shadow-md sm:right-80">
           <img src={microsoft} alt="microsoft icon" className="h-5 w-5" />
         </div>
       </div>
@@ -276,7 +276,7 @@ const Home = ({ isLoading }) => {
           </div>
         )}
       </div>
-      <div className="offers_container mb-12 mt-28 px-12">
+      <div className="offers_container mt-28 px-12 sm:mb-12">
         <div className="offer_title mb-12 w-full text-left md:w-[45%]">
           <h2 className="mb-3  text-4xl font-bold capitalize">
             what we <span className="text-secondary">offer</span>

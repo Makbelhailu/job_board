@@ -1,18 +1,25 @@
 import { useState, useEffect, useRef } from "react";
 import { FaXmark } from "react-icons/fa6";
-import axios from "axios";
-import { useParams, useLocation } from "react-router-dom";
+import { api } from "../utils/functions";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 
 import { autoResize } from "../utils/functions";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
+import { userState } from "../utils/states";
+
+import { useRecoilValue } from "recoil";
+
 const ApplicationForm = () => {
+  const { user } = useRecoilValue(userState);
+  const [isSending, setIsSending] = useState(false);
   const textareaRef = useRef(null);
   const { id } = useParams();
   const title = new URLSearchParams(useLocation().search).get("title") || "";
-  console.log(title);
+  const salary = new URLSearchParams(useLocation().search).get("salary") || "";
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -22,28 +29,53 @@ const ApplicationForm = () => {
     coverLetter: "",
     linkedin: "",
     portfolio: "",
+    jobId: id,
+    userId: user["id"],
   });
 
-  useEffect(() => autoResize(textareaRef), [formData.coverLetter]);
+  useEffect(() => {
+    setFormData({ ...formData, userId: user["id"] });
+  }, [user]);
+
+  useEffect(() => {
+    autoResize(textareaRef);
+  }, [formData.coverLetter]);
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
     if (type === "file") {
-      setFormData({ ...formData, [name]: files[0] });
+      setFormData({ ...formData, resume: files[0] });
     } else {
       setFormData({ ...formData, [name]: value });
     }
   };
 
   const handleSubmit = (e) => {
+    console.log("submitting has been started");
     e.preventDefault();
+    setIsSending(true);
 
     const data = new FormData();
     for (const key in formData) {
       data.append(key, formData[key]);
     }
+    console.log("formData:", formData);
 
-    axios.post("", data);
+    api
+      .post("/application", data)
+      .then((res) => {
+        setIsSending(false);
+        if (res.data.status) {
+          navigate("/applications");
+          console.log("application: ", res.data.app);
+        } else {
+          throw Error("Error posting application");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setIsSending(false);
+      });
   };
 
   return (
@@ -61,17 +93,20 @@ const ApplicationForm = () => {
           <form onSubmit={handleSubmit} encType="multipart/form-data">
             <section className="mb-4">
               <h2 className="mb-2 text-xl font-bold">Job Information</h2>
-              <label className="mb-2 block font-medium">
-                Job Title
-                <input
-                  type="text"
-                  name="fullName"
-                  value={title}
-                  className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-gray-700"
-                  required
-                  disabled
-                />
-              </label>
+              <ul className="mb-2 grid grid-cols-1 gap-3 font-medium sm:grid-cols-2">
+                <div className="">
+                  Job Title
+                  <li className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm text-gray-700">
+                    {title}
+                  </li>
+                </div>
+                <div className="">
+                  Salary
+                  <li className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm text-gray-700">
+                    ${salary}
+                  </li>
+                </div>
+              </ul>
             </section>
 
             <section className="mb-4">
@@ -84,7 +119,7 @@ const ApplicationForm = () => {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
-                    className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
+                    className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm"
                     required
                   />
                 </label>
@@ -95,7 +130,7 @@ const ApplicationForm = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
+                    className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm"
                     required
                   />
                 </label>
@@ -108,18 +143,18 @@ const ApplicationForm = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
+                    className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm"
                     required
                   />
                 </label>
-                <label className=" box mb-2 block font-medium">
+                <label className="box mb-2 block font-medium">
                   Address
                   <input
                     type="text"
                     name="address"
                     value={formData.address}
                     onChange={handleChange}
-                    className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
+                    className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm"
                     required
                   />
                 </label>
@@ -127,14 +162,18 @@ const ApplicationForm = () => {
             </section>
             <section className="mb-4">
               <h2 className="mb-2 text-xl font-bold">Resume/CV</h2>
-              <div className="flex items-center justify-start gap-3">
+              <div className="flex w-auto max-w-[500px] items-center justify-start gap-3 rounded-xl border-2 border-gray-400 ">
                 <label
-                  className="btn-primary  cursor-pointer rounded-lg"
+                  className="btn-primary  mr-2 cursor-pointer rounded-lg"
                   htmlFor="file-upload"
                 >
                   Upload File
                 </label>
-                {formData.resume && <p>{formData.resume.name}</p>}
+                {formData.resume && (
+                  <p className="max-w-48 overflow-hidden text-ellipsis text-nowrap">
+                    {formData.resume.name}
+                  </p>
+                )}
                 {formData.resume && (
                   <FaXmark
                     onClick={() => {
@@ -164,8 +203,9 @@ const ApplicationForm = () => {
                   name="coverLetter"
                   value={formData.coverLetter}
                   onChange={handleChange}
-                  className="scrollbar-none w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
+                  className="scrollbar-none w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm"
                   rows="5"
+                  required
                 />
               </label>
             </section>
@@ -177,9 +217,10 @@ const ApplicationForm = () => {
                 <input
                   type="url"
                   name="linkedin"
+                  id="linkedin"
                   value={formData.linkedin}
                   onChange={handleChange}
-                  className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
+                  className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm"
                 />
               </label>
               <label className="mb-2 block font-medium">
@@ -187,14 +228,19 @@ const ApplicationForm = () => {
                 <input
                   type="url"
                   name="portfolio"
+                  id="portfolio"
                   value={formData.portfolio}
                   onChange={handleChange}
-                  className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2"
+                  className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm"
                 />
               </label>
             </section>
 
-            <button type="submit" className="btn-primary my-3 w-full">
+            <button
+              type="submit"
+              className="btn-primary my-3 w-full cursor-pointer"
+              disabled={isSending}
+            >
               Submit Application
             </button>
           </form>

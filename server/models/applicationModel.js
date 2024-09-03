@@ -14,14 +14,32 @@ const appilcationSchema = new Schema(
       ref: "JobList",
       required: true,
     },
+    fullName: {
+      type: String,
+      required: [true, "Full name is required"],
+    },
     email: {
       type: String,
       required: [true, "Email is required"],
     },
-    letter: String,
+    phone: {
+      type: Number,
+      required: [true, "Phone number is required"],
+    },
+    address: {
+      type: String,
+      required: [true, "Address is required"],
+    },
+    coverLetter: {
+      type: String,
+      required: [true, "Cover letter is required."],
+    },
+    linkedin: String,
+    portfolio: String,
+    resume: String,
     resumeUrl: String,
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("application", appilcationSchema);

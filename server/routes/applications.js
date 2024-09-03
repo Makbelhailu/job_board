@@ -1,17 +1,19 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 const {
   getAllApplications,
   getApplication,
   createApplication,
   updateApplication,
-  deleteApplication
-} = require('../controllers/applicationController')
+  deleteApplication,
+} = require("../controllers/applicationController");
 
-router.get('/', getAllApplications)
-router.get('/:id', getApplication)
-router.post('/', createApplication)
-router.patch('/:id', updateApplication)
-router.delete('/:id', deleteApplication)
+const uploadMiddleware = require("../middlewares/awsMiddleware");
 
-module.exports = router
+// router.get('/', getAllApplications)
+router.get("/", getApplication);
+router.post("/", uploadMiddleware, createApplication);
+router.patch("/:id", updateApplication);
+router.delete("/:id", deleteApplication);
+
+module.exports = router;

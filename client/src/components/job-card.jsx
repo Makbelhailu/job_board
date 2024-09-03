@@ -63,7 +63,7 @@ const JobCard = ({ content, btn, className }) => {
               </div>
               {btn && isSignedIn && (
                 <div className="btns mt-4 flex gap-5">
-                  <Link to={`/apply/${content._id}?title=${content.title}`}>
+                  <Link to={`/apply/${content._id}?title=${content.title}&salary=${content.salary}`}>
                     <MyButton
                       className={
                         "btn-primary mx-0 rounded-normal bg-secondary px-[6px] py-1 text-xs font-bold outline-none group-hover:border-primary group-hover:outline"

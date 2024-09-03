@@ -9,7 +9,7 @@ import NavBar from "./components/navBar";
 import Footer from "./components/footer";
 import ErrorPage from "./pages/errorPage";
 import AccountType from "./pages/accountType";
-import Post from "./pages/post"
+import Post from "./pages/post";
 
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 
@@ -73,14 +73,13 @@ function App() {
               <Route path="/jobs" element={<Jobs />} />
               <Route path="/post" element={<Post />} />
               <Route path="/jobs/:id" element={<ApplicationCard />} />
-              <Route path="/apply/:title" element={<ApplicationForm />} />
+              <Route path="/apply/:id" element={<ApplicationForm />} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </SignedIn>
         </main>
-        <footer>
-          <Footer />
-        </footer>
+
+        <Footer />
       </BrowserRouter>
     </>
   );

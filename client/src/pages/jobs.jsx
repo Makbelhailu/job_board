@@ -50,17 +50,9 @@ const Jobs = () => {
   const [salary, setSalary] = useState([]);
   const [isChecked, setIsChecked] = useState(defaultState);
 
-  const content = {
-    image: "",
-    username: "Google",
-    location: "New York, USA",
-    title: "software engineer",
-    description:
-      "hi im the lost guy that you asked to find so take a rest it seems you already found me lorem hi im the lost guy that you asked to find so take a rest it seems you already found me it seems you already found me ",
-  };
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     let query = useQuery(path);
-    console.log(query.get("page"));
     setPage(parseInt(query.get("page") || "1", 10));
     setIsLoading(true);
   }, [path, search]);
@@ -71,7 +63,6 @@ const Jobs = () => {
         .then((data) => {
           setJobList(data);
           if (data.length >= 12 && page == count) setCount(count + 1);
-          console.log("12 job fetched with page", page);
           clearInterval(fetchInterval);
           setIsLoading(false);
         })

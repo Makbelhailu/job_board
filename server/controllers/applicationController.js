@@ -35,25 +35,23 @@ const getApplication = async (req, res) => {
 
 //create application
 const createApplication = async (req, res) => {
-  const {
-    fullName,
-    email,
-    phone,
-    address,
-    coverLetter,
-    linkedin,
-    portfolio,
-    jobId,
-    userId,
-  } = req.body;
-  if (!mongoose.Types.ObjectId.isValid(userId)) {
-    return res.status(404).json({ status: false, error: "invalid User Id" });
-  } else if (!mongoose.Types.ObjectId.isValid(jobId)) {
-    return res.status(404).json({ status: false, error: "invalid Job Id" });
-  }
-
-  const { originalName, location } = req.file;
   try {
+    const {
+      fullName,
+      email,
+      phone,
+      address,
+      coverLetter,
+      linkedin,
+      portfolio,
+      jobId,
+      userId,
+    } = req.body;
+    if (!mongoose.Types.ObjectId.isValid(jobId)) {
+      return res.status(404).json({ status: false, error: "invalid Job Id" });
+    }
+
+    const { originalname, location } = req.file;
     const app = await App.create({
       userId,
       jobId,
@@ -64,7 +62,7 @@ const createApplication = async (req, res) => {
       coverLetter,
       linkedin,
       portfolio,
-      resume: originalName,
+      resume: originalname,
       resumeUrl: location,
     });
     res.status(200).json({ status: true, app });

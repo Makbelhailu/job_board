@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const appilcationSchema = new Schema(
   {
     userId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       ref: "User",
       required: true,
     },
@@ -38,6 +38,11 @@ const appilcationSchema = new Schema(
     portfolio: String,
     resume: String,
     resumeUrl: String,
+    status: {
+      type: String,
+      enum: ["Pending", "Accepted", "Rejected"],
+      default: "Pending",
+    },
   },
   { timestamps: true }
 );

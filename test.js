@@ -14,7 +14,7 @@ module.exports.checkUser = (req, res, next) => {
           else res.json({ status: false });
           next();
         }
-      },
+      }
     );
   } else {
     res.json({ status: false });
@@ -87,3 +87,8 @@ module.exports.login = async (req, res) => {
     res.json({ errors, status: false });
   }
 };
+
+// https://vsymsjfswogaqayfkpxy.supabase.co/storage/v1/object/public/resume/resume-1725462691220-204738234-Udacity_android_dev_certificate.pdf
+
+// https://vsymsjfswogaqayfkpxy.supabase.co/storage/v1/s3/storage/v1/object/public/resume/undefined
+// https://vsymsjfswogaqayfkpxy.supabase.co/storage/v1/s3/storage/v1/object/public/resume/Udacity_android_dev_certificate.pdf

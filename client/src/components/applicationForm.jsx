@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { FaXmark } from "react-icons/fa6";
-import { api } from "../utils/functions";
+import axios from "axios";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 
-import { autoResize } from "../utils/functions";
+import { autoResize, api } from "../utils/functions";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -11,6 +11,8 @@ import CardContent from "@mui/material/CardContent";
 import { userState } from "../utils/states";
 
 import { useRecoilValue } from "recoil";
+
+import "ldrs/ring";
 
 const ApplicationForm = () => {
   const { user } = useRecoilValue(userState);
@@ -59,7 +61,7 @@ const ApplicationForm = () => {
     for (const key in formData) {
       data.append(key, formData[key]);
     }
-    console.log("formData:", formData);
+    console.log("formData:", data);
 
     api
       .post("/application", data)
@@ -69,11 +71,11 @@ const ApplicationForm = () => {
           navigate("/applications");
           console.log("application: ", res.data.app);
         } else {
-          throw Error("Error posting application");
+          console.error(res.data.error);
         }
       })
       .catch((err) => {
-        console.error(err);
+        console.dir(err);
         setIsSending(false);
       });
   };
@@ -238,10 +240,21 @@ const ApplicationForm = () => {
 
             <button
               type="submit"
-              className="btn-primary my-3 w-full cursor-pointer"
+              className={`btn-primary ${isSending && "pb-0"} my-3 w-full cursor-pointer text-center disabled:border-secondary disabled:bg-secondary`}
               disabled={isSending}
             >
-              Submit Application
+              {isSending ? (
+                <l-ring
+                  size="25"
+                  stroke="3"
+                  bg-opacity="0"
+                  speed="2"
+                  color="white"
+                  className="m-0 p-0"
+                ></l-ring>
+              ) : (
+                "Submit Application"
+              )}
             </button>
           </form>
         </CardContent>

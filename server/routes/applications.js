@@ -8,11 +8,11 @@ const {
   deleteApplication,
 } = require("../controllers/applicationController");
 
-const uploadMiddleware = require("../middlewares/awsMiddleware");
+const { uploadMiddleware } = require("../middlewares/awsMiddleware");
 
 // router.get('/', getAllApplications)
 router.get("/", getApplication);
-router.post("/", uploadMiddleware, createApplication);
+router.post("/", uploadMiddleware("resume"), createApplication);
 router.patch("/:id", updateApplication);
 router.delete("/:id", deleteApplication);
 

@@ -30,13 +30,11 @@ function App() {
       fetchJobs()
         .then((data) => {
           setJobList(data);
-          console.dir(data);
           setIsLoading(false);
-          console.log("12 job fetched");
           clearInterval(fetchInterval);
         })
         .catch((err) => {
-          console.log("error fetching jobs:", err.message);
+          console.error("error fetching jobs:", err.message);
         });
     }, 5000);
 
@@ -47,9 +45,6 @@ function App() {
     if (isSignedIn) setUserInfo({ user, isSignedIn });
   }, [isLoaded]);
 
-  useEffect(() => {
-    console.log(userInfo);
-  }, [userInfo]);
   return (
     <>
       <BrowserRouter>

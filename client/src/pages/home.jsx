@@ -62,16 +62,16 @@ const Home = ({ isLoading }) => {
         <div className="icon absolute right-24 top-0 bg-white  shadow-md sm:left-96">
           <img src={fb} alt="facebook icon" className="h-5 w-5" />
         </div>
-        <div className="icon absolute left-32 top-40 bg-white shadow-md">
+        <div className="icon absolute left-32 top-36 bg-white shadow-md">
           <img src={amazon} alt="amazon icon" className="h-5 w-5" />
         </div>
-        <div className="icon absolute right-14 top-[24rem] bg-white shadow-md sm:left-96 sm:top-64">
+        <div className="icon absolute right-14 top-[24rem] bg-white shadow-md sm:left-96 sm:top-56">
           <img src={figma} alt="figma icon" className="h-5 w-5" />
         </div>
-        <div className="icon absolute top-12 bg-white shadow-md max-sm:left-24 sm:right-72">
+        <div className="icon absolute top-12 bg-white shadow-md max-sm:left-12 sm:right-72">
           <img src={google} alt="google icon" className="h-5 w-5" />
         </div>
-        <div className="icon absolute right-8 top-32 bg-white shadow-md sm:right-36">
+        <div className="icon absolute right-8 top-52 bg-white shadow-md sm:right-36 sm:top-32">
           <img src={linkedin} alt="linkedin icon" className="h-5 w-5" />
         </div>
         <div className="icon absolute right-72 top-80 bg-white shadow-md sm:right-80">
@@ -100,7 +100,7 @@ const Home = ({ isLoading }) => {
         <div className="buttons mt-8 flex items-center justify-center gap-10">
           <Link to={"jobs"}>
             <button
-              className="btn-primary px-4 py-3"
+              className="btn-primary px-4 py-3 text-xs xs:text-base"
               onClick={() => {
                 if (!isSignedIn) clerk.openSignUp();
               }}
@@ -252,14 +252,11 @@ const Home = ({ isLoading }) => {
               and take a chance to get hired by top fortune companies.
             </p>
           </div>
-          <div className="job_button self-end">
+          <div className="job_button self-start md:self-end">
             <Link to={"/jobs"}>
               <MyButton
-                className="mb-2 rounded-md p-0 text-xs font-bold"
+                className="mb-2 rounded-md px-3 text-xs font-bold"
                 colored={true}
-                // onClick={() => {
-                //   if (!isSignedIn) clerk.openSignUp();
-                // }}
               >
                 View All Jobs
               </MyButton>

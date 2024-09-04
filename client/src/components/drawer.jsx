@@ -43,7 +43,7 @@ export default function MyDrawer({ customLink }) {
         <IoMenu className="text-3xl" />
       </button>
       <Drawer open={open} onClose={toggleDrawer(false)}>
-        <div className="xs:w-80 h-full w-screen bg-primary px-6 py-6">
+        <div className="h-full w-72 bg-primary px-6 py-6">
           {isSignedIn ? (
             <div className="flex items-center justify-between pl-3">
               <UserButton

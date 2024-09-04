@@ -23,10 +23,11 @@ const Jobs = () => {
   const [jobList, setJobList] = useRecoilState(jobsState);
   const [isLoading, setIsLoading] = useState(true);
   const path = useLocation();
-  let query = useQuery(path);
+  const query = useQuery(path);
   const search = query.get("search");
   const [page, setPage] = useState(parseInt(query.get("page") || "1", 10));
   const [count, setCount] = useState(page);
+  const [expand] = useState(window.innerWidth >= 1024 ? true : false);
 
   const defaultState = [
     {
@@ -87,12 +88,12 @@ const Jobs = () => {
   return (
     <>
       <div className="mt-12 flex flex-col items-center justify-center gap-4 lg:flex-row lg:items-start">
-        <div className="w-full lg:w-[300px]">
+        <div className="w-full lg:w-[300px] lg:min-w-[300px]">
           <div className="flex w-full items-center justify-between px-4 filter lg:justify-around">
             <div className="text text-md font-bold">Filter Jobs</div>
             <div>
               <MyButton
-                className="mb-2 cursor-pointer rounded-md p-0 text-xs font-bold"
+                className="mb-2 cursor-pointer rounded-md px-3 text-xs font-bold"
                 colored={true}
                 onClick={clearFilter}
               >
@@ -100,7 +101,10 @@ const Jobs = () => {
               </MyButton>
             </div>
           </div>
-          <Accordion defaultExpanded className="m-0 border-0 shadow-none">
+          <Accordion
+            defaultExpanded={expand}
+            className="m-0 border-0 shadow-none"
+          >
             <AccordionSummary
               className="text text-md font-bold"
               id="panel-header"
@@ -184,7 +188,10 @@ const Jobs = () => {
               </div>
             </AccordionDetails>
           </Accordion>
-          <Accordion defaultExpanded className="text m-0 border-0 shadow-none">
+          <Accordion
+            defaultExpanded={expand}
+            className="text m-0 border-0 shadow-none"
+          >
             <AccordionSummary
               className="text text-md font-bold"
               id="panel-header"
@@ -267,7 +274,10 @@ const Jobs = () => {
               </div>
             </AccordionDetails>
           </Accordion>
-          <Accordion defaultExpanded className="text m-0 border-0 shadow-none">
+          <Accordion
+            defaultExpanded={expand}
+            className="text m-0 border-0 shadow-none"
+          >
             <AccordionSummary
               className="text text-md font-bold"
               id="panel-header"

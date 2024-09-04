@@ -16,7 +16,7 @@ const JobCard = ({ content, btn, className }) => {
   return (
     <Card
       sx={{ minHeight: "100%", borderRadius: 2, boxShadow: 5 }}
-      className={`h-full w-full shadow-lg ${className ? className : "sm:w-[600px] md:w-full xl:w-auto xl:max-w-[350px]"}`}
+      className={`h-full  shadow-lg ${className ? className : "w-full sm:w-[600px] md:w-full xl:w-auto xl:max-w-[350px]"}`}
     >
       <Link
         to={isSignedIn ? `/jobs/${content._id}` : "/"}
@@ -63,7 +63,9 @@ const JobCard = ({ content, btn, className }) => {
               </div>
               {btn && isSignedIn && (
                 <div className="btns mt-4 flex gap-5">
-                  <Link to={`/apply/${content._id}?title=${content.title}&salary=${content.salary}`}>
+                  <Link
+                    to={`/apply/${content._id}?title=${content.title}&salary=${content.salary}`}
+                  >
                     <MyButton
                       className={
                         "btn-primary mx-0 rounded-normal bg-secondary px-[6px] py-1 text-xs font-bold outline-none group-hover:border-primary group-hover:outline"

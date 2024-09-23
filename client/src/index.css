@@ -253,23 +253,12 @@ body {
   width: 100%;
 }
 
-.page_404 img {
-  width: 100%;
-}
-
 .four_zero_four_bg {
   width: 100%;
+  mix-blend-mode: darken;
   background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
   height: 400px;
   background-position: center;
-}
-
-.four_zero_four_bg h1 {
-  font-size: 80px;
-}
-
-.four_zero_four_bg h3 {
-  font-size: 80px;
 }
 
 .link_404 {
@@ -290,4 +279,14 @@ input[type="number"] {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
+}
+
+@media screen and (max-width: 470px) {
+  .resume {
+    flex-direction: column;
+    width: 100%;
+  }
+  .resume-btn {
+    width: 100%;
+  }
 }

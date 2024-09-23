@@ -62,8 +62,8 @@ const Jobs = () => {
     const fetchInterval = setInterval(() => {
       fetchJobs(page)
         .then((data) => {
-          setJobList(data);
-          if (data.length >= 12 && page == count) setCount(count + 1);
+          setJobList(data.jobs);
+          if (data.jobs.length >= 12 && page == count) setCount(count + 1);
           clearInterval(fetchInterval);
           setIsLoading(false);
         })

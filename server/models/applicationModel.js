@@ -26,6 +26,14 @@ const appilcationSchema = new Schema(
       type: Number,
       required: [true, "Phone number is required"],
     },
+    gender: {
+      type: String,
+      required: [true, "Gender is required"],
+    },
+    education: {
+      type: String,
+      required: [true, "Level of Education is required"],
+    },
     address: {
       type: String,
       required: [true, "Address is required"],

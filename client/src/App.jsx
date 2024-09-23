@@ -29,7 +29,7 @@ function App() {
     const fetchInterval = setInterval(() => {
       fetchJobs()
         .then((data) => {
-          setJobList(data);
+          setJobList(data.jobs);
           setIsLoading(false);
           clearInterval(fetchInterval);
         })

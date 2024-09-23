@@ -19,14 +19,16 @@ const ApplicationForm = () => {
   const [isSending, setIsSending] = useState(false);
   const textareaRef = useRef(null);
   const { id } = useParams();
-  const title = new URLSearchParams(useLocation().search).get("title") || "";
-  const salary = new URLSearchParams(useLocation().search).get("salary") || "";
+  const searchParams = new URLSearchParams(useLocation().search).entries();
+  const { title, salary, edit } = Object.fromEntries(searchParams);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
     address: "",
+    gender: "",
+    education: "",
     resume: null,
     coverLetter: "",
     linkedin: "",
@@ -114,65 +116,111 @@ const ApplicationForm = () => {
             <section className="mb-4">
               <h2 className="mb-2 text-xl font-bold">Personal Information</h2>
               <div className="mb-2 flex flex-wrap items-center justify-between gap-3">
-                <label className="box mb-2 block w-fit font-medium">
+                <label
+                  htmlFor="fullName"
+                  className="box mb-2 block w-fit font-medium"
+                >
                   Full Name
                   <input
                     type="text"
                     name="fullName"
+                    id="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
                     className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm"
                     required
+                    placeholder="Mark Hall"
                   />
                 </label>
-                <label className="box mb-2 block font-medium">
+                <label htmlFor="email" className="box mb-2 block font-medium">
                   Email Address
                   <input
                     type="email"
                     name="email"
+                    id="email"
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm"
                     required
+                    placeholder="email@example.com"
                   />
                 </label>
               </div>
               <div className="mb-2 flex w-full flex-wrap items-center justify-between gap-3">
-                <label className="box mb-2 block font-medium">
+                <label htmlFor="phone" className="box mb-2 block font-medium">
                   Phone Number
                   <input
                     type="tel"
                     name="phone"
+                    id="phone"
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm"
                     required
+                    placeholder="+2519000000"
                   />
                 </label>
-                <label className="box mb-2 block font-medium">
+                <label htmlFor="address" className="box mb-2 block font-medium">
                   Address
                   <input
                     type="text"
                     name="address"
+                    id="address"
                     value={formData.address}
                     onChange={handleChange}
                     className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm"
                     required
+                    placeholder="Addis Ababa, Ethiopia"
+                  />
+                </label>
+              </div>
+              <div className="mb-2 flex w-full flex-wrap items-center justify-between gap-3">
+                <label htmlFor="gender" className="box mb-2 block font-medium">
+                  Gender
+                  <select
+                    name="gender"
+                    value={formData.gender}
+                    id="gender"
+                    onChange={handleChange}
+                    required
+                    className=" w-full appearance-none rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm focus:border"
+                  >
+                    <option value="" className="hidden" defaultChecked>
+                      ---- Select ----
+                    </option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </label>
+                <label
+                  htmlFor="education"
+                  className="box mb-2 block font-medium"
+                >
+                  Level of Education
+                  <input
+                    type="text"
+                    name="education"
+                    id="education"
+                    value={formData.education}
+                    onChange={handleChange}
+                    className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm"
+                    required
+                    placeholder="Bachelor degree in software engineering"
                   />
                 </label>
               </div>
             </section>
             <section className="mb-4">
               <h2 className="mb-2 text-xl font-bold">Resume/CV</h2>
-              <div className="flex w-auto max-w-[500px] items-center justify-start gap-3 rounded-xl border-2 border-gray-400 ">
+              <div className="resume flex w-fit max-w-[500px] items-center justify-start gap-3 rounded-xl border-2 border-gray-400 ">
                 <label
-                  className="btn-primary  mr-2 cursor-pointer rounded-lg"
+                  className="resume-btn btn-primary w-fit cursor-pointer rounded-lg text-center text-xs sm:text-base"
                   htmlFor="file-upload"
                 >
                   Upload File
                 </label>
                 {formData.resume && (
-                  <p className="max-w-48 overflow-hidden text-ellipsis text-nowrap">
+                  <p className="ml-2  max-w-48 overflow-hidden text-ellipsis text-nowrap">
                     {formData.resume.name}
                   </p>
                 )}
@@ -182,7 +230,7 @@ const ApplicationForm = () => {
                       setFormData({ ...formData, resume: null });
                       document.getElementById("file-upload").value = null;
                     }}
-                    className="cursor-pointer text-xl text-red-700 hover:scale-125"
+                    className="mr-2 cursor-pointer text-xl text-red-700 hover:scale-125"
                   />
                 )}
                 <input
@@ -198,11 +246,12 @@ const ApplicationForm = () => {
             </section>
 
             <section className="mb-4">
-              <label className="mb-4 block font-medium">
+              <label htmlFor="coverLetter" className="mb-4 block font-medium">
                 Cover Letter
                 <textarea
                   ref={textareaRef}
                   name="coverLetter"
+                  id="coverLetter"
                   value={formData.coverLetter}
                   onChange={handleChange}
                   className="scrollbar-none w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm"
@@ -214,7 +263,7 @@ const ApplicationForm = () => {
 
             <section className="mb-4">
               <h2 className="mb-2 text-xl font-bold">Additional Information</h2>
-              <label className="mb-2 block font-medium">
+              <label htmlFor="linkedin" className="mb-2 block font-medium">
                 LinkedIn Profile
                 <input
                   type="url"
@@ -222,10 +271,11 @@ const ApplicationForm = () => {
                   id="linkedin"
                   value={formData.linkedin}
                   onChange={handleChange}
+                  placeholder="https://www.linkedin.com/in/example-user"
                   className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm"
                 />
               </label>
-              <label className="mb-2 block font-medium">
+              <label htmlFor="portfolio" className="mb-2 block font-medium">
                 Portfolio/Website/Certificate
                 <input
                   type="url"
@@ -233,6 +283,7 @@ const ApplicationForm = () => {
                   id="portfolio"
                   value={formData.portfolio}
                   onChange={handleChange}
+                  placeholder="https://www.example.com/"
                   className="w-full rounded-lg border-2 border-gray-400 bg-primary p-2 text-sm"
                 />
               </label>

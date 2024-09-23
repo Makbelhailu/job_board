@@ -18,8 +18,8 @@ const companyInfo = async (jobList) => {
 
     const fullList = jobList.map((job) => ({
       ...job._doc,
-      username: userMap[job.companyId].username,
-      profile: userMap[job.companyId].profile,
+      username: userMap[job.companyId] ? userMap[job.companyId].username : "",
+      profile: userMap[job.companyId] ? userMap[job.companyId].profile : "",
     }));
 
     return fullList;

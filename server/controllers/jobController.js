@@ -22,7 +22,7 @@ const getAllJobs = async (req, res) => {
 
     const fullList = await companyInfo(jobList);
 
-    res.status(200).json(fullList);
+    res.status(200).json({ status: true, jobs: fullList });
     console.log("all jobs fetched");
   } catch (err) {
     console.error("job fetch error: ", err);
@@ -39,37 +39,47 @@ const getJob = async (req, res) => {
   if (!joblist) {
     return res.status(400).json({ error: "error fetching the jobs" });
   }
-  res.status(200).json(joblist);
+  res.status(200).json({ status: true, job: joblist });
   console.log("a job is fetched");
 };
 
 // post jobs
 const createJob = async (req, res) => {
-  const {
-    title,
-    type,
-    company,
-    location,
-    salary,
-    description,
-    requirements,
-    vacancy,
-  } = req.body;
   try {
+    const {
+      title,
+      sector,
+      type,
+      experience,
+      salary,
+      applicant,
+      vacancy,
+      location,
+      description,
+      requirement,
+      responsibility,
+      deadline,
+      link,
+      companyId,
+    } = req.body;
     // let userInfo = await companyInfo(job.companyId);
     const joblist = await JobList.create({
-      // profile: userInfo.imageUrl,
-      // username: userInfo.username,
       title,
+      sector,
       type,
-      company,
-      location,
+      experience,
       salary,
-      description,
-      requirements,
+      applicant,
       vacancy,
+      location,
+      description,
+      requirement,
+      responsibility,
+      deadline,
+      link,
+      companyId,
     });
-    res.status(200).json(joblist);
+    res.status(200).json({ status: true, job: joblist });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -88,7 +98,7 @@ const updateJob = async (req, res) => {
   if (!joblist) {
     return res.status(400).json({ error: "error updating the job" });
   }
-  res.status(200).json(joblist);
+  res.status(200).json({ status: true, job: joblist });
   console.log("a job is updated");
 };
 
@@ -105,7 +115,7 @@ const deleteJob = async (req, res) => {
   if (!joblist) {
     return res.status(400).json({ error: "error deleting the job" });
   }
-  res.status(200).json(joblist);
+  res.status(200).json({ status: true, job: joblist });
   console.log("a job is deleted");
 };
 

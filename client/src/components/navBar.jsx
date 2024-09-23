@@ -31,7 +31,7 @@ const NavBar = () => {
           job<span className="text-orangeish">hunt</span>
         </h1>
       </div>
-      <nav className=" hidden items-center justify-between gap-10 md:flex">
+      <nav className=" hidden items-center justify-between gap-16 md:flex">
         <ul className="text-md inline-flex gap-x-10 text-center font-semibold">
           <li>
             <Link
@@ -85,7 +85,7 @@ const NavBar = () => {
         ) : (
           <div className="profile ml-5 flex gap-2">
             <button
-              className="btn-secondary"
+              className="text-md border-none px-3 font-semibold"
               onClick={() => clerk.openSignIn()}
             >
               Login

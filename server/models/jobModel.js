@@ -39,7 +39,7 @@ const jobSchema = new Schema(
       type: String,
       required: true,
     },
-    requirements: {
+    requirement: {
       type: [String],
       required: true,
     },
@@ -55,6 +55,7 @@ const jobSchema = new Schema(
       type: Date,
       required: true,
     },
+    link: String,
   },
   { timestamps: true }
 );

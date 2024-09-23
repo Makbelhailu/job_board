@@ -114,16 +114,10 @@ const ApplicationCard = () => {
                 Essential Knowledge, Skill And Qualification
               </h2>
               <ul className="list-outside list-disc pl-8 text-sm leading-loose text-slate-700">
-                {jobInfo["requirements"].map((req, key) => (
+                {jobInfo["requirement"].map((req, key) => (
                   <li key={key}>{req}</li>
                 ))}
               </ul>
-              <h2 className="mt-8 text-sm font-semibold">
-                Deadline:
-                <span className="ml-2 text-xs font-medium">
-                  {formatDate(jobInfo.deadline)}
-                </span>
-              </h2>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
               <ul className="mt-4 list-outside list-disc text-sm leading-loose text-slate-700">
@@ -132,6 +126,12 @@ const ApplicationCard = () => {
                 ))}
               </ul>
             </CustomTabPanel>
+            <h2 className="mt-8 text-sm font-semibold">
+              Deadline:
+              <span className="ml-2 text-xs font-medium">
+                {formatDate(jobInfo.deadline)}
+              </span>
+            </h2>
           </Box>
         </CardContent>
       </Card>

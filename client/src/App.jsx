@@ -10,7 +10,7 @@ import Footer from "./components/footer";
 import ErrorPage from "./pages/errorPage";
 import AccountType from "./pages/accountType";
 import Post from "./pages/post";
-
+import About from "./pages/about";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 
 import { fetchJobs } from "./utils/functions";
@@ -51,13 +51,13 @@ function App() {
         <header>
           <NavBar />
         </header>
-        <main className="m-0 h-[90%]">
+        <main className="m-0 md:h-[90%]">
           <SignedOut>
             <Routes>
               <Route path="/" element={<Home isLoading={isLoading} />} />
               <Route path="/jobs" element={<Jobs />} />
               <Route path="/post" element={<Post />} />
-
+              <Route path="/about" element={<About />} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </SignedOut>
@@ -69,6 +69,7 @@ function App() {
               <Route path="/post" element={<Post />} />
               <Route path="/jobs/:id" element={<ApplicationCard />} />
               <Route path="/apply/:id" element={<ApplicationForm />} />
+              <Route path="/about" element={<About />} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </SignedIn>

@@ -13,7 +13,7 @@ const Footer = () => {
   }, [isLoaded]);
 
   return (
-    <div
+    <footer
       className="footer_container mx-0 my-0 grid w-full grid-cols-1 items-start justify-between gap-14 rounded-t-3xl bg-secondary px-6 pb-2 pt-6 text-left
     text-white sm:grid-cols-2 md:grid-cols-5 md:gap-2 lg:gap-8"
     >
@@ -88,7 +88,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

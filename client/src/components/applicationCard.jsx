@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 import { Link, useParams } from "react-router-dom";
 import JobCard from "../components/job-card";
 import { useRecoilValue } from "recoil";
-import { jobsState } from "../utils/states";
+import { jobsState, getAccountType } from "../utils/states";
 import { formatDate } from "../utils/functions";
 import ErrorPage from "../pages/errorPage";
 
@@ -19,6 +19,7 @@ import { FaLocationDot } from "react-icons/fa6";
 
 const ApplicationCard = () => {
   const jobList = useRecoilValue(jobsState);
+  const accountType = useRecoilValue(getAccountType);
   const [value, setValue] = useState(0);
   const { id } = useParams();
   const [jobInfo, setJobInfo] = useState(
@@ -78,13 +79,15 @@ const ApplicationCard = () => {
               </div>
             </div>
 
-            <Link
-              to={`/apply/${jobInfo._id}?title=${jobInfo.title}&salary=${jobInfo.salary}`}
-            >
-              <button className="btn-primary px-4 py-2 text-sm ">
-                Apply Now
-              </button>
-            </Link>
+            {accountType === "freelancer" && (
+              <Link
+                to={`/apply/${jobInfo._id}?title=${jobInfo.title}&salary=${jobInfo.salary}`}
+              >
+                <button className="btn-primary px-4 py-2 text-sm ">
+                  Apply Now
+                </button>
+              </Link>
+            )}
           </div>
           <Box sx={{ width: "100%" }}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>

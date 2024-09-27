@@ -25,9 +25,9 @@ const NavBar = () => {
   }, [location]);
 
   return (
-    <div className="my-4 flex w-full items-center justify-between">
+    <div className="my-4 flex w-full items-center justify-between px-2">
       <div className="logo">
-        <h1 className="ml-5 text-2xl font-bold uppercase text-secondary">
+        <h1 className="ml-3 text-2xl font-bold uppercase text-secondary">
           job<span className="text-orangeish">hunt</span>
         </h1>
       </div>

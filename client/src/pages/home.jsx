@@ -33,10 +33,6 @@ const Home = ({ isLoading }) => {
   const jobList = useRecoilValue(jobsState);
   const clerk = useClerk();
 
-  useEffect(() => {
-    if (isSignedIn) console.log(user.id);
-  }, [isSignedIn]);
-
   const marqueeContent = [
     "Software Engineer",
     "UI/UX Designer",
@@ -273,7 +269,7 @@ const Home = ({ isLoading }) => {
           </div>
         )}
       </div>
-      <div className="offers_container mt-28 px-12 sm:mb-12">
+      <div className="offers_container mb-20 mt-28 px-12">
         <div className="offer_title mb-12 w-full text-left md:w-[45%]">
           <h2 className="mb-3  text-4xl font-bold capitalize">
             what we <span className="text-secondary">offer</span>

@@ -53,6 +53,10 @@ body {
   background-color: var(--seasalt);
 }
 
+input {
+  accent-color: var(--grape);
+}
+
 .bg-gradient {
   background: #020024;
   background: linear-gradient(90deg, #040047 0%, #571cbd 52%, #0044ff 100%);
@@ -281,6 +285,21 @@ input[type="number"] {
   appearance: textfield;
 }
 
+.searchInput:focus-within .searchIcon {
+  display: none;
+  transition: display 1s ease;
+}
+
+.searchInput div {
+  border-radius: 40px;
+}
+.searchInput label {
+  margin-top: 3px;
+}
+
+.searchInput fieldset {
+  max-height: 200px;
+}
 @media screen and (max-width: 470px) {
   .resume {
     flex-direction: column;

@@ -8,7 +8,7 @@ export default function CustomLink({
   toggleDrawer,
   className,
 }) {
-  if (type !== "freelancer") {
+  if (type === "freelancer") {
     return (
       <Link
         to="/applications"

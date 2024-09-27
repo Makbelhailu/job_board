@@ -6,11 +6,17 @@ const {
   deleteJob,
   updateJob,
   createJob,
+  getTitles,
+  searchJob,
 } = require("../controllers/jobController");
 
 router.get("/", getAllJobs);
 
-router.get("/:id", getJob);
+// router.get("/:id", getJob);
+
+router.get("/getTitles", getTitles);
+
+router.get("/search", searchJob);
 
 router.post("/", createJob);
 

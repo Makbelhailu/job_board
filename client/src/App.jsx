@@ -14,14 +14,14 @@ import About from "./pages/about";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 
 import { fetchJobs } from "./utils/functions";
-import { useRecoilState } from "recoil";
-import { useSetRecoilState } from "recoil";
-import { jobsState, userState } from "./utils/states";
+import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
+import { jobsState, userState, getAccountType } from "./utils/states";
 import { useUser } from "@clerk/clerk-react";
 
 function App() {
   const [userInfo, setUserInfo] = useRecoilState(userState);
   const setJobList = useSetRecoilState(jobsState);
+  const accountType = useRecoilValue(getAccountType);
   const [isLoading, setIsLoading] = useState(true);
   const { isSignedIn, user, isLoaded } = useUser();
 
@@ -42,7 +42,12 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (isSignedIn) setUserInfo({ user, isSignedIn });
+    if (isSignedIn)
+      setUserInfo({
+        user,
+        isSignedIn,
+        accountType: user.unsafeMetadata.AccountType,
+      });
   }, [isLoaded]);
 
   return (
@@ -51,7 +56,7 @@ function App() {
         <header>
           <NavBar />
         </header>
-        <main className="m-0 md:h-[90%]">
+        <main className="m-0 md:h-[91%]">
           <SignedOut>
             <Routes>
               <Route path="/" element={<Home isLoading={isLoading} />} />
@@ -64,11 +69,14 @@ function App() {
           <SignedIn>
             <Routes>
               <Route path="/" element={<Home isLoading={isLoading} />} />
-              {<Route path="/account-type" element={<AccountType />} />}
+              <Route path="/account-type" element={<AccountType />} />
               <Route path="/jobs" element={<Jobs />} />
-              <Route path="/post" element={<Post />} />
               <Route path="/jobs/:id" element={<ApplicationCard />} />
-              <Route path="/apply/:id" element={<ApplicationForm />} />
+              {accountType === "company" ? (
+                <Route path="/post" element={<Post />} />
+              ) : (
+                <Route path="/apply/:id" element={<ApplicationForm />} />
+              )}
               <Route path="/about" element={<About />} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>

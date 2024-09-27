@@ -6,6 +6,15 @@ export const userState = atom({
   default: {
     user: {},
     isSignedIn: false,
+    accountType: null,
+  },
+});
+
+export const getAccountType = selector({
+  key: "getIsSignIn",
+  get: ({ get }) => {
+    const { user } = get(userState);
+    return user?.unsafeMetadata?.AccountType || null;
   },
 });
 

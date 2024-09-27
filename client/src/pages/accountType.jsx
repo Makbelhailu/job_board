@@ -1,10 +1,18 @@
-import React from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
+
+import { useRecoilValue } from "recoil";
+import { getAccountType } from "../utils/states";
 
 const AccountType = () => {
   const navigate = useNavigate();
   const { user } = useUser();
+  const accountType = useRecoilValue(getAccountType);
+
+  useEffect(() => {
+    if (accountType) navigate("/");
+  }, [accountType]);
 
   const handleClick = (type) => {
     user.update({ unsafeMetadata: { AccountType: type } });
@@ -34,7 +42,6 @@ const AccountType = () => {
         >
           <h2 className="text-2xl font-bold">Freelancer</h2>
           <p className="mt-4 text-sm">
-            {" "}
             I want to find job opportunity and offer my services.
           </p>
         </div>

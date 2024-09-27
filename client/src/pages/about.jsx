@@ -12,7 +12,7 @@ const About = () => {
           About <span className="text-secondary">Us</span>
         </h1>
       </div>
-      <p className="mx-auto w-[70%] text-center text-sm">
+      <p className="mx-auto w-[75%] text-center text-sm md:w-[60%]">
         Welcome to our job board website, a comprehensive platform designed to
         connect talented professionals with leading employers across diverse
         industries. We understand that the job search process can be challenging

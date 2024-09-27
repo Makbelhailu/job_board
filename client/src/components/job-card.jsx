@@ -4,14 +4,17 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
 
+import { useRecoilValue } from "recoil";
+import { getAccountType } from "../utils/states";
 import { useClerk, useUser } from "@clerk/clerk-react";
 
 import { Link } from "react-router-dom";
 import MyButton from "./button";
 
-const JobCard = ({ content, btn, className }) => {
+const JobCard = ({ content, btn = false, className = "" }) => {
   const { isSignedIn } = useUser();
   const clerk = useClerk();
+  const accountType = useRecoilValue(getAccountType);
 
   return (
     <Card
@@ -61,10 +64,13 @@ const JobCard = ({ content, btn, className }) => {
                   </div>
                 </div>
               </div>
-              {btn && isSignedIn && (
+              {btn && accountType === "freelancer" && (
                 <div className="btns mt-4 flex gap-5">
                   <Link
                     to={`/apply/${content._id}?title=${content.title}&salary=${content.salary}`}
+                    onClick={() => {
+                      if (!isSignedIn) clerk.openSignUp();
+                    }}
                   >
                     <MyButton
                       className={
@@ -98,10 +104,6 @@ JobCard.propTypes = {
   }),
   btn: PropTypes.bool,
   className: PropTypes.string,
-};
-JobCard.defaultProps = {
-  btn: false,
-  className: "",
 };
 
 export default JobCard;

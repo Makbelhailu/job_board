@@ -119,10 +119,42 @@ const deleteJob = async (req, res) => {
   console.log("a job is deleted");
 };
 
+const getTitles = async (req, res) => {
+  try {
+    const search = req.query.title;
+
+    const jobs = await JobList.distinct("title", {
+      title: { $regex: search, $options: "i" },
+    });
+
+    res.json(jobs);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json({ status: false, error: "Can't fetch titles" });
+  }
+};
+
+const searchJob = async (req, res) => {
+  try {
+    const search = req.query.title;
+
+    const jobs = await JobList.find({
+      title: { $regex: search, $options: "i" },
+    }).sort({ createdAt: -1 });
+
+    console.log(jobs);
+    res.json({ status: true, jobs });
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json({ status: false, error: "Can't fetch titles" });
+  }
+};
 module.exports = {
   getAllJobs,
   getJob,
   deleteJob,
   updateJob,
   createJob,
+  getTitles,
+  searchJob,
 };

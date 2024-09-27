@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import MyButton from "../components/button";
 import Loading from "../components/loading";
+import SearchButton from "../components/searchButton";
+import JobCard from "../components/job-card";
 
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-import { Link, useLocation } from "react-router-dom";
+import Checkbox from "@mui/material/Checkbox";
 
 import { MdExpandMore } from "react-icons/md";
 
-import Checkbox from "@mui/material/Checkbox";
-
-import JobCard from "../components/job-card";
+import { Link, useLocation } from "react-router-dom";
 
 import { useRecoilState } from "recoil";
 import { jobsState } from "../utils/states";
@@ -83,17 +83,35 @@ const Jobs = () => {
   };
 
   const clearFilter = () => {
+    setIsLoading(true);
     setIsChecked(defaultState);
+    const fetchInterval = setInterval(() => {
+      fetchJobs(page)
+        .then((data) => {
+          if (data.jobs) setJobList(data.jobs);
+          if (data.jobs.length >= 12 && page == count) setCount(2);
+          clearInterval(fetchInterval);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.log("error fetching jobs:", err.message);
+        });
+    }, 5000);
   };
   return (
     <>
-      <div className="mt-12 flex flex-col items-center justify-center gap-4 lg:flex-row lg:items-start">
-        <div className="w-full lg:w-[300px] lg:min-w-[300px]">
+      <div className="mt-12 flex w-full grid-cols-5 flex-col items-center justify-center gap-4 space-y-4 lg:grid lg:items-start">
+        <div className="col-span-5 col-start-2 row-start-1 max-lg:w-full">
+          <SearchButton />
+        </div>
+        <div className="col-start-1 row-span-12 row-start-1 max-lg:w-full">
           <div className="flex w-full items-center justify-between px-4 filter lg:justify-around">
-            <div className="text text-md font-bold">Filter Jobs</div>
+            <div className="text text-sm font-bold xl:text-base">
+              Filter Jobs
+            </div>
             <div>
               <MyButton
-                className="mb-2 cursor-pointer rounded-md px-3 text-xs font-bold"
+                className="mb-2 cursor-pointer rounded-md px-3 text-center text-xs font-bold lg:w-full lg:px-2 xl:px-3 "
                 colored={true}
                 onClick={clearFilter}
               >
@@ -363,9 +381,11 @@ const Jobs = () => {
         </div>
 
         {isLoading ? (
-          <Loading />
+          <div className="col-span-5 col-start-2 row-span-11 row-start-2 flex h-full w-full items-center justify-center gap-8 max-md:mb-12">
+            <Loading />
+          </div>
         ) : (
-          <div className="flex flex-col items-center justify-center gap-8">
+          <div className="col-span-5 col-start-2 row-span-11 row-start-2 flex flex-col items-center justify-center gap-8 max-md:mb-12">
             <div className="job-lists scrollbar-none grid h-full w-full grid-cols-1 items-center justify-center gap-4 overflow-y-scroll  p-1 md:grid-cols-2 xl:grid-cols-3">
               {jobList.map((content, key) => (
                 <JobCard key={key} content={content} btn={true} />

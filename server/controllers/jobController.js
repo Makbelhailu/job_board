@@ -6,8 +6,8 @@ const companyInfo = require("../middlewares/clerkMiddleware");
 // get all data
 const getAllJobs = async (req, res) => {
   const page = parseInt(req.query.page, 10);
-  const limit = 12;
-  const skip = (page - 1) * limit;
+  const limit = 13;
+  const skip = (page - 1) * 12;
 
   console.log(page);
   try {
@@ -123,11 +123,12 @@ const getTitles = async (req, res) => {
   try {
     const search = req.query.title;
 
-    const jobs = await JobList.distinct("title", {
+    const titles = await JobList.distinct("title", {
       title: { $regex: search, $options: "i" },
     });
+    const limitedTitles = titles.splice(0, 5);
 
-    res.json(jobs);
+    res.json(limitedTitles);
   } catch (err) {
     console.log(err.message);
     res.status(500).json({ status: false, error: "Can't fetch titles" });
@@ -137,16 +138,67 @@ const getTitles = async (req, res) => {
 const searchJob = async (req, res) => {
   try {
     const search = req.query.title;
+    const page = parseInt(req.query.page, 10);
+    const limit = 13;
+    const skip = (page - 1) * 12;
 
     const jobs = await JobList.find({
       title: { $regex: search, $options: "i" },
-    }).sort({ createdAt: -1 });
+    })
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
 
-    console.log(jobs);
-    res.json({ status: true, jobs });
+    if (!jobs) {
+      return res.status(400).json({ error: "error fetching searched jobs" });
+    }
+
+    const fullList = await companyInfo(jobs);
+    res.json({ status: true, jobs: fullList });
   } catch (err) {
     console.log(err.message);
-    res.status(500).json({ status: false, error: "Can't fetch titles" });
+    res.status(500).json({ status: false, error: "Internal server error" });
+  }
+};
+
+const filterJobs = async (req, res) => {
+  try {
+    const { countries, sectors, type, search = "" } = req.query;
+    const page = parseInt(req.query.page, 10);
+    const limit = 13;
+    const skip = (page - 1) * 12;
+    const query = {};
+
+    if (search) query.title = { $regex: search, $options: "i" };
+    if (countries && countries.length > 0) {
+      const countryArray = countries.split(",");
+      const regexCountry = countryArray.map((country) => new RegExp(country));
+      query.location = { $in: regexCountry };
+    }
+
+    // Filter by sectors
+    if (sectors && sectors.length > 0) {
+      query.sector = { $in: sectors.split(",") };
+    }
+
+    // Filter by salary ranges
+    if (type && type.length > 0) {
+      query.type = { $in: type.split(",") };
+    }
+
+    const jobs = await JobList.find(query)
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    if (!jobs) {
+      return res.status(400).json({ error: "error fetching filtered jobs" });
+    }
+
+    const fullList = await companyInfo(jobs);
+    res.json({ status: true, jobs: fullList });
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 module.exports = {
@@ -157,4 +209,5 @@ module.exports = {
   createJob,
   getTitles,
   searchJob,
+  filterJobs,
 };

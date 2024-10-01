@@ -8,15 +8,16 @@ const {
   createJob,
   getTitles,
   searchJob,
+  filterJobs,
 } = require("../controllers/jobController");
 
 router.get("/", getAllJobs);
 
-// router.get("/:id", getJob);
-
 router.get("/getTitles", getTitles);
 
 router.get("/search", searchJob);
+
+router.get("/filter", filterJobs);
 
 router.post("/", createJob);
 

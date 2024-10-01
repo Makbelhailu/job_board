@@ -1,4 +1,3 @@
-import { FaS } from "react-icons/fa6";
 import { atom, selector } from "recoil";
 
 export const userState = atom({
@@ -21,4 +20,14 @@ export const getAccountType = selector({
 export const jobsState = atom({
   key: "jobState",
   default: [{}],
+});
+
+export const searchJobState = atom({
+  key: "searchJobState",
+  default: [],
+});
+
+export const filteredJobState = atom({
+  key: "filteredJobState",
+  default: [],
 });

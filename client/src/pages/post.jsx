@@ -117,6 +117,7 @@ const Post = () => {
                 <option value="business">Business and Finance</option>
                 <option value="education">Education and Training</option>
                 <option value="sales">Sales and Marketing</option>
+                <option value="other">Other</option>
               </select>
             </div>
           </div>
@@ -139,7 +140,7 @@ const Post = () => {
                   ---- Select ----
                 </option>
                 <option value="FullTime">Full-time</option>
-                <option value="FartTime">Part-time</option>
+                <option value="PartTime">Part-time</option>
                 <option value="Intern">Intern</option>
                 <option value="Remote">Remote</option>
                 <option value="Contract">Contract</option>

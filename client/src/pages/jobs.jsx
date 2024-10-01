@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import MyButton from "../components/button";
 import Loading from "../components/loading";
-import SearchButton from "../components/searchButton";
+import SearchBar from "../components/searchBar";
 import JobCard from "../components/job-card";
 
 import Accordion from "@mui/material/Accordion";
@@ -13,96 +13,135 @@ import Checkbox from "@mui/material/Checkbox";
 
 import { MdExpandMore } from "react-icons/md";
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 
-import { useRecoilState } from "recoil";
-import { jobsState } from "../utils/states";
-import { fetchJobs, useQuery } from "../utils/functions";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { jobsState, searchJobState } from "../utils/states";
+import { fetchJobs, fetchByFilter } from "../utils/functions";
 
 const Jobs = () => {
+  const defaultState = {
+    countries: [],
+    sectors: [],
+    type: [],
+  };
+  const [filters, setFilters] = useState(defaultState);
   const [jobList, setJobList] = useRecoilState(jobsState);
+  const [filteredJob, setFilteredJob] = useState([]);
+  const [searchedJob, setSearchedJob] = useRecoilState(searchJobState);
+  const [searchValue, setSearchValue] = useState(null);
+  const [searchInputValue, setSearchInputValue] = useState("");
+
   const [isLoading, setIsLoading] = useState(true);
-  const path = useLocation();
-  const query = useQuery(path);
-  const search = query.get("search");
+  const [query, setQuery] = useSearchParams();
   const [page, setPage] = useState(parseInt(query.get("page") || "1", 10));
   const [count, setCount] = useState(page);
-  const [expand] = useState(window.innerWidth >= 1024 ? true : false);
+  const [expand, setExpand] = useState(window.innerWidth >= 1024);
 
-  const defaultState = [
-    {
-      0: false,
-      1: false,
-      2: false,
-    },
-    {
-      0: false,
-      1: false,
-      2: false,
-    },
-    {
-      0: false,
-      1: false,
-      2: false,
-    },
-  ];
-  const [location, setLocation] = useState([]);
-  const [industry, setIndustry] = useState([]);
-  const [salary, setSalary] = useState([]);
-  const [isChecked, setIsChecked] = useState(defaultState);
+  useEffect(() => {
+    const handleResize = () => {
+      setExpand(window.innerWidth >= 1024);
+      console.log(window.innerWidth >= 1024);
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    let query = useQuery(path);
     setPage(parseInt(query.get("page") || "1", 10));
     setIsLoading(true);
-  }, [path, search]);
+  }, [query]);
 
   useEffect(() => {
-    const fetchInterval = setInterval(() => {
-      fetchJobs(page)
-        .then((data) => {
-          setJobList(data.jobs);
-          if (data.jobs.length >= 12 && page == count) setCount(count + 1);
-          clearInterval(fetchInterval);
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          console.log("error fetching jobs:", err.message);
-        });
-    }, 5000);
+    if (!searchedJob.length) {
+      const fetchInterval = setInterval(() => {
+        fetchJobs(page)
+          .then((data) => {
+            if (data.jobs.length > 12 && page == count) setCount(count + 1);
+            setJobList(data.jobs.splice(0, 12));
+            clearInterval(fetchInterval);
+            setIsLoading(false);
+          })
+          .catch((err) => {
+            console.log("error fetching jobs:", err.message);
+          });
+      }, 5000);
 
-    return () => clearInterval(fetchInterval);
-  }, [page, isLoading]);
-  const handleCheck = ({ checked, value }, state, func) => {
-    if (checked) {
-      func([...state, value]);
-    } else {
-      func(state.filter((element) => element != value));
+      return () => clearInterval(fetchInterval);
     }
+    if (filteredJob.length) {
+      setIsLoading(true);
+      fetchByFilter(filters, searchInputValue, page).then((data) => {
+        if (data.jobs.length > 12 && page == count) setCount(count + 1);
+        setFilteredJob(data.jobs.splice(0, 12));
+        setIsLoading(false);
+      });
+    }
+  }, [page, isLoading]);
+
+  const handleFilterChange = (event, filterType) => {
+    const value = event.target.value;
+    const isChecked = event.target.checked;
+    setCount(1);
+    setQuery({ ...query, page: 1 });
+
+    const newFilter = {
+      ...filters,
+      [filterType]: isChecked
+        ? [...filters[filterType], value]
+        : filters[filterType].filter((item) => item !== value),
+    };
+    setFilters(newFilter);
   };
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetchByFilter(filters, searchInputValue, page).then((data) => {
+      if (data.jobs.length > 12 && page == count) setCount(count + 1);
+      setFilteredJob(data.jobs.splice(0, 12));
+      setIsLoading(false);
+    });
+  }, [filters]);
 
   const clearFilter = () => {
-    setIsLoading(true);
-    setIsChecked(defaultState);
-    const fetchInterval = setInterval(() => {
-      fetchJobs(page)
-        .then((data) => {
-          if (data.jobs) setJobList(data.jobs);
-          if (data.jobs.length >= 12 && page == count) setCount(2);
-          clearInterval(fetchInterval);
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          console.log("error fetching jobs:", err.message);
-        });
-    }, 5000);
+    setFilters(defaultState);
+    setSearchedJob([]);
+    setFilteredJob([]);
+    setSearchValue(null);
+    setSearchInputValue("");
+    setQuery({ ...query, page: 1 });
   };
+
+  const clearFilterState = () => {
+    setFilters(defaultState);
+  };
+
+  const jobListToMap =
+    filteredJob && filteredJob.length > 0
+      ? filteredJob
+      : searchedJob && searchedJob.length > 0
+        ? searchedJob
+        : jobList;
+
   return (
     <>
       <div className="mt-12 flex w-full grid-cols-5 flex-col items-center justify-center gap-4 space-y-4 lg:grid lg:items-start">
         <div className="col-span-5 col-start-2 row-start-1 max-lg:w-full">
-          <SearchButton />
+          <SearchBar
+            inputValue={searchInputValue}
+            setInputValue={setSearchInputValue}
+            value={searchValue}
+            setValue={setSearchValue}
+            page={page}
+            setPage={query}
+            count={count}
+            setCount={setCount}
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+            clearFilterState={clearFilterState}
+          />
         </div>
         <div className="col-start-1 row-span-12 row-start-1 max-lg:w-full">
           <div className="flex w-full items-center justify-between px-4 filter lg:justify-around">
@@ -137,22 +176,14 @@ const Jobs = () => {
               <div className="checkboxes">
                 <Checkbox
                   size="small"
-                  checked={isChecked[0][0]}
-                  onChange={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[0][0] = !isChecked[0][0]),
-                    ]);
-                  }}
+                  checked={filters.countries.includes("Dire Dawa")}
+                  value={"Dire Dawa"}
+                  name="dire"
+                  id="dire"
+                  onChange={(e) => handleFilterChange(e, "countries")}
                 />
                 <label
                   htmlFor="dire"
-                  onClick={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[0][0] = !isChecked[0][0]),
-                    ]);
-                  }}
                   className="cursor-pointer text-xs font-semibold text-slate-700"
                 >
                   Dire Dawa
@@ -161,21 +192,14 @@ const Jobs = () => {
               <div className="checkboxes">
                 <Checkbox
                   size="small"
-                  checked={isChecked[0][1]}
-                  onChange={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[0][1] = !isChecked[0][1]),
-                    ]);
-                  }}
+                  checked={filters.countries.includes("Addis Ababa")}
+                  value={"Addis Ababa"}
+                  onChange={(e) => handleFilterChange(e, "countries")}
+                  name="addis"
+                  id="addis"
                 />
                 <label
-                  onClick={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[0][1] = !isChecked[0][1]),
-                    ]);
-                  }}
+                  htmlFor="addis"
                   className="cursor-pointer text-xs font-semibold text-slate-700"
                 >
                   Addis Ababa
@@ -184,25 +208,34 @@ const Jobs = () => {
               <div className="checkboxes">
                 <Checkbox
                   size="small"
-                  checked={isChecked[0][2]}
-                  onChange={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[0][2] = !isChecked[0][2]),
-                    ]);
-                  }}
+                  checked={filters.countries.includes("Harar")}
+                  value={"Harar"}
+                  name="harar"
+                  id="harar"
+                  onChange={(e) => handleFilterChange(e, "countries")}
                 />
-                <span
-                  onClick={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[0][2] = !isChecked[0][2]),
-                    ]);
-                  }}
+                <label
+                  htmlFor="harar"
+                  className="cursor-pointer text-xs font-semibold text-slate-700"
+                >
+                  Harar
+                </label>
+              </div>
+              <div className="checkboxes">
+                <Checkbox
+                  size="small"
+                  checked={filters.countries.includes("Adama")}
+                  value={"Adama"}
+                  name="adama"
+                  id="adama"
+                  onChange={(e) => handleFilterChange(e, "countries")}
+                />
+                <label
+                  htmlFor="adama"
                   className="cursor-pointer text-xs font-semibold text-slate-700"
                 >
                   Adama
-                </span>
+                </label>
               </div>
             </AccordionDetails>
           </Accordion>
@@ -218,77 +251,103 @@ const Jobs = () => {
                 <MdExpandMore className="text text-md m-0 font-bold" />
               }
             >
-              Industry
+              Sector
             </AccordionSummary>
             <AccordionDetails>
               <div className="checkboxes">
                 <Checkbox
                   size="small"
-                  checked={isChecked[1][0]}
-                  onChange={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[1][0] = !isChecked[1][0]),
-                    ]);
-                  }}
+                  checked={filters.sectors.includes("it")}
+                  value={"it"}
+                  name="it"
+                  id="it"
+                  onChange={(e) => handleFilterChange(e, "sectors")}
                 />
-                <span
-                  onClick={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[1][0] = !isChecked[1][0]),
-                    ]);
-                  }}
+                <label
+                  htmlFor="it"
                   className="cursor-pointer text-xs font-semibold text-slate-700"
                 >
-                  Information and Technology
-                </span>
+                  IT
+                </label>
               </div>
               <div className="checkboxes">
                 <Checkbox
                   size="small"
-                  checked={isChecked[1][1]}
-                  onChange={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[1][1] = !isChecked[1][1]),
-                    ]);
-                  }}
+                  checked={filters.sectors.includes("business")}
+                  onChange={(e) => handleFilterChange(e, "sectors")}
+                  name="business"
+                  id="business"
+                  value={"business"}
                 />
-                <span
-                  onClick={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[1][1] = !isChecked[1][1]),
-                    ]);
-                  }}
-                  className="cursor-pointer text-xs font-semibold text-slate-700"
+                <label
+                  htmlFor="business"
+                  className="cursor-pointer text-xs font-semibold text-slate-700 lg:text-[10px] xl:text-xs"
                 >
-                  Financial Services
-                </span>
+                  Business and Finance
+                </label>
+              </div>
+              <div className="checkboxes">
+                <Checkbox
+                  checked={filters.sectors.includes("healthcare")}
+                  size="small"
+                  onChange={(e) => handleFilterChange(e, "sectors")}
+                  name="health"
+                  id="health"
+                  value={"healthcare"}
+                />
+                <label
+                  htmlFor="health"
+                  className="cursor-pointer text-xs font-semibold text-slate-700 lg:text-[10px] xl:text-xs"
+                >
+                  Health and Medical
+                </label>
               </div>
               <div className="checkboxes">
                 <Checkbox
                   size="small"
-                  checked={isChecked[1][2]}
-                  onChange={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[1][2] = !isChecked[1][2]),
-                    ]);
-                  }}
+                  onChange={(e) => handleFilterChange(e, "sectors")}
+                  name="education"
+                  id="education"
+                  value={"education"}
                 />
-                <span
-                  onClick={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[1][2] = !isChecked[1][2]),
-                    ]);
-                  }}
-                  className="cursor-pointer text-xs font-semibold text-slate-700"
+                <label
+                  htmlFor="education"
+                  className="cursor-pointer text-xs font-semibold text-slate-700 lg:text-[10px] xl:text-xs"
                 >
-                  Medical
-                </span>
+                  Education and Training
+                </label>
+              </div>
+              <div className="checkboxes">
+                <Checkbox
+                  size="small"
+                  checked={filters.sectors.includes("sales")}
+                  onChange={(e) => handleFilterChange(e, "sectors")}
+                  name="sales"
+                  id="sales"
+                  value={"sales"}
+                />
+                <label
+                  htmlFor="sales"
+                  className="cursor-pointer text-xs font-semibold text-slate-700 lg:text-[10px] xl:text-xs"
+                >
+                  Sales and Marketing
+                </label>
+              </div>
+              <div className="checkboxes">
+                <Checkbox
+                  size="small"
+                  checked={filters.sectors.includes("other")}
+                  onChange={(e) => handleFilterChange(e, "sectors")}
+                  name="other"
+                  id="other"
+                  value={"other"}
+                />
+                <label
+                  htmlFor="other"
+                  className="cursor-pointer text-xs font-semibold text-slate-700 lg:text-[10px] xl:text-xs"
+                >
+                  Other
+                </label>
               </div>
             </AccordionDetails>
           </Accordion>
@@ -304,108 +363,107 @@ const Jobs = () => {
                 <MdExpandMore className="text text-md m-0 font-bold" />
               }
             >
-              Salary
+              Type
             </AccordionSummary>
             <AccordionDetails>
               <div className="checkboxes">
                 <Checkbox
                   size="small"
-                  checked={isChecked[2][0]}
-                  onChange={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[2][0] = !isChecked[2][0]),
-                    ]);
-                  }}
+                  checked={filters.type.includes("FullTime")}
+                  onChange={(e) => handleFilterChange(e, "type")}
+                  name="full"
+                  id="full"
+                  value={"FullTime"}
                 />
-                <span
-                  onClick={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[2][0] = !isChecked[2][0]),
-                    ]);
-                  }}
-                  className="cursor-pointer text-sm font-semibold text-slate-700"
+                <label
+                  htmlFor="full"
+                  className="cursor-pointer text-xs font-semibold text-slate-700"
                 >
-                  $0-$5000
-                </span>
+                  Full-Time
+                </label>
               </div>
               <div className="checkboxes">
                 <Checkbox
                   size="small"
-                  checked={isChecked[2][1]}
-                  onChange={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[2][1] = !isChecked[2][1]),
-                    ]);
-                  }}
+                  checked={filters.type.includes("PartTime")}
+                  onChange={(e) => handleFilterChange(e, "type")}
+                  name="part"
+                  id="part"
+                  value={"PartTime"}
                 />
-                <span
-                  onClick={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[2][1] = !isChecked[2][1]),
-                    ]);
-                  }}
-                  className="cursor-pointer text-sm font-semibold text-slate-700"
+                <label
+                  htmlFor="part"
+                  className="cursor-pointer text-xs font-semibold text-slate-700"
                 >
-                  $5000-$20000
-                </span>
+                  Part-Time
+                </label>
               </div>
               <div className="checkboxes">
                 <Checkbox
                   size="small"
-                  checked={isChecked[2][2]}
-                  onChange={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[2][2] = !isChecked[2][2]),
-                    ]);
-                  }}
+                  checked={filters.type.includes("Remote")}
+                  onChange={(e) => handleFilterChange(e, "type")}
+                  name="remote"
+                  id="remote"
+                  value={"Remote"}
                 />
-                <span
-                  onClick={() => {
-                    setIsChecked([
-                      ...isChecked,
-                      (isChecked[2][2] = !isChecked[2][2]),
-                    ]);
-                  }}
-                  className="cursor-pointer text-sm font-semibold text-slate-700"
+                <label
+                  htmlFor="remote"
+                  className="cursor-pointer text-xs font-semibold text-slate-700"
                 >
-                  &gt; $20000
-                </span>
+                  Remote
+                </label>
+              </div>
+              <div className="checkboxes">
+                <Checkbox
+                  size="small"
+                  checked={filters.type.includes("Intern")}
+                  onChange={(e) => handleFilterChange(e, "type")}
+                  name="intern"
+                  id="intern"
+                  value={"Intern"}
+                />
+                <label
+                  htmlFor="intern"
+                  className="cursor-pointer text-xs font-semibold text-slate-700"
+                >
+                  Intern
+                </label>
               </div>
             </AccordionDetails>
           </Accordion>
         </div>
 
         {isLoading ? (
-          <div className="col-span-5 col-start-2 row-span-11 row-start-2 flex h-full w-full items-center justify-center gap-8 max-md:mb-12">
+          <div className="col-span-5 col-start-2 row-span-11 row-start-2 flex h-full w-full items-center justify-center gap-8 max-md:my-32">
             <Loading />
           </div>
         ) : (
           <div className="col-span-5 col-start-2 row-span-11 row-start-2 flex flex-col items-center justify-center gap-8 max-md:mb-12">
             <div className="job-lists scrollbar-none grid h-full w-full grid-cols-1 items-center justify-center gap-4 overflow-y-scroll  p-1 md:grid-cols-2 xl:grid-cols-3">
-              {jobList.map((content, key) => (
+              {jobListToMap.map((content, key) => (
                 <JobCard key={key} content={content} btn={true} />
               ))}
             </div>
-            <Pagination
-              page={page}
-              count={count}
-              size="large"
-              renderItem={(item) => (
-                <PaginationItem
-                  component={Link}
-                  to={`/jobs?page=${item.page}`}
-                  {...item}
-                />
-              )}
-            />
           </div>
         )}
       </div>
+      {!isLoading && (
+        <div className="my-5 flex w-full items-center justify-center">
+          <Pagination
+            page={page}
+            count={count}
+            size="large"
+            renderItem={(item) => (
+              <PaginationItem
+                component={Link}
+                to={`/jobs?page=${item.page}`}
+                {...item}
+              />
+            )}
+          />
+        </div>
+      )}
     </>
   );
 };

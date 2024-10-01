@@ -25,3 +25,26 @@ export const formatDate = (date) => moment(date).format("MMMM Do, YYYY");
 export function useQuery(path) {
   return new URLSearchParams(path.search);
 }
+
+export const fetchByFilter = (filters, search = "", page = 1) => {
+  const { countries, sectors, type } = filters;
+
+  console.log(filters);
+  const queryParams = new URLSearchParams();
+
+  if (search.trim()) queryParams.append("search", search);
+  if (countries.length > 0)
+    queryParams.append("countries", countries.join(","));
+  if (sectors.length > 0) queryParams.append("sectors", sectors.join(","));
+  if (type.length > 0) queryParams.append("type", type.join(","));
+
+  queryParams.append("page", page);
+
+  // Make the API request with the query parameters
+  return api
+    .get(`/jobs/filter?${queryParams.toString()}`)
+    .then((res) => res.data)
+    .catch((error) => {
+      throw error;
+    });
+};

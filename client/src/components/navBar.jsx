@@ -44,6 +44,19 @@ const NavBar = () => {
               Home
             </Link>
           </li>
+          {isSignedIn && (
+            <li>
+              <Link
+                to="/dashboard"
+                className={`link ${path == "/dashboard" ? "active" : ""}`}
+                onClick={() => {
+                  setPath("/dashboard");
+                }}
+              >
+                Dashboard
+              </Link>
+            </li>
+          )}
           <li>
             <Link
               to="/jobs"

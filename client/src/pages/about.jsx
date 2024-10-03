@@ -3,6 +3,8 @@ import aboutBg from "../assets/wavey_bg-1.png";
 import officeMan from "../assets/office_man.png";
 import officeMan1 from "../assets/offic_man_1.png";
 import { FaClipboardList, FaCheckCircle } from "react-icons/fa";
+import { FaBriefcase, FaPen, FaBookmark } from "react-icons/fa6";
+import { GiSandsOfTime } from "react-icons/gi";
 
 const About = () => {
   return (
@@ -96,7 +98,7 @@ const About = () => {
                 <p className="mb-2 text-sm font-medium">
                   Extensive Job Listings
                 </p>
-                <p className="pr-3 text-xs md:pr-12">
+                <p className="pr-8 text-xs sm:pr-3 md:pr-12 lg:pr-6">
                   Our platform provides a broad array of job opportunities
                   across various industries. Whether you&lsquo;re interested in
                   full-time, part-time, or remote positions, you&lsquo;ll find a
@@ -113,7 +115,7 @@ const About = () => {
                 <p className="mb-2 text-sm font-medium">
                   User-Friendly Interface
                 </p>
-                <p className="pr-3 text-xs md:pr-12">
+                <p className="pr-8 text-xs sm:pr-3 md:pr-12 lg:pr-6">
                   Designed for ease of use, our website allows users to search
                   for jobs efficiently using keywords, location filters, and
                   industry categories. The responsive design ensures a smooth
@@ -123,65 +125,53 @@ const About = () => {
             </div>
             <div className="flex">
               <div className="mx-3 mt-1 flex size-11 items-center justify-center rounded-[5px] bg-secondary p-4 ">
-                <FaCheckCircle className="text-white" />
+                <FaBriefcase className="text-white" />
               </div>
               <div className="">
                 <p className="mb-2 text-sm font-medium">
-                  User-Friendly Interface
+                  Job Details and Company Descriptions
                 </p>
-                <p className="pr-3 text-xs md:pr-12">
-                  Designed for ease of use, our website allows users to search
-                  for jobs efficiently using keywords, location filters, and
-                  industry categories. The responsive design ensures a smooth
-                  experience on desktops, tablets, and smartphones.
+                <p className="pr-8 text-xs sm:pr-3 md:pr-12 lg:pr-6">
+                 While we don't have dedicated company profiles, employers include descriptions about their company within the job postings. This feature helps job seekers understand the company culture, values, and specific job details directly from the listing.
                 </p>
               </div>
             </div>
             <div className="flex">
               <div className="mx-3 mt-1 flex size-11 items-center justify-center rounded-[5px] bg-secondary p-4 ">
-                <FaCheckCircle className="text-white" />
+                <FaPen className="text-white" />
               </div>
               <div className="">
                 <p className="mb-2 text-sm font-medium">
-                  User-Friendly Interface
+                  Application and Post Editing
                 </p>
-                <p className="pr-3 text-xs md:pr-12">
-                  Designed for ease of use, our website allows users to search
-                  for jobs efficiently using keywords, location filters, and
-                  industry categories. The responsive design ensures a smooth
-                  experience on desktops, tablets, and smartphones.
+                <p className="pr-8 text-xs sm:pr-3 md:pr-12 lg:pr-6">
+                  Applicants can update their submitted applications to ensure that their information remains accurate and current. Employers also have the flexibility to edit their job postings, allowing for updates and adjustments as needed.
                 </p>
               </div>
             </div>
             <div className="flex">
               <div className="mx-3 mt-1 flex size-11 items-center justify-center rounded-[5px] bg-secondary p-4 ">
-                <FaCheckCircle className="text-white" />
+                <FaBookmark className="text-white " />
               </div>
               <div className="">
                 <p className="mb-2 text-sm font-medium">
-                  User-Friendly Interface
+                  Career Resources
                 </p>
-                <p className="pr-3 text-xs md:pr-12">
-                  Designed for ease of use, our website allows users to search
-                  for jobs efficiently using keywords, location filters, and
-                  industry categories. The responsive design ensures a smooth
-                  experience on desktops, tablets, and smartphones.
+                <p className="pr-8 text-xs sm:pr-3 md:pr-12 lg:pr-6">
+                  While we currently don't offer a blog page, our platform provides essential resources for job seekers. We aim to support users with tools and information for resume building, interview preparation, and career development.
                 </p>
               </div>
             </div>
             <div className="flex">
               <div className="mx-3 mt-1 flex size-11 items-center justify-center rounded-[5px] bg-secondary p-4 ">
-                <FaCheckCircle className="text-white" />
+                <GiSandsOfTime className="text-lg text-white" />
               </div>
               <div className="">
                 <p className="mb-2 text-sm font-medium">
-                  User-Friendly Interface
+                  Future Features
                 </p>
-                <p className="pr-3 text-xs md:pr-12">
-                  Designed for ease of use, our website allows users to search
-                  for jobs efficiently using keywords, location filters, and
-                  industry categories. The responsive design ensures a smooth
-                  experience on desktops, tablets, and smartphones.
+                <p className="pr-8 text-xs sm:pr-3 md:pr-12 lg:pr-6">
+                  We are committed to continuously improving our platform and have several exciting features in the pipeline. Upcoming enhancements include a job alert system to notify users of new opportunities, and a blog page featuring career advice, industry news, and job search tips and help center.
                 </p>
               </div>
             </div>

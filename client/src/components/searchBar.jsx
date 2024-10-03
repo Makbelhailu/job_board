@@ -28,7 +28,7 @@ const SearchBar = ({
   const btnRef = useRef(null);
 
   useEffect(() => {
-    if (inputValue) {
+    if (searchedJob.length) {
       const fetchInterval = setInterval(() => {
         api
           .get(`/jobs/search?title=${inputValue}&page=${page}`)
@@ -70,9 +70,9 @@ const SearchBar = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     const value = e.target[0].value;
-    setIsLoading(true);
-    clearFilterState();
-    if (value.trim()) {
+    if (inputValue.trim()) {
+      setIsLoading(true);
+      clearFilterState();
       setCount(1);
       setQuery({ ...query, page: 1 });
       api

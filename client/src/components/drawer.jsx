@@ -8,6 +8,7 @@ import { IoClose } from "react-icons/io5";
 import { BiHomeAlt } from "react-icons/bi";
 import { FiBriefcase } from "react-icons/fi";
 import { TiInfoLargeOutline } from "react-icons/ti";
+import { TbLayoutDashboardFilled } from "react-icons/tb";
 
 import { Divider } from "@mui/material";
 import CustomLink from "./customLink";
@@ -95,6 +96,23 @@ export default function MyDrawer({ customLink }) {
                 Home
               </Link>
             </li>
+            {isSignedIn && (
+              <li
+                className={`flex w-full items-center justify-start gap-3 py-2 pl-10 ${path == "/dashboard" ? "rounded-xl bg-secondary-100  text-secondary" : "link"}`}
+              >
+                <TbLayoutDashboardFilled />
+                <Link
+                  to="/dashboard"
+                  className={`w-full text-start`}
+                  onClick={() => {
+                    setPath("/dashboard");
+                    toggleDrawer(false)();
+                  }}
+                >
+                  Dashboard
+                </Link>
+              </li>
+            )}
             <li
               className={`flex w-full items-center justify-start gap-3 py-2 pl-10 ${path == "/jobs" ? "rounded-xl bg-secondary-100  text-secondary" : "link"}`}
             >

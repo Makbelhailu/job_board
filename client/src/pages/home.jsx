@@ -235,7 +235,7 @@ const Home = ({ isLoading }) => {
           </Card>
         </div>
       </div>
-      <div className="job_container px-12">
+      <div className="job_container px-4 sm:px-12">
         <div className="job_header my-12 flex flex-col items-center justify-between gap-y-5 md:flex-row">
           <div className="job_content">
             <h1 className="mb-2 text-left text-4xl font-bold">
@@ -269,7 +269,7 @@ const Home = ({ isLoading }) => {
           </div>
         )}
       </div>
-      <div className="offers_container mb-20 mt-28 px-12">
+      <div className="offers_container mb-20 mt-28 px-4 sm:px-12">
         <div className="offer_title mb-12 w-full text-left md:w-[45%]">
           <h2 className="mb-3  text-4xl font-bold capitalize">
             what we <span className="text-secondary">offer</span>

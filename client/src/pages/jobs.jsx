@@ -17,7 +17,7 @@ import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 import { useRecoilState, useRecoilValue } from "recoil";
 import { jobsState, searchJobState } from "../utils/states";
-import { fetchJobs, fetchByFilter } from "../utils/functions";
+import { fetchJobs, fetchByFilter, hasFilter } from "../utils/functions";
 
 const Jobs = () => {
   const defaultState = {
@@ -36,6 +36,7 @@ const Jobs = () => {
   const [query, setQuery] = useSearchParams();
   const [page, setPage] = useState(parseInt(query.get("page") || "1", 10));
   const [count, setCount] = useState(page);
+  const [allJobCount, setAllJobCount] = useState(1);
   const [expand, setExpand] = useState(window.innerWidth >= 1024);
 
   useEffect(() => {
@@ -55,11 +56,14 @@ const Jobs = () => {
   }, [query]);
 
   useEffect(() => {
-    if (!searchedJob.length) {
+    if (!searchedJob.length || !filteredJob.length) {
       const fetchInterval = setInterval(() => {
         fetchJobs(page)
           .then((data) => {
-            if (data.jobs.length > 12 && page == count) setCount(count + 1);
+            if (data.jobs.length > 12 && page == count) {
+              setCount(count + 1);
+              setAllJobCount(2);
+            }
             setJobList(data.jobs.splice(0, 12));
             clearInterval(fetchInterval);
             setIsLoading(false);
@@ -71,15 +75,16 @@ const Jobs = () => {
 
       return () => clearInterval(fetchInterval);
     }
-    if (filteredJob.length) {
+    if (filteredJob.length && hasFilter(filters)) {
       setIsLoading(true);
+      console.log("it's me");
       fetchByFilter(filters, searchInputValue, page).then((data) => {
         if (data.jobs.length > 12 && page == count) setCount(count + 1);
         setFilteredJob(data.jobs.splice(0, 12));
         setIsLoading(false);
       });
     }
-  }, [page, isLoading]);
+  }, [page]);
 
   const handleFilterChange = (event, filterType) => {
     const value = event.target.value;
@@ -97,12 +102,17 @@ const Jobs = () => {
   };
 
   useEffect(() => {
-    setIsLoading(true);
-    fetchByFilter(filters, searchInputValue, page).then((data) => {
-      if (data.jobs.length > 12 && page == count) setCount(count + 1);
-      setFilteredJob(data.jobs.splice(0, 12));
-      setIsLoading(false);
-    });
+    if (!hasFilter(filters)) {
+      setFilteredJob([]);
+    } else {
+      setIsLoading(true);
+      console.log("no,  it's me");
+      fetchByFilter(filters, searchInputValue, page).then((data) => {
+        if (data.jobs.length > 12 && page == count) setCount(count + 1);
+        setFilteredJob(data.jobs.splice(0, 12));
+        setIsLoading(false);
+      });
+    }
   }, [filters]);
 
   const clearFilter = () => {
@@ -112,10 +122,12 @@ const Jobs = () => {
     setSearchValue(null);
     setSearchInputValue("");
     setQuery({ ...query, page: 1 });
+    setCount(allJobCount);
   };
 
   const clearFilterState = () => {
     setFilters(defaultState);
+    setFilteredJob([]);
   };
 
   const jobListToMap =

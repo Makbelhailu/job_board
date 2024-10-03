@@ -4,7 +4,7 @@ import Home from "./pages/home";
 import Jobs from "./pages/jobs";
 import ApplicationCard from "./components/applicationCard";
 import ApplicationForm from "./components/applicationForm";
-import Loading from "./components/loading";
+import Dashboard from "./pages/dashboard";
 import NavBar from "./components/navBar";
 import Footer from "./components/footer";
 import ErrorPage from "./pages/errorPage";
@@ -69,6 +69,10 @@ function App() {
           <SignedIn>
             <Routes>
               <Route path="/" element={<Home isLoading={isLoading} />} />
+              <Route
+                path="/dashboard"
+                element={<Dashboard accountType={accountType} />}
+              />
               <Route path="/account-type" element={<AccountType />} />
               <Route path="/jobs" element={<Jobs />} />
               <Route path="/jobs/:id" element={<ApplicationCard />} />

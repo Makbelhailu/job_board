@@ -25,7 +25,11 @@ export const formatDate = (date) => moment(date).format("MMMM Do, YYYY");
 export function useQuery(path) {
   return new URLSearchParams(path.search);
 }
-
+export const hasFilter = (filters) => {
+  return (
+    filters.countries.length || filters.sectors.length || filters.type.length
+  );
+};
 export const fetchByFilter = (filters, search = "", page = 1) => {
   const { countries, sectors, type } = filters;
 

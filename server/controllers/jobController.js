@@ -6,11 +6,14 @@ const companyInfo = require("../middlewares/clerkMiddleware");
 // get all data
 const getAllJobs = async (req, res) => {
   const page = parseInt(req.query.page, 10);
-  const limit = 13;
-  const skip = (page - 1) * 12;
-
-  console.log(page);
+  const limit = 12;
+  const skip = (page - 1) * limit;
   try {
+    let totalPage = null
+    if (page === 1) {
+      const totalJobs = await JobList.find().countDocuments()
+      totalPage = Math.ceil(totalJobs / limit)
+    }
     const jobList = await JobList.find()
       .sort({ createdAt: -1 })
       .skip(skip)
@@ -20,10 +23,15 @@ const getAllJobs = async (req, res) => {
       return res.status(400).json({ error: "error fetching all the jobs" });
     }
 
-    const fullList = await companyInfo(jobList);
+    const fullJobList = await companyInfo(jobList);
 
-    res.status(200).json({ status: true, jobs: fullList });
-    console.log("all jobs fetched");
+    res.status(200).json({
+      status: true,
+      jobs: fullJobList,
+      totalPage: totalPage,
+      currentPage: page
+    });
+    console.log("all jobs fetched: ", fullJobList.length);
   } catch (err) {
     console.error("job fetch error: ", err);
     return res.status(500).json({ error: "internal server error" });
@@ -139,8 +147,16 @@ const searchJob = async (req, res) => {
   try {
     const search = req.query.title;
     const page = parseInt(req.query.page, 10);
-    const limit = 13;
-    const skip = (page - 1) * 12;
+    const limit = 12;
+    const skip = (page - 1) * limit;
+
+    let totalPage = null
+    if (page === 1) {
+      const totalJobs = await JobList.find({
+        title: { $regex: search, $options: "i" },
+      }).countDocuments()
+      totalPage = Math.ceil(totalJobs / limit)
+    }
 
     const jobs = await JobList.find({
       title: { $regex: search, $options: "i" },
@@ -154,7 +170,13 @@ const searchJob = async (req, res) => {
     }
 
     const fullList = await companyInfo(jobs);
-    res.json({ status: true, jobs: fullList });
+
+    res.status(200).json({
+      status: true,
+      jobs: fullList,
+      totalPage: totalPage,
+      currentPage: page
+    });
   } catch (err) {
     console.log(err.message);
     res.status(500).json({ status: false, error: "Internal server error" });
@@ -165,8 +187,8 @@ const filterJobs = async (req, res) => {
   try {
     const { countries, sectors, type, search = "" } = req.query;
     const page = parseInt(req.query.page, 10);
-    const limit = 13;
-    const skip = (page - 1) * 12;
+    const limit = 12;
+    const skip = (page - 1) * limit;
     const query = {};
 
     if (search) query.title = { $regex: search, $options: "i" };
@@ -186,6 +208,12 @@ const filterJobs = async (req, res) => {
       query.type = { $in: type.split(",") };
     }
 
+    let totalPage = null
+    if (page === 1) {
+      const totalJobs = await JobList.find(query).countDocuments()
+      totalPage = Math.ceil(totalJobs / limit)
+    }
+
     const jobs = await JobList.find(query)
       .sort({ createdAt: -1 })
       .skip(skip)
@@ -196,7 +224,13 @@ const filterJobs = async (req, res) => {
     }
 
     const fullList = await companyInfo(jobs);
-    res.json({ status: true, jobs: fullList });
+
+    res.status(200).json({
+      status: true,
+      jobs: fullList,
+      totalPage: totalPage,
+      currentPage: page
+    });
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }

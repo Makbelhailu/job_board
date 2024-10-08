@@ -1,6 +1,9 @@
 require("dotenv").config();
-const { createClerkClient } = require("@clerk/clerk-sdk-node");
+const { createClerkClient } = require("@clerk/backend");
 const User = require("../models/userModel");
+
+const secretKey = process.env.CLERK_SECRET_KEY
+const clerkClient = createClerkClient({ secretKey })
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -16,10 +19,32 @@ const companyInfo = async (jobList) => {
       return map;
     }, {});
 
-    const fullList = jobList.map((job) => ({
-      ...job._doc,
-      username: userMap[job.companyId] ? userMap[job.companyId].username : "",
-      profile: userMap[job.companyId] ? userMap[job.companyId].profile : "",
+    const fullList = await await Promise.all(jobList.map(async (job) => {
+
+      if (userMap[job.companyId]) {
+        return {
+          ...job._doc,
+          username: userMap[job.companyId].username,
+          profile: userMap[job.companyId].profile,
+        }
+      } else {
+        try {
+
+          const response = await clerkClient.users.getUser(job['companyId'])
+          return {
+            ...job._doc,
+            username: response.username || "",
+            profile: response.profile || "",
+          }
+        } catch (err) {
+          return {
+            ...job._doc,
+            username: "",
+            profile: "",
+          }
+        }
+      }
+
     }));
 
     return fullList;

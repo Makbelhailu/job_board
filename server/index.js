@@ -13,9 +13,11 @@ const app = express();
 // app.use(companyInfo);
 
 app.use(
-  cors({
-    origin: ["http://localhost:5000", "http://localhost:3000"],
-  })
+  cors(
+    //   {
+    //   origin: ["http://localhost:5000", "http://localhost:3000"],
+    // }
+  )
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

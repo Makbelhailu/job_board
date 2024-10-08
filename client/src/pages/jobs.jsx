@@ -16,7 +16,7 @@ import { MdExpandMore } from "react-icons/md";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 import { useRecoilState, useRecoilValue } from "recoil";
-import { jobsState, searchJobState } from "../utils/states";
+import { jobsState, searchJobState, countState, pageState } from "../utils/states";
 import { fetchJobs, fetchByFilter, hasFilter } from "../utils/functions";
 
 const Jobs = () => {
@@ -35,8 +35,9 @@ const Jobs = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [query, setQuery] = useSearchParams();
   const [page, setPage] = useState(parseInt(query.get("page") || "1", 10));
+  const [jobPage, setJobPage] = useRecoilState(pageState)
   const [count, setCount] = useState(page);
-  const [allJobCount, setAllJobCount] = useState(1);
+  const [jobCount, setJobCount] = useRecoilState(countState);
   const [expand, setExpand] = useState(window.innerWidth >= 1024);
 
   useEffect(() => {
@@ -60,10 +61,11 @@ const Jobs = () => {
       const fetchInterval = setInterval(() => {
         fetchJobs(page)
           .then((data) => {
-            if (data.jobs.length > 12 && page == count) {
-              setCount(count + 1);
-              setAllJobCount(2);
+            if (data.totalPage) {
+              setCount(data.totalPage);
+              setJobCount({ ...jobCount, normal: data['totalPage'] })
             }
+            setJobPage({ ...jobPage, normal: data['currentPage'] })
             setJobList(data.jobs.splice(0, 12));
             clearInterval(fetchInterval);
             setIsLoading(false);
@@ -79,8 +81,12 @@ const Jobs = () => {
       setIsLoading(true);
       console.log("it's me");
       fetchByFilter(filters, searchInputValue, page).then((data) => {
-        if (data.jobs.length > 12 && page == count) setCount(count + 1);
-        setFilteredJob(data.jobs.splice(0, 12));
+        if (data.totalPage) {
+          setCount(data.totalPage);
+        }
+        if (data.jobs.length) {
+          setFilteredJob(data.jobs)
+        }
         setIsLoading(false);
       });
     }
@@ -104,11 +110,17 @@ const Jobs = () => {
   useEffect(() => {
     if (!hasFilter(filters)) {
       setFilteredJob([]);
+      if (searchedJob.length) setCount(jobCount.search)
+      else setCount(jobCount.normal)
+      setQuery({ ...query, page: 1 });
+      // jobPage
     } else {
       setIsLoading(true);
       console.log("no,  it's me");
       fetchByFilter(filters, searchInputValue, page).then((data) => {
-        if (data.jobs.length > 12 && page == count) setCount(count + 1);
+        if (data.totalPage) {
+          setCount(data.totalPage);
+        }
         setFilteredJob(data.jobs.splice(0, 12));
         setIsLoading(false);
       });
@@ -121,8 +133,9 @@ const Jobs = () => {
     setFilteredJob([]);
     setSearchValue(null);
     setSearchInputValue("");
-    setQuery({ ...query, page: 1 });
-    setCount(allJobCount);
+    console.log(jobCount['normal'])
+    setQuery({ ...query, page: jobPage['normal'] })
+    setCount(jobCount.normal)
   };
 
   const clearFilterState = () => {
@@ -153,6 +166,7 @@ const Jobs = () => {
             isLoading={isLoading}
             setIsLoading={setIsLoading}
             clearFilterState={clearFilterState}
+          // allJobCount={allJobCount}
           />
         </div>
         <div className="col-start-1 row-span-12 row-start-1 max-lg:w-full">

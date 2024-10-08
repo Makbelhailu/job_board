@@ -6,7 +6,7 @@ import { FaSearch } from "react-icons/fa";
 
 import { api } from "../utils/functions";
 import { useRecoilState } from "recoil";
-import { searchJobState } from "../utils/states";
+import { searchJobState, pageState, countState } from "../utils/states";
 
 import { useSearchParams } from "react-router-dom";
 
@@ -23,6 +23,8 @@ const SearchBar = ({
   clearFilterState,
 }) => {
   const [searchList, setSearchList] = useState([]);
+  const [jobPage, setJobPage] = useRecoilState(pageState)
+  const [jobCount, setJobCount] = useRecoilState(countState)
   const [searchedJob, setSearchedJob] = useRecoilState(searchJobState);
   const [query, setQuery] = useSearchParams();
   const btnRef = useRef(null);
@@ -33,7 +35,11 @@ const SearchBar = ({
         api
           .get(`/jobs/search?title=${inputValue}&page=${page}`)
           .then((res) => {
-            if (res.data.jobs.length > 12 && page == count) setCount(count + 1);
+            if (res.data.totalPage) {
+              setCount(res.data.totalPage);
+              setJobCount({ ...jobCount, search: res.data.totalPage })
+            }
+            setJobPage({ ...jobPage, search: res.data.currentPage })
             setSearchedJob(res.data.jobs.splice(0, 12));
             clearInterval(fetchInterval);
             setIsLoading(false);
@@ -45,7 +51,7 @@ const SearchBar = ({
 
       return () => clearInterval(fetchInterval);
     }
-  }, [page, isLoading]);
+  }, [page]);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -72,18 +78,20 @@ const SearchBar = ({
     const value = e.target[0].value;
     if (inputValue.trim()) {
       setIsLoading(true);
+      setSearchedJob([])
+      setQuery({ ...query, page: 1 });
       clearFilterState();
       setCount(1);
-      setQuery({ ...query, page: 1 });
       api
         .get(`/jobs/search?title=${value}&page=1`)
         .then((res) => {
           const jobs = res.data.jobs;
-          if (jobs.length > 12 && page == count) {
-            setCount(count + 1);
-            console.log("count changed\n");
+          if (res.data.totalPage) {
+            setCount(res.data.totalPage);
+            setJobCount({ ...jobCount, search: res.data.totalPage })
           }
-          if (jobs.length) setSearchedJob(jobs.slice(0, 12));
+          setJobPage({ ...jobPage, search: res.data.currentPage })
+          if (jobs.length) setSearchedJob(jobs);
           setIsLoading(false);
         })
         .catch((err) => {

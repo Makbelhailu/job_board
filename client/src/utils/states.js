@@ -31,3 +31,19 @@ export const filteredJobState = atom({
   key: "filteredJobState",
   default: [],
 });
+
+export const pageState = atom({
+  key: "pageState",
+  default: {
+    normal: 1,
+    search: 1,
+  },
+});
+
+export const countState = atom({
+  key: "pageState",
+  default: {
+    normal: 1,
+    search: 1,
+  },
+});

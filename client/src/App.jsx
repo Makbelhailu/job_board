@@ -14,12 +14,12 @@ import About from "./pages/about";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 
 import { fetchJobs } from "./utils/functions";
-import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
+import { useSetRecoilState, useRecoilValue } from "recoil";
 import { jobsState, userState, getAccountType } from "./utils/states";
 import { useUser } from "@clerk/clerk-react";
 
 function App() {
-  const [userInfo, setUserInfo] = useRecoilState(userState);
+  const setUserInfo = useSetRecoilState(userState);
   const setJobList = useSetRecoilState(jobsState);
   const accountType = useRecoilValue(getAccountType);
   const [isLoading, setIsLoading] = useState(true);

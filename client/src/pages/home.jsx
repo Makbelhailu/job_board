@@ -23,13 +23,12 @@ import careerImg from "../assets/career-dev.jpg";
 import JobCard from "../components/job-card";
 import Loading from "../components/loading";
 
-import { useClerk, useUser } from "@clerk/clerk-react";
-import { useEffect } from "react";
+import { useClerk } from "@clerk/clerk-react";
 import { jobsState, userState } from "../utils/states";
 import { useRecoilValue } from "recoil";
 
 const Home = ({ isLoading }) => {
-  const { user, isSignedIn } = useRecoilValue(userState);
+  const { isSignedIn } = useRecoilValue(userState);
   const jobList = useRecoilValue(jobsState);
   const clerk = useClerk();
 
@@ -43,14 +42,7 @@ const Home = ({ isLoading }) => {
     "Frontend Developer",
     "Backend Developer",
   ];
-  const content = {
-    image: "",
-    username: "make",
-    location: "New York, USA",
-    title: "software engineer",
-    description:
-      "lorem hi im the lost guy that you asked to find so take a rest it seems you already found me lorem hi im the lost guy that you asked to find so take a rest it seems you already found me it seems you already found me ",
-  };
+  
 
   return (
     <div className="home relative mt-24 w-full text-center">
@@ -334,5 +326,7 @@ const Home = ({ isLoading }) => {
     </div>
   );
 };
+
+
 
 export default Home;

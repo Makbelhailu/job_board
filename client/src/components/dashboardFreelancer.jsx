@@ -69,7 +69,7 @@ const DashboardFreelancer = () => {
           </div>
           <div className="">
             <p className="text-sm font-semibold">Discover your next career opportunity. Explore thousands of jobs from employers looking for talented people like you.</p>
-            <Link to="/post-job" className="mt-5 inline-block">
+            <Link to="/jobs" className="mt-5 inline-block">
               <button className="px-8 py-3 font-black text-secondary hover:text-primary hover:bg-secondary-100 border-2 bg-white rounded-xl">Find Job</button>
             </Link>
           </div>

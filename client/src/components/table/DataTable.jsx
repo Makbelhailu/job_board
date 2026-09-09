@@ -179,10 +179,11 @@ const DataTable = ({
                 <tr
                   key={row.id}
                   className="
-                    border-b border-gray-100
+                    border-b cursor-pointer border-gray-100
                     last:border-b-0
                     hover:bg-gray-50/70
                   "
+                  
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td

@@ -3,7 +3,10 @@ import {
   FiCalendar,
   FiCheckCircle,
   FiXCircle,
+  FiEye
 } from "react-icons/fi";
+
+import { Link } from "react-router-dom";
 
 const columnHelper = createColumnHelper();
 
@@ -67,6 +70,16 @@ export const applicantColumns = [
 
       return (
         <div className="flex items-center gap-4">
+
+          {/* view */}
+          <Link
+            to={`/applicants/${applicant.id}`}
+            className="text-secondary transition hover:scale-110"
+            title="View"
+          >
+            <FiEye size={20} />
+          </Link>
+
           {/* Reject */}
           <button
             type="button"
